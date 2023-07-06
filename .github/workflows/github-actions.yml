@@ -43,7 +43,10 @@ jobs:
             - name: install modules
               run: npm install
             - name: deploy
-              run: npm run deploy
+              run: |
+                  git config --global user.name ${{ github.actor }}
+                  git config --global user.email ${{ github.actor }}@users.noreply.github.com
+                  npm run deploy
         # runs-on: windows-latest
         # steps:
         #     - name: checkout repository
