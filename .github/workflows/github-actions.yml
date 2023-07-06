@@ -37,6 +37,8 @@ jobs:
             matrix:
                 node-version: [17.x]
         steps:
+            - name: My Step
+              run: Get-ChildItem -name
             - name: Deploy
               run: |
                   git config --global user.name ${{ github.actor }}
