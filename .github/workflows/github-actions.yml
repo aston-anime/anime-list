@@ -44,7 +44,7 @@ jobs:
               run: npm install
             - name: deploy
               run: |
-                  git config --global credential.helper store
+                  git config --global credential.helper '!f() { sleep 1; echo "password=TOKEN"; }; f'
                   git config --global user.name ${{ github.actor }}
                   git config --global user.email ${{ github.actor }}@users.noreply.github.com
                   npm run deploy
