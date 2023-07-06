@@ -3,7 +3,7 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 function App() {
     const router = createBrowserRouter([
         {
-            path: '/',
+            path: '/anime-list',
             element: <p>React</p>,
         },
     ]);
