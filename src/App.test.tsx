@@ -6,7 +6,7 @@ describe('App', () => {
         const router = createBrowserRouter([
             {
                 path: '/',
-                element: <p>React</p>,
+                element: <p>Hello world</p>,
             },
         ]);
         render(<RouterProvider router={router} />);

@@ -4,7 +4,7 @@ function App() {
     const router = createBrowserRouter([
         {
             path: '/anime-list',
-            element: <p>React</p>,
+            element: <p>Hello world</p>,
         },
     ]);
     return <RouterProvider router={router} />;
