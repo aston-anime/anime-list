@@ -51,6 +51,7 @@ jobs:
               run: npm run build
             - name: deploy to Github Pages
               run: |
+                  git checkout gh-pages
                   git config --global user.name 'Natela'
                   git config --global user.email 'nat.kerdzevadze@gmail.com'
                   rm -rf *
