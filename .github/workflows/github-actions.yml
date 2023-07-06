@@ -35,16 +35,8 @@ jobs:
             matrix:
                 node-version: [17.x]
         steps:
-            - uses: actions/checkout@v3
-            - name: Staring Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
+            - name: Deploy
+              uses: peaceiris/actions-gh-pages@v3
               with:
-                  node-version: ${{ matrix.node-version }}
-            - name: install modules
-              run: npm install
-            - name: deploy
-              run: |
-                  git config --global credential.helper
-                  git config --global user.name ${{ github.actor }}
-                  git config --global user.email "n.kerd@mail.ru"
-                  npm run deploy
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./public
