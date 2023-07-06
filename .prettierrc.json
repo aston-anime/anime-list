@@ -5,8 +5,23 @@
     "singleQuote": true,
     "printWidth": 80,
     "bracketSpacing": false,
+    "arrowParens": "always",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "overrides": [
+        {
+            "files": "*.ts",
+            "options": {
+                "parser": "typescript"
+            }
+        },
+        {
+            "files": "*.js",
+            "options": {
+                "parser": "babel"
+            }
+        }
+    ]
 }
