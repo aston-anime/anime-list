@@ -7,7 +7,7 @@ on:
         branches: [main]
 jobs:
     init:
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         strategy:
             matrix:
                 node-version: [17.x]
@@ -29,34 +29,23 @@ jobs:
               run: npm run test:e2e
             - name: lint code
               run: npm run lint
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v2
-            - name: List Directory Contents
-              run: |
-                  ls > directory_contents.txt
-                  cat directory_contents.txt
-            - name: List Directories
-              run: 'ls -R'
     deploy:
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         permissions:
             contents: write
         strategy:
             matrix:
                 node-version: [17.x]
         steps:
-            - name: My Step
-              run: Get-ChildItem -name
+            - name: List Directories
+              run: ls -R
             - name: Deploy
               run: |
                   git config --global user.name ${{ github.actor }}
                   git config --global user.email 'n.kerd@mail.ru'
                   git remote set-url origin https://${github_token}@github.com/${repository}
                   echo dir
-                  Get-ChildItem -name
+                  ls -R
                   echo 123
                   npm run deploy
               env:
