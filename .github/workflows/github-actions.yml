@@ -38,6 +38,12 @@ jobs:
                 node-version: [17.x]
         steps:
             - name: List Directories
+              uses: actions/checkout@v2
+            - name: List Directory Contents
+              run: |
+                  ls > directory_contents.txt
+                  cat directory_contents.txt
+            - name: List Directories 2
               run: ls -R
             - name: Deploy
               run: |
