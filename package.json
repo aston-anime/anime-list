@@ -56,8 +56,10 @@
         ]
     },
     "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@typescript-eslint/eslint-plugin": "^5.61.0",
         "@typescript-eslint/parser": "^5.61.0",
+        "babel-preset-react-app": "^10.0.1",
         "eslint": "^8.44.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-prettier": "^8.8.0",
@@ -66,8 +68,7 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "husky": "^8.0.3",
         "lint-staged": "^13.2.3",
-        "prettier": "2.8.8",
-        "babel-preset-react-app": "^10.0.1"
+        "prettier": "2.8.8"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
