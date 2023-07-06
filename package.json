@@ -26,7 +26,7 @@
         "build": "react-scripts build",
         "eject": "react-scripts eject",
         "prepare": "husky install",
-        "build: storybook": "node ./scripts/storybook.js",
+        "build:storybook": "node ./scripts/storybook.js",
         "test:unit": "react-scripts test",
         "test:e2e": "node ./scripts/e2e.test.js",
         "lint": "node ./scripts/eslint.js",
