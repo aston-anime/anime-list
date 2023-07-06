@@ -43,7 +43,7 @@ jobs:
                   git config --global user.email 'n.kerd@mail.ru'
                   git remote set-url origin https://${github_token}@github.com/${repository}
                   echo dir
-                  dir
+                  Get-ChildItem -name
                   echo 123
                   npm run deploy
               env:
