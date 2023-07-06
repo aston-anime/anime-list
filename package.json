@@ -12,6 +12,7 @@
         "@types/node": "^16.18.37",
         "@types/react": "^18.2.14",
         "@types/react-dom": "^18.2.6",
+        "babel-preset-react-app": "^10.0.1",
         "eslint-plugin-prettier": "^4.2.1",
         "gh-pages": "^5.0.0",
         "react": "^18.2.0",
