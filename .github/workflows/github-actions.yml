@@ -48,7 +48,7 @@ jobs:
                   git config --global user.email ${{ github.actor }}@users.noreply.github.com
                   echo 'Deploying to GitHub Pages...'
                   git clone --branch gh-pages --depth 1 https://github.com/${{ github.repository }}.git gh-pages
-                  cp -R dist/* gh-pages/
+                  cp -R build/dist/* gh-pages/
                   cd gh-pages
                   git add .
                   git commit -m "Deploy to GitHub Pages"
