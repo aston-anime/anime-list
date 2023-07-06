@@ -46,8 +46,8 @@ jobs:
             - name: Build and deploy to Github Pages
               run: |
                   npm run build
-                  git config --global user.name 'Github Action'
-                  git config --global user.email 'github-action@users.noreply.github.com'
+                  git config --global user.name 'Natela'
+                  git config --global user.email 'nat.kerdzevadze@gmail.com'
                   git checkout gh-pages
                   git add .
                   git commit -m "Update gh-pages"
