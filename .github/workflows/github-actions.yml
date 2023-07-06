@@ -45,7 +45,13 @@ jobs:
                   cat directory_contents.txt
             - name: List Directories 2
               run: ls -R
-            - name: Deploy
+            - name: Checkout Code
+              uses: actions/checkout@v2
+            - name: install Dependencies
+              run: npm install
+            - name: build Project
+              run: npm run build
+            - name: deploy
               run: |
                   git config --global user.name ${{ github.actor }}
                   git config --global user.email 'n.kerd@mail.ru'
