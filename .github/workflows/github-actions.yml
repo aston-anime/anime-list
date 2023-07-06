@@ -32,30 +32,24 @@ jobs:
     deploy:
         runs-on: windows-latest
         steps:
-            - uses: actions/checkout@v2
-              with:
-                  ref: main
-            - name: сreate and checkout gh-pages branch
-              run: |
-                  git checkout --orphan gh-pages
-                  git reset --hard
-                  git commit --allow-empty -m "Initializing gh-pages branch"
-                  git push --set-upstream origin gh-pages
+            - name: checkout repository
+              uses: actions/checkout@v3
             - name: set up Node.js
-              uses: actions/setup-node@v2.1.2
+              uses: actions/setup-node@v3
               with:
-                  node-version: '14.x'
+                  node-version: 17.x
             - name: install dependencies
               run: npm install
             - name: build project
               run: npm run build
-            - name: deploy to Github Pages
+            - name: deploy to GitHub Pages
               run: |
-                  git checkout gh-pages
-                  git config --global user.name 'Natela'
-                  git config --global user.email 'nat.kerdzevadze@gmail.com'
-                  rm -rf *
-                  cp -R dist/* ./
+                  git config --global user.name ${{ github.actor }}
+                  git config --global user.email ${{ github.actor }}@users.noreply.github.com
+                  echo 'Deploying to GitHub Pages...'
+                  git clone --branch gh-pages --depth 1 https://github.com/${{ github.repository }}.git gh-pages
+                  cp -R dist/* gh-pages/
+                  cd gh-pages
                   git add .
-                  git commit -m "Update gh-pages"
-                  git push -u origin gh-pages
+                  git commit -m "Deploy to GitHub Pages"
+                  git push origin gh-pages
