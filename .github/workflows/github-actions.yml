@@ -32,23 +32,16 @@ jobs:
     deploy:
         runs-on: windows-latest
         steps:
-            - name: Checkout main branch
+            - name: checkout main branch
               uses: actions/checkout@v2
 
-            - name: Set up Node.js
+            - name: set up Node.js
               uses: actions/setup-node@v2.1.2
               with:
                   node-version: '14.x'
 
-            - name: Install dependencies
+            - name: install dependencies
               run: npm install
 
-            - name: Build and deploy to Github Pages
-              run: |
-                  npm run build
-                  git config --global user.name 'Natela'
-                  git config --global user.email 'nat.kerdzevadze@gmail.com'
-                  git checkout gh-pages
-                  git add .
-                  git commit -m "Update gh-pages"
-                  git push -u origin gh-pages
+            - name: build and deploy to Github Pages
+              run: npm run deploy
