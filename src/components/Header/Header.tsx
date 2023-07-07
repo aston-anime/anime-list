@@ -3,10 +3,12 @@ import {AppRoute} from '../../routing/AppRoute';
 import {Logo} from '../Logo/Logo';
 import {useAppSelector} from '../../hooks';
 import {getOnLogInPageFlag} from '../../store/login/selectors';
+import {getOnSignUpPageFlag} from '../../store/signup/selectors';
 import s from './Header.module.css';
 
 function Header() {
     const onLogInPageFlag = useAppSelector(getOnLogInPageFlag);
+    const onSignUpPageFlag = useAppSelector(getOnSignUpPageFlag);
 
     return (
         <header className={`${s.header} bg-primary`}>
@@ -16,14 +18,14 @@ function Header() {
                     Theme
                 </button>
                 {!onLogInPageFlag && (
-                    <>
-                        <Link className={`${s.btn} btn btn-info`} to={AppRoute.LogIn}>
-                            Log in
-                        </Link>
-                        <Link className={`${s.btn} btn btn-info`} to={AppRoute.SignUp}>
-                            Sign up
-                        </Link>
-                    </>
+                    <Link className={`${s.btn} btn btn-info`} to={AppRoute.LogIn}>
+                        Log in
+                    </Link>
+                )}
+                {!onSignUpPageFlag && (
+                    <Link className={`${s.btn} btn btn-info`} to={AppRoute.SignUp}>
+                        Sign up
+                    </Link>
                 )}
             </div>
         </header>

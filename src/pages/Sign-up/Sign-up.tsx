@@ -1,14 +1,14 @@
 import {useEffect} from 'react';
 import {useAppDispatch} from '../../hooks';
-import {toggleOnLogInPage} from '../../store/login/login';
+import {toggleOnSignUpPage} from '../../store/signup/signup';
 
 function SignUp() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(toggleOnLogInPage());
+        dispatch(toggleOnSignUpPage());
         return () => {
-            dispatch(toggleOnLogInPage());
+            dispatch(toggleOnSignUpPage());
         };
     });
 
