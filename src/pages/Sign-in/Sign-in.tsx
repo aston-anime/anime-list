@@ -1,5 +1,5 @@
-function SingIn() {
+function SignIn() {
     return <div>SingIn Component</div>;
 }
 
-export {SingIn};
+export {SignIn};
