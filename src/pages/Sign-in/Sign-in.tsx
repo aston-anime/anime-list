@@ -1,5 +1,5 @@
 function SingIn() {
-    <div>SingIn Component</div>;
+    return <div>SingIn Component</div>;
 }
 
 export {SingIn};

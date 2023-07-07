@@ -1,5 +1,5 @@
 function Favorites() {
-    <div>Favorites Component</div>;
+    return <div>Favorites Component</div>;
 }
 
 export {Favorites};

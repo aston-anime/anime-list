@@ -1,5 +1,5 @@
 function DetailedItem() {
-    <div>Main Component</div>;
+    return <div>Main Component</div>;
 }
 
 export {DetailedItem};
