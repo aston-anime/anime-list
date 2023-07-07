@@ -11,10 +11,10 @@ function Header() {
                 <button type="button" className="btn btn-secondary">
                     Theme
                 </button>
-                <Link type="button" className="btn btn-info" to={AppRoute.LogIn}>
+                <Link className="btn btn-info" to={AppRoute.LogIn}>
                     Log in
                 </Link>
-                <Link type="button" className="btn btn-info" to={AppRoute.SignUp}>
+                <Link className="btn btn-info" to={AppRoute.SignUp}>
                     Sign up
                 </Link>
             </div>
