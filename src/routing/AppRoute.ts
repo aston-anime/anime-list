@@ -2,7 +2,7 @@ const AppRoute = {
     Main: '/anime-list',
     DetailedItem: 'detailed-item',
     LogIn: 'login',
-    SingnIn: 'signin',
+    SignUp: 'signup',
     Favorites: 'favorites',
     History: 'history',
 };
