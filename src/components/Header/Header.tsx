@@ -14,7 +14,7 @@ function Header() {
                 <Link type="button" className="btn btn-info" to={AppRoute.LogIn}>
                     Log in
                 </Link>
-                <Link type="button" className="btn btn-info" to={AppRoute.SignIn}>
+                <Link type="button" className="btn btn-info" to={AppRoute.SignUp}>
                     Sign up
                 </Link>
             </div>

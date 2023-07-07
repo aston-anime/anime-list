@@ -15,7 +15,7 @@ export const router = createBrowserRouter(
             <Route index element={<Main />} />
             <Route path={AppRoute.DetailedItem} element={<DetailedItem />} />
             <Route path={AppRoute.LogIn} element={<LogIn />} />
-            <Route path={AppRoute.SignIn} element={<SignUp />} />
+            <Route path={AppRoute.SignUp} element={<SignUp />} />
             <Route path={AppRoute.Favorites} element={<Favorites />} />
             <Route path={AppRoute.History} element={<History />} />
         </Route>
