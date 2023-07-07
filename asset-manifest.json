@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/anime-list/static/css/main.936f4d2c.css",
-    "main.js": "/anime-list/static/js/main.8ca69143.js",
+    "main.js": "/anime-list/static/js/main.a39a007d.js",
     "index.html": "/anime-list/index.html",
     "main.936f4d2c.css.map": "/anime-list/static/css/main.936f4d2c.css.map",
-    "main.8ca69143.js.map": "/anime-list/static/js/main.8ca69143.js.map"
+    "main.a39a007d.js.map": "/anime-list/static/js/main.a39a007d.js.map"
   },
   "entrypoints": [
     "static/css/main.936f4d2c.css",
-    "static/js/main.8ca69143.js"
+    "static/js/main.a39a007d.js"
   ]
 }
