@@ -4,7 +4,12 @@
     padding: 15px 48px;
 }
 
-.header__container {
+.container {
     display: flex;
     gap: 20px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
 }
