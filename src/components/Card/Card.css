@@ -1,0 +1,18 @@
+.card {
+    max-width: 200px;
+    width: 100%;
+    /* display: flex; */
+    align-items: center;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.card__title {
+    font-size: medium;
+}
+
+.card__btn {
+    max-width: 100px;
+}

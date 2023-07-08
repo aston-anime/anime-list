@@ -1,0 +1,5 @@
+.anime-list-wrp {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style-type: none;
+}
