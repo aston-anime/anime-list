@@ -1,13 +1,10 @@
-import {ChangeEvent, FormEvent, useRef, useState} from 'react';
+import {ChangeEvent, FormEvent, useState} from 'react';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
 import s from './Sign-up.module.css';
 
 function SignUp() {
     const navigate = useNavigate();
-
-    const passwordRef = useRef<HTMLInputElement | null>(null);
-    const userNameRef = useRef<HTMLInputElement | null>(null);
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -22,26 +19,19 @@ function SignUp() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const passwordCurrent = passwordRef.current;
-        const userNameCurrent = userNameRef.current;
 
-        if (passwordCurrent && userNameCurrent) {
+        if (userName && password) {
             navigate(AppRoute.Main);
             const userNameInfo = {
-                userName: userNameCurrent.value,
-                password: userNameCurrent.value,
+                userName,
+                password,
             };
             localStorage.setItem('userNameInfo', JSON.stringify(userNameInfo));
         }
     };
 
     return (
-        <form
-            className={`${s.form} border-primary`}
-            action="#"
-            method="post"
-            onSubmit={handleSubmit}
-        >
+        <form className={`${s.form} border-primary`} action="#" onSubmit={handleSubmit}>
             <div className={`${s.container} card border-primary `}>
                 <div className="form-group">
                     <label htmlFor="userName" className="form-label mt-4">
@@ -55,11 +45,8 @@ function SignUp() {
                         aria-describedby="userNameHelp"
                         placeholder="Enter userName"
                         value={userName}
-                        ref={userNameRef}
                         required
-                        onChange={(e) => {
-                            handleUserNameChange(e);
-                        }}
+                        onChange={handleUserNameChange}
                     />
                 </div>
                 <div className="form-group">
@@ -73,11 +60,8 @@ function SignUp() {
                         name="password"
                         placeholder="Password"
                         value={password}
-                        ref={passwordRef}
                         required
-                        onChange={(e) => {
-                            handlePasswordChange(e);
-                        }}
+                        onChange={handlePasswordChange}
                     />
                 </div>
                 <button className={`${s.btn} btn btn-success`} type="submit">
