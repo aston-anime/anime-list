@@ -10,19 +10,21 @@ function Header() {
         <header className={`${s.header} bg-primary`}>
             <Logo />
             <div className={s.container}>
-                <button type="button" className="btn btn-secondary">
+                <button type="button" className={`${s.btn} btn btn-secondary`}>
                     Theme
                 </button>
-                {location !== '/anime-list/login' && (
-                    <Link className={`${s.btn} btn btn-info`} to={AppRoute.LogIn}>
-                        Log in
-                    </Link>
-                )}
-                {location !== '/anime-list/signup' && (
-                    <Link className={`${s.btn} btn btn-info`} to={AppRoute.SignUp}>
-                        Sign up
-                    </Link>
-                )}
+                <div className={s.container}>
+                    {location !== '/anime-list/login' && (
+                        <Link className={`${s.btn} btn btn-info`} to={AppRoute.LogIn}>
+                            Log in
+                        </Link>
+                    )}
+                    {location !== '/anime-list/signup' && (
+                        <Link className={`${s.btn} btn btn-info`} to={AppRoute.SignUp}>
+                            Sign up
+                        </Link>
+                    )}
+                </div>
             </div>
         </header>
     );

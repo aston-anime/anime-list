@@ -6,10 +6,13 @@
 
 .container {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
 .btn {
     display: flex;
+    justify-content: center;
     align-items: center;
+    width: 78px;
 }

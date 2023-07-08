@@ -1,0 +1,30 @@
+.form {
+    display: flex;
+    justify-content: center;
+    margin: 90px;
+}
+
+.container {
+    width: 350px;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+.loginError::after,
+.passwordError::after {
+    font-size: 12px;
+    position: absolute;
+    color: rgb(255, 0, 102);
+}
+
+.loginError::after {
+    content: "Couldn't find user";
+}
+
+.passwordError::after {
+    content: 'Incorrect password';
+}
