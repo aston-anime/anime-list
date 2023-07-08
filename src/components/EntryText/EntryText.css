@@ -1,0 +1,13 @@
+.entry-text__wrp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.entry-text__title {
+    color: white;
+}
+
+.entry-text__txt {
+    font-size: 20px;
+}
