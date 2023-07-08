@@ -1,9 +1,11 @@
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {AppRoute} from '../../routing/AppRoute';
 import {Logo} from '../Logo/Logo';
 import s from './Header.module.css';
 
 function Header() {
+    const location = useLocation().pathname;
+
     return (
         <header className={`${s.header} bg-primary`}>
             <Logo />
@@ -11,12 +13,16 @@ function Header() {
                 <button type="button" className="btn btn-secondary">
                     Theme
                 </button>
-                <Link className={`${s.btn} btn btn-info`} to={AppRoute.LogIn}>
-                    Log in
-                </Link>
-                <Link className={`${s.btn} btn btn-info`} to={AppRoute.SignUp}>
-                    Sign up
-                </Link>
+                {location !== '/anime-list/login' && (
+                    <Link className={`${s.btn} btn btn-info`} to={AppRoute.LogIn}>
+                        Log in
+                    </Link>
+                )}
+                {location !== '/anime-list/signup' && (
+                    <Link className={`${s.btn} btn btn-info`} to={AppRoute.SignUp}>
+                        Sign up
+                    </Link>
+                )}
             </div>
         </header>
     );
