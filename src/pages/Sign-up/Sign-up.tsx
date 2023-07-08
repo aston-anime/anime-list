@@ -20,14 +20,8 @@ function SignUp() {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (userName && password) {
-            navigate(AppRoute.Main);
-            const userNameInfo = {
-                userName,
-                password,
-            };
-            localStorage.setItem('userNameInfo', JSON.stringify(userNameInfo));
-        }
+        navigate(AppRoute.Main);
+        localStorage.setItem(userName, JSON.stringify(password));
     };
 
     return (
