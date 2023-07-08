@@ -1,22 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../NameSpace';
 
-type InitialState = {
-    onSignUpPage: boolean;
-};
+type InitialState = object;
 
-const initialState: InitialState = {
-    onSignUpPage: false,
-};
+const initialState: InitialState = {};
 
 export const signUp = createSlice({
     name: NameSpace.SignUp,
     initialState,
-    reducers: {
-        toggleOnSignUpPage: (state) => {
-            state.onSignUpPage = !state.onSignUpPage;
-        },
-    },
+    reducers: {},
 });
-
-export const {toggleOnSignUpPage} = signUp.actions;

@@ -1,22 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../NameSpace';
 
-type InitialState = {
-    onLogInPage: boolean;
-};
+type InitialState = object;
 
-const initialState: InitialState = {
-    onLogInPage: false,
-};
+const initialState: InitialState = {};
 
 export const logIn = createSlice({
     name: NameSpace.LogIn,
     initialState,
-    reducers: {
-        toggleOnLogInPage: (state) => {
-            state.onLogInPage = !state.onLogInPage;
-        },
-    },
+    reducers: {},
 });
-
-export const {toggleOnLogInPage} = logIn.actions;
