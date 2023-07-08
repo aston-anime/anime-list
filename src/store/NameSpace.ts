@@ -1,4 +1,3 @@
 export const NameSpace = {
-    LogIn: 'LOGIN',
-    SignUp: 'SIGNUP',
+    Auth: 'AUTH',
 } as const;

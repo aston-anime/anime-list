@@ -1,13 +1,11 @@
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {AppRoute} from '../../routing/AppRoute';
 import {Logo} from '../Logo/Logo';
 import s from './Header.module.css';
 
-type HeaderProps = {
-    location: string;
-};
+function Header() {
+    const location = useLocation().pathname;
 
-function Header({location}: HeaderProps) {
     return (
         <header className={`${s.header} bg-primary`}>
             <Logo />
