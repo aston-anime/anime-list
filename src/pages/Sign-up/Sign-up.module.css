@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    justify-content: center;
+    margin: 90px;
+}
+
+.container {
+    width: 350px;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.btn {
+    margin-top: 20px;
+}
