@@ -1,11 +1,16 @@
 import {Link} from 'react-router-dom';
+import {useContext} from 'react';
+import cn from 'classnames';
 import {AppRoute} from '../../routing/AppRoute';
-import styles from './Logo.module.css';
+import {ThemeContext} from '../../services/ThemeProvider';
+import s from './Logo.module.css';
 
 function Logo() {
+    const {theme} = useContext(ThemeContext);
+
     return (
-        <Link className={styles.logo} to={AppRoute.Main}>
-            <h1 className={styles.logo__title}>Euphoric Serenity</h1>
+        <Link className={s.logo} to={AppRoute.Main}>
+            <h1 className={cn(s.logo__title, {[s.light]: theme === 'light'})}>Euphoric Serenity</h1>
         </Link>
     );
 }

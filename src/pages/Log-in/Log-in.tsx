@@ -1,14 +1,16 @@
-import {useState, ChangeEvent, FormEvent} from 'react';
-import classNames from 'classnames';
+import {useState, ChangeEvent, FormEvent, useContext} from 'react';
+import cn from 'classnames';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
 import {logIn, setUser} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
+import {ThemeContext} from '../../services/ThemeProvider';
 import s from './Log-in.module.css';
 
 function LogIn() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const {theme} = useContext(ThemeContext);
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -44,8 +46,11 @@ function LogIn() {
     return (
         <form className={`${s.form} border-primary`} action="#" onSubmit={handleSubmit}>
             <div className={`${s.container} card border-primary `}>
-                <div className={classNames('form-group', {[s.loginError]: invalidLogin})}>
-                    <label htmlFor="userName" className="form-label mt-4">
+                <div className={cn('form-group', {[s.loginError]: invalidLogin})}>
+                    <label
+                        htmlFor="userName"
+                        className={cn('form-label mt-4', {'text-dark': theme === 'light'})}
+                    >
                         User name
                     </label>
                     <input
@@ -60,8 +65,11 @@ function LogIn() {
                         onChange={handleUserNameChange}
                     />
                 </div>
-                <div className={classNames('form-group', {[s.passwordError]: invalidPassword})}>
-                    <label htmlFor="password" className="form-label mt-4">
+                <div className={cn('form-group', {[s.passwordError]: invalidPassword})}>
+                    <label
+                        htmlFor="password"
+                        className={cn('form-label mt-4', {'text-dark': theme === 'light'})}
+                    >
                         Password
                     </label>
                     <input
@@ -75,7 +83,19 @@ function LogIn() {
                         onChange={handlePasswordChange}
                     />
                 </div>
-                <button className={`${s.btn} btn btn-success`} type="submit">
+                <button
+                    className={cn(
+                        'btn',
+                        s.btn,
+                        {
+                            'btn-success': theme === 'dark',
+                        },
+                        {
+                            'btn-primary': theme === 'light',
+                        }
+                    )}
+                    type="submit"
+                >
                     Log in
                 </button>
             </div>
