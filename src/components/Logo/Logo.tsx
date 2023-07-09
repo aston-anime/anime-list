@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import {useContext} from 'react';
 import cn from 'classnames';
 import {AppRoute} from '../../routing/AppRoute';
-import {ThemeContext} from '../../services/ThemeProvider';
+import {ThemeContext} from '../../services/theme/ThemeProvider';
 import s from './Logo.module.css';
 
 function Logo() {

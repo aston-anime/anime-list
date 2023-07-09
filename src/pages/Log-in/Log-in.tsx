@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
 import {logIn, setUser} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
-import {ThemeContext} from '../../services/ThemeProvider';
+import {ThemeContext} from '../../services/theme/ThemeProvider';
 import s from './Log-in.module.css';
 
 function LogIn() {

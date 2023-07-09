@@ -6,7 +6,7 @@ import {Logo} from '../Logo/Logo';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getAuthStatus, getUser} from '../../store/auth/selectors';
 import {logOut} from '../../store/auth/auth';
-import {ThemeContext} from '../../services/ThemeProvider';
+import {ThemeContext} from '../../services/theme/ThemeProvider';
 import s from './Header.module.css';
 
 function Header() {
@@ -15,6 +15,8 @@ function Header() {
     const authStatus = useAppSelector(getAuthStatus);
     const userName = useAppSelector(getUser);
     const {theme, toggleTheme} = useContext(ThemeContext);
+
+    const btnClasses = cn('btn', s.btn, {[s.light]: theme === 'light'});
 
     return (
         <header
@@ -30,6 +32,9 @@ function Header() {
                     <div className={s.container}>
                         <p
                             className={cn(
+                                'badge',
+                                'bg-dark',
+                                ' rounded-pill',
                                 s.user,
                                 {
                                     [s.light]: theme === 'light',
@@ -41,38 +46,14 @@ function Header() {
                         >
                             {userName}
                         </p>
-                        <Link
-                            className={cn(
-                                'btn',
-                                s.btn,
-                                {
-                                    'btn-info': theme === 'dark',
-                                },
-                                {
-                                    'btn-primary': theme === 'light',
-                                }
-                            )}
-                            to={AppRoute.Favorites}
-                        >
+                        <Link className={btnClasses} to={AppRoute.Favorites}>
                             Liked
                         </Link>
-                        <Link
-                            className={cn(
-                                'btn',
-                                s.btn,
-                                {
-                                    'btn-info': theme === 'dark',
-                                },
-                                {
-                                    'btn-primary': theme === 'light',
-                                }
-                            )}
-                            to={AppRoute.History}
-                        >
+                        <Link className={btnClasses} to={AppRoute.History}>
                             History
                         </Link>
                         <Link
-                            className={`${s.btn} btn btn-danger`}
+                            className={`${s.btn} btn text-warning`}
                             to={AppRoute.Main}
                             onClick={() => {
                                 dispatch(logOut());
@@ -84,36 +65,12 @@ function Header() {
                 ) : (
                     <div className={s.container}>
                         {pathname !== '/anime-list/login' && (
-                            <Link
-                                className={cn(
-                                    'btn',
-                                    s.btn,
-                                    {
-                                        'btn-info': theme === 'dark',
-                                    },
-                                    {
-                                        'btn-primary': theme === 'light',
-                                    }
-                                )}
-                                to={AppRoute.LogIn}
-                            >
+                            <Link className={btnClasses} to={AppRoute.LogIn}>
                                 Log in
                             </Link>
                         )}
                         {pathname !== '/anime-list/signup' && (
-                            <Link
-                                className={cn(
-                                    'btn',
-                                    s.btn,
-                                    {
-                                        'btn-info': theme === 'dark',
-                                    },
-                                    {
-                                        'btn-primary': theme === 'light',
-                                    }
-                                )}
-                                to={AppRoute.SignUp}
-                            >
+                            <Link className={btnClasses} to={AppRoute.SignUp}>
                                 Sign up
                             </Link>
                         )}
@@ -121,7 +78,7 @@ function Header() {
                 )}
                 <button
                     type="button"
-                    className={`${s.btn} btn btn-secondary`}
+                    className={`${s.btn} ${s.btn_outline} btn btn-secondary`}
                     onClick={toggleTheme}
                 >
                     Theme
