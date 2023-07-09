@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+// import {useState, useEffect} from 'react';
 // import {Card} from '../../components/Card/Card';
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
