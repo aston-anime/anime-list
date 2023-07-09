@@ -2,7 +2,7 @@ import {useState, ChangeEvent, FormEvent} from 'react';
 import classNames from 'classnames';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
-import {setUser, toggleAuth} from '../../store/auth/auth';
+import {logIn, setUser} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
 import s from './Log-in.module.css';
 
@@ -35,7 +35,7 @@ function LogIn() {
         } else if (JSON.parse(userInfo).password !== password) {
             setInvalidPassword(true);
         } else {
-            dispatch(toggleAuth());
+            dispatch(logIn());
             dispatch(setUser(JSON.parse(userInfo).userName));
             navigate(AppRoute.Main);
         }
