@@ -14,7 +14,6 @@ function ThemeProvider({children}: ThemeProps) {
     const toggleTheme = useMemo(
         () => () => {
             setTheme(theme === 'dark' ? 'light' : 'dark');
-            console.log(theme);
         },
         [theme]
     );
