@@ -1,9 +1,7 @@
 // import {useState, useEffect} from 'react';
-// import {Card} from '../../components/Card/Card';
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {Search} from '../../components/Search/Search';
-// import {AnimeData} from '../../types/state';
 import './Main.css';
 
 // Ниже функция, которая просто фетчит data. И результат я хочу передать в CardList, json даже в консоли не отображается
@@ -69,7 +67,7 @@ function Main() {
         },
     ];
 
-    //Сохраняю в переменную данные, полученные через useDataFetching. Чтобы потом их передать CardList
+    // Сохраняю в переменную данные, полученные через useDataFetching. Чтобы потом их передать CardList
     // const animeDataBase = useDataFetching('https://anime-db.p.rapidapi.com/anime/by-id/1', {
     //     method: 'GET',
     //     headers: {
