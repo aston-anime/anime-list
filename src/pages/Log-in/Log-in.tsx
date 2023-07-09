@@ -2,10 +2,13 @@ import {useState, ChangeEvent, FormEvent} from 'react';
 import classNames from 'classnames';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
+import {setUser, toggleAuth} from '../../store/auth/auth';
+import {useAppDispatch} from '../../hooks';
 import s from './Log-in.module.css';
 
 function LogIn() {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -25,13 +28,15 @@ function LogIn() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const userInfo = localStorage.getItem(userName)?.replace(/"/g, '');
+        const userInfo = localStorage.getItem(userName);
 
         if (!userInfo) {
             setInvalidLogin(true);
-        } else if (userInfo !== password) {
+        } else if (JSON.parse(userInfo).password !== password) {
             setInvalidPassword(true);
         } else {
+            dispatch(toggleAuth());
+            dispatch(setUser(JSON.parse(userInfo).userName));
             navigate(AppRoute.Main);
         }
     };

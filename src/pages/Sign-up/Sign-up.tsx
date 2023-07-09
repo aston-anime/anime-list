@@ -1,10 +1,13 @@
 import {ChangeEvent, FormEvent, useState} from 'react';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
+import {useAppDispatch} from '../../hooks';
+import {setUser, toggleAuth} from '../../store/auth/auth';
 import s from './Sign-up.module.css';
 
 function SignUp() {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -19,9 +22,15 @@ function SignUp() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         navigate(AppRoute.Main);
-        localStorage.setItem(userName, JSON.stringify(password));
+        dispatch(setUser(userName));
+        dispatch(toggleAuth());
+
+        const userInfo = {
+            userName,
+            password,
+        };
+        localStorage.setItem(userName, JSON.stringify(userInfo));
     };
 
     return (
