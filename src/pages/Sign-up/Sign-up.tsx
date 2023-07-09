@@ -2,7 +2,7 @@ import {ChangeEvent, FormEvent, useState} from 'react';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
 import {useAppDispatch} from '../../hooks';
-import {setUser, toggleAuth} from '../../store/auth/auth';
+import {logIn, setUser} from '../../store/auth/auth';
 import s from './Sign-up.module.css';
 
 function SignUp() {
@@ -24,7 +24,7 @@ function SignUp() {
         e.preventDefault();
         navigate(AppRoute.Main);
         dispatch(setUser(userName));
-        dispatch(toggleAuth());
+        dispatch(logIn());
 
         const userInfo = {
             userName,

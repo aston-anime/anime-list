@@ -14,8 +14,11 @@ export const auth = createSlice({
     name: NameSpace.Auth,
     initialState,
     reducers: {
-        toggleAuth: (state) => {
-            state.authorizationStatus = !state.authorizationStatus;
+        logIn: (state) => {
+            state.authorizationStatus = true;
+        },
+        logOut: (state) => {
+            state.authorizationStatus = false;
         },
         setUser: (state, action) => {
             state.userName = action.payload;
@@ -23,4 +26,4 @@ export const auth = createSlice({
     },
 });
 
-export const {toggleAuth, setUser} = auth.actions;
+export const {logIn, logOut, setUser} = auth.actions;
