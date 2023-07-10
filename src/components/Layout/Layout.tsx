@@ -5,7 +5,7 @@ import {Header} from '../Header/Header';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import s from './Layout.module.css';
 
-const lightClass = `${s.layout} 'text-dark'`;
+const lightClass = `${s.layout} text-dark`;
 
 function Layout() {
     const {theme} = useContext(ThemeContext);
