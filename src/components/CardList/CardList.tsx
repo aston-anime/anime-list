@@ -1,6 +1,6 @@
+import './CardList.css';
 import {Card} from '../Card/Card';
 import {AnimeData} from '../../types/state';
-import './CardList.css';
 
 type CardsArray = {
     cards: AnimeData[];

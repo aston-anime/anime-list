@@ -1,6 +1,5 @@
-// import {useState, useEffect} from 'react';
-import {AnimeData} from '../../types/state';
 import './Card.css';
+import {AnimeData} from '../../types/state';
 
 function Card({title, image, ranking, episodes}: AnimeData) {
     return (
