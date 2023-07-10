@@ -1,0 +1,8 @@
+.anime-list-wrp {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style-type: none;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 0;
+}
