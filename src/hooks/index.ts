@@ -19,9 +19,7 @@ export const useDataFetching = (url: string, options = {}) => {
                 console.log('error', error);
             }
         };
-
         fetchData();
     }, []);
-    console.log('data', data);
     return data;
 };
