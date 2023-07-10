@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
 import {useAppDispatch} from '../../hooks';
 import {logIn, setUser} from '../../store/auth/auth';
-import s from './Sign-up.module.css';
+import styles from './Sign-up.module.css';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -34,8 +34,8 @@ function SignUp() {
     };
 
     return (
-        <form className={`${s.form} border-primary`} action="#" onSubmit={handleSubmit}>
-            <div className={`${s.container} card border-primary `}>
+        <form className={`${styles.form} border-primary`} action="#" onSubmit={handleSubmit}>
+            <div className={`${styles.container} card border-primary `}>
                 <div className="form-group">
                     <label htmlFor="userName" className="form-label mt-4">
                         User name
@@ -67,7 +67,7 @@ function SignUp() {
                         onChange={handlePasswordChange}
                     />
                 </div>
-                <button className={`${s.btn} btn btn-success`} type="submit">
+                <button className={`${styles.btn} btn btn-success`} type="submit">
                     Sign up
                 </button>
             </div>

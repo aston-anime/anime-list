@@ -1,8 +1,23 @@
 import {useNavigate} from 'react-router-dom';
-import s from './Detailed-item.module.css';
+import {useContext} from 'react';
+
+import cn from 'classnames';
+import {ThemeContext} from '../../services/theme/ThemeProvider';
+import styles from './Detailed-item.module.css';
 
 function DetailedItem() {
     const navigate = useNavigate();
+    const {theme} = useContext(ThemeContext);
+
+    type ThemeClassType = {
+        dark: string;
+        light: string;
+        [key: string]: string;
+    };
+    const ThemeClass: ThemeClassType = {
+        dark: styles.light,
+        light: 'text-dark',
+    };
 
     const testAnime = {
         _id: '1',
@@ -27,44 +42,46 @@ function DetailedItem() {
     };
 
     return (
-        <div className={s.container}>
-            <h2 className={s.title}>{testAnime.title}</h2>
-            <div className={s.description}>
+        <div className={cn(styles.container, {'text-primary': theme === 'light'})}>
+            <h2 className={styles.title}>{testAnime.title}</h2>
+            <div className={styles.description}>
                 <img src={testAnime.image} alt="" />
-                <div className={s.info}>
-                    <p className={s.info_item}>
+                <div className={styles.info}>
+                    <p className={styles.info_item}>
                         Alternative Titles:
-                        <span className={s.info_item_data}>{testAnime.alternativeTitles}</span>
+                        <span className={ThemeClass[theme] as string}>
+                            {testAnime.alternativeTitles}
+                        </span>
                     </p>
-                    <p className={s.info_item}>
+                    <p className={styles.info_item}>
                         Type:
-                        <span className={s.info_item_data}>{testAnime.type}</span>
+                        <span className={ThemeClass[theme] as string}>{testAnime.type}</span>
                     </p>
-                    <p className={s.info_item}>
+                    <p className={styles.info_item}>
                         Episodes:
-                        <span className={s.info_item_data}>{testAnime.episodes}</span>
+                        <span className={ThemeClass[theme] as string}>{testAnime.episodes}</span>
                     </p>
-                    <p className={s.info_item}>
+                    <p className={styles.info_item}>
                         Status:
-                        <span className={s.info_item_data}>{testAnime.status}</span>
+                        <span className={ThemeClass[theme] as string}>{testAnime.status}</span>
                     </p>
-                    <p className={s.info_item}>
+                    <p className={styles.info_item}>
                         Genres:
-                        <span className={s.info_item_data}>{testAnime.genres}</span>
+                        <span className={ThemeClass[theme] as string}>{testAnime.genres}</span>
                     </p>
-                    <p className={s.info_item}>
+                    <p className={styles.info_item}>
                         Ranking:
-                        <span className={s.info_item_data}>{testAnime.ranking}</span>
+                        <span className={ThemeClass[theme] as string}>{testAnime.ranking}</span>
                     </p>
                 </div>
             </div>
-            <div className={s.synopsis}>
+            <div className={styles.synopsis}>
                 <div>Synopsis </div>
                 <div>
-                    <span className={s.info_item_data}>{testAnime.synopsis} </span>
+                    <span className={ThemeClass[theme] as string}>{testAnime.synopsis} </span>
                 </div>
             </div>
-            <button type="button" className={`${s.btn} btn btn-primary`} onClick={handleClick}>
+            <button type="button" className={`${styles.btn} btn btn-primary`} onClick={handleClick}>
                 Назад
             </button>
         </div>

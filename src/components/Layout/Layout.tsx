@@ -3,9 +3,9 @@ import {useContext} from 'react';
 import cn from 'classnames';
 import {Header} from '../Header/Header';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import s from './Layout.module.css';
+import styles from './Layout.module.css';
 
-const lightClass = `${s.layout} text-dark`;
+const lightClass = `${styles.layout} text-dark`;
 
 function Layout() {
     const {theme} = useContext(ThemeContext);
