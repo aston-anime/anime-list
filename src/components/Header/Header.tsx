@@ -7,7 +7,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getAuthStatus, getUser} from '../../store/auth/selectors';
 import {logOut} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import s from './Header.module.css';
+import styles from './Header.module.css';
 
 function Header() {
     const dispatch = useAppDispatch();
@@ -16,28 +16,28 @@ function Header() {
     const userName = useAppSelector(getUser);
     const {theme, toggleTheme} = useContext(ThemeContext);
 
-    const btnClasses = cn('btn', s.btn, {[s.light]: theme === 'light'});
+    const btnClasses = cn('btn', styles.btn, {[styles.light]: theme === 'light'});
 
     return (
         <header
             className={cn(
-                s.header,
+                styles.header,
                 {'bg-primary': theme === 'dark'},
                 {'bg-info': theme === 'light'}
             )}
         >
             <Logo />
-            <div className={s.container}>
+            <div className={styles.container}>
                 {authStatus ? (
-                    <div className={s.container}>
+                    <div className={styles.container}>
                         <p
                             className={cn(
                                 'badge',
                                 'bg-dark',
                                 ' rounded-pill',
-                                s.user,
+                                styles.user,
                                 {
-                                    [s.light]: theme === 'light',
+                                    [styles.light]: theme === 'light',
                                 },
                                 {
                                     'text-body': theme === 'dark',
@@ -53,7 +53,7 @@ function Header() {
                             History
                         </Link>
                         <Link
-                            className={`${s.btn} btn text-warning`}
+                            className={`${styles.btn} btn text-warning`}
                             to={AppRoute.Main}
                             onClick={() => {
                                 dispatch(logOut());
@@ -63,7 +63,7 @@ function Header() {
                         </Link>
                     </div>
                 ) : (
-                    <div className={s.container}>
+                    <div className={styles.container}>
                         {pathname !== '/anime-list/login' && (
                             <Link className={btnClasses} to={AppRoute.LogIn}>
                                 Log in
@@ -78,7 +78,7 @@ function Header() {
                 )}
                 <button
                     type="button"
-                    className={`${s.btn} ${s.btn_outline} btn btn-secondary`}
+                    className={`${styles.btn} ${styles.btn_outline} btn btn-secondary`}
                     onClick={toggleTheme}
                 >
                     Theme

@@ -5,7 +5,7 @@ import {AppRoute} from '../../routing/AppRoute';
 import {logIn, setUser} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import s from './Log-in.module.css';
+import styles from './Log-in.module.css';
 
 function LogIn() {
     const navigate = useNavigate();
@@ -44,9 +44,9 @@ function LogIn() {
     };
 
     return (
-        <form className={`${s.form} border-primary`} action="#" onSubmit={handleSubmit}>
-            <div className={`${s.container} card border-primary `}>
-                <div className={cn('form-group', {[s.loginError]: invalidLogin})}>
+        <form className={`${styles.form} border-primary`} action="#" onSubmit={handleSubmit}>
+            <div className={`${styles.container} card border-primary `}>
+                <div className={cn('form-group', {[styles.loginError]: invalidLogin})}>
                     <label
                         htmlFor="userName"
                         className={cn('form-label mt-4', {'text-dark': theme === 'light'})}
@@ -65,7 +65,7 @@ function LogIn() {
                         onChange={handleUserNameChange}
                     />
                 </div>
-                <div className={cn('form-group', {[s.passwordError]: invalidPassword})}>
+                <div className={cn('form-group', {[styles.passwordError]: invalidPassword})}>
                     <label
                         htmlFor="password"
                         className={cn('form-label mt-4', {'text-dark': theme === 'light'})}
@@ -86,7 +86,7 @@ function LogIn() {
                 <button
                     className={cn(
                         'btn',
-                        s.btn,
+                        styles.btn,
                         {
                             'btn-success': theme === 'dark',
                         },
