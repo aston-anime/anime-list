@@ -2,7 +2,7 @@ import './CardList.css';
 import {Card} from '../Card/Card';
 import {AnimeData} from '../../types/state';
 
-type CardsArray = {
+type CardListProps = {
     cards: AnimeData[];
 };
 
