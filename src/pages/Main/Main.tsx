@@ -10,7 +10,6 @@ function Main() {
         {
             method: 'GET',
             headers: {
-                // 'X-RapidAPI-Key': '0129df3857mshfb82254c2ab1e47p19d9d5jsn8355ed23882a',
                 'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY,
                 'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
             },
