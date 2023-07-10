@@ -10,7 +10,7 @@ function Main() {
         {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '9ef920492cmsh06da1f517ac850bp15fe5ajsncf451d92f610',
+                'X-RapidAPI-Key': '0129df3857mshfb82254c2ab1e47p19d9d5jsn8355ed23882a',
                 'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
             },
         }
