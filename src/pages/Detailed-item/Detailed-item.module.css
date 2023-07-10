@@ -1,51 +1,35 @@
 .container {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     padding: 15px 150px;
 }
 
 .btn {
-    display: flex;
-    align-items: center;
+    width: 80px;
 }
 
-.titleAnime {
-    margin-top: 15px;
+.title {
+    margin: 15px 0 0;
     font-size: 35px;
+    font-weight: 400;
 }
 
-.allInformation {
-    margin-top: 15px;
+.description {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    gap: 30px;
 }
 
-.animeDescription {
-    display: flex;
-}
-
-.imageAnime {
-    width: auto;
-    height: auto;
-}
-
-.detailedInformation {
-    margin-left: 30px;
-    width: auto;
-    height: auto;
-    padding: 0 auto;
+.info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.synopsisThisAnime {
-    width: 100%;
-    height: 300px;
-    margin-top: 20px;
+.info_item {
+    margin: 0;
 }
 
-.descriptionCategory {
+.info_item_data {
     color: white;
 }

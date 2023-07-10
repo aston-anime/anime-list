@@ -1,6 +1,5 @@
 import {useNavigate} from 'react-router-dom';
-
-import styles from './Detailed-item.module.css';
+import s from './Detailed-item.module.css';
 
 function DetailedItem() {
     const navigate = useNavigate();
@@ -23,65 +22,51 @@ function DetailedItem() {
         type: ' "TV"',
     };
 
-    const handleGoBack = () => {
+    const handleClick = () => {
         navigate('/anime-list');
     };
 
     return (
-        <div className={styles.container}>
-            <div className="container-for-button">
-                <button type="button" className="btn btn-primary" onClick={handleGoBack}>
-                    Назад
-                </button>
-            </div>
-
-            <div className={styles.titleAnime}>{testAnime.title}</div>
-
-            <div className={styles.allInformation}>
-                <div className={styles.animeDescription}>
-                    <div className={styles.imageAnime}>
-                        <div>
-                            <img src={testAnime.image} alt="" />
-                        </div>
-                    </div>
-
-                    <div className={styles.detailedInformation}>
-                        <div>
-                            Alternative Titles:
-                            <span className={styles.descriptionCategory}>
-                                {testAnime.alternativeTitles}
-                            </span>
-                        </div>
-                        <div>
-                            Type:
-                            <span className={styles.descriptionCategory}>{testAnime.type}</span>
-                        </div>
-                        <div>
-                            Episodes:
-                            <span className={styles.descriptionCategory}>{testAnime.episodes}</span>
-                        </div>
-                        <div>
-                            Status:
-                            <span className={styles.descriptionCategory}>{testAnime.status}</span>
-                        </div>
-                        <div>
-                            Genres:
-                            <span className={styles.descriptionCategory}>{testAnime.genres}</span>
-                        </div>
-                        <div>
-                            Ranking:
-                            <span className={styles.descriptionCategory}>{testAnime.ranking}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.synopsisThisAnime}>
-                    <div>Synopsis </div>
-                    <div>
-                        <span className={styles.descriptionCategory}>{testAnime.synopsis} </span>
-                    </div>
+        <div className={s.container}>
+            <h2 className={s.title}>{testAnime.title}</h2>
+            <div className={s.description}>
+                <img src={testAnime.image} alt="" />
+                <div className={s.info}>
+                    <p className={s.info_item}>
+                        Alternative Titles:
+                        <span className={s.info_item_data}>{testAnime.alternativeTitles}</span>
+                    </p>
+                    <p className={s.info_item}>
+                        Type:
+                        <span className={s.info_item_data}>{testAnime.type}</span>
+                    </p>
+                    <p className={s.info_item}>
+                        Episodes:
+                        <span className={s.info_item_data}>{testAnime.episodes}</span>
+                    </p>
+                    <p className={s.info_item}>
+                        Status:
+                        <span className={s.info_item_data}>{testAnime.status}</span>
+                    </p>
+                    <p className={s.info_item}>
+                        Genres:
+                        <span className={s.info_item_data}>{testAnime.genres}</span>
+                    </p>
+                    <p className={s.info_item}>
+                        Ranking:
+                        <span className={s.info_item_data}>{testAnime.ranking}</span>
+                    </p>
                 </div>
             </div>
+            <div className={s.synopsis}>
+                <div>Synopsis </div>
+                <div>
+                    <span className={s.info_item_data}>{testAnime.synopsis} </span>
+                </div>
+            </div>
+            <button type="button" className={`${s.btn} btn btn-primary`} onClick={handleClick}>
+                Назад
+            </button>
         </div>
     );
 }
