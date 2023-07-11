@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/495.34f81f56.chunk.js","mappings":"uKAAA,SAASA,IACL,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,qBAChB,C","sources":["pages/History/History.tsx"],"sourcesContent":["function History() {\n    return <div>History Component</div>;\n}\n\nexport {History};\n"],"names":["History","_jsx","children"],"sourceRoot":""}
