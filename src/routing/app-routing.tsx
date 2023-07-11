@@ -1,23 +1,27 @@
 import {createRoutesFromElements, Route} from 'react-router';
 import {createBrowserRouter} from 'react-router-dom';
 import {Layout} from '../components/Layout/Layout';
-import {DetailedItem} from '../pages/Detailed-item/Detailed-item';
-import {Main} from '../pages/Main/Main';
-import {Favorites} from '../pages/Favorites/Favorites';
-import {LogIn} from '../pages/Log-in/Log-in';
-import {SignUp} from '../pages/Sign-up/Sign-up';
-import {History} from '../pages/History/History';
 import {AppRoute} from './AppRoute';
+import {
+    DetailedItemPage,
+    FavoritesPage,
+    HistoryPage,
+    LogInPage,
+    MainPage,
+    SearchPage,
+    SignUpPage,
+} from './lazy-routes';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path={AppRoute.Main} element={<Layout />}>
-            <Route index element={<Main />} />
-            <Route path={AppRoute.DetailedItem} element={<DetailedItem />} />
-            <Route path={AppRoute.LogIn} element={<LogIn />} />
-            <Route path={AppRoute.SignUp} element={<SignUp />} />
-            <Route path={AppRoute.Favorites} element={<Favorites />} />
-            <Route path={AppRoute.History} element={<History />} />
+            <Route index element={<MainPage />} />
+            <Route path={AppRoute.Search} element={<SearchPage />} />
+            <Route path={AppRoute.DetailedItem} element={<DetailedItemPage />} />
+            <Route path={AppRoute.LogIn} element={<LogInPage />} />
+            <Route path={AppRoute.SignUp} element={<SignUpPage />} />
+            <Route path={AppRoute.Favorites} element={<FavoritesPage />} />
+            <Route path={AppRoute.History} element={<HistoryPage />} />
         </Route>
     )
 );
