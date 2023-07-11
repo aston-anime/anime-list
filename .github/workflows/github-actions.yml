@@ -48,6 +48,7 @@ jobs:
                   git config --global user.name ${{ github.actor }}
                   git config --global user.email 'n.kerd@mail.ru'
                   git remote set-url origin https://${github_token}@github.com/${repository}
+                  echo ${{ secrets.REACT_APP_EHB_ACCESS_KEY }}
                   REACT_APP_EHB_ACCESS_KEY=${{ secrets.REACT_APP_EHB_ACCESS_KEY }} npm run deploy
               env:
                   user_name: 'github-actions[bot]'
