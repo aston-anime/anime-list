@@ -36,6 +36,8 @@ jobs:
         strategy:
             matrix:
                 node-version: [17.x]
+        env:
+            github_token: ${{ env.REACT_APP_EHB_ACCESS_KEY }}
         steps:
             - name: Checkout Code
               uses: actions/checkout@v2
