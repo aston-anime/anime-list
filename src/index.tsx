@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import './bootstrap.min.css';
 import './index.css';
@@ -8,6 +8,7 @@ import {App} from './components/App/App';
 import {store} from './store';
 import {ThemeProvider} from './services/theme/ThemeProvider';
 import {ErrorPage} from './pages/Error-page/Error-page';
+import {Spinner} from './components/Spinner/Spinner';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -15,7 +16,9 @@ root.render(
         <Provider store={store}>
             <ThemeProvider>
                 <ErrorBoundary FallbackComponent={ErrorPage}>
-                    <App />
+                    <Suspense fallback={<Spinner />}>
+                        <App />
+                    </Suspense>
                 </ErrorBoundary>
             </ThemeProvider>
         </Provider>
