@@ -10,4 +10,6 @@ export interface AnimeData {
     image: string;
     ranking: number;
     episodes: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    setFavoritesAnime: any;
 }
