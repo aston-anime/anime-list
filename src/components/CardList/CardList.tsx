@@ -1,18 +1,18 @@
-import './CardList.css';
 import {Card} from '../Card/Card';
 import {AnimeData} from '../../types/state';
+import styles from './CardList.module.css';
 
 type CardListProps = {
     cards: AnimeData[];
 };
 
 function CardList({cards}: CardListProps) {
-    const updatedCards = cards.map((item) => {
+    const amendedCards = cards?.map((item) => {
         const {_id, ...rest} = item;
         return {id: _id, ...rest};
     });
 
-    const cardList = updatedCards.map((item) => (
+    const cardList = amendedCards?.map((item) => (
         <li key={item.id}>
             <Card
                 _id={item.id}
@@ -24,7 +24,7 @@ function CardList({cards}: CardListProps) {
         </li>
     ));
 
-    return <ul className="anime-list-wrp">{cardList}</ul>;
+    return <ul className={`${styles.wrapper}`}>{cardList}</ul>;
 }
 
 export {CardList};

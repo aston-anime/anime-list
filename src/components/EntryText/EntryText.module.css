@@ -1,13 +1,13 @@
-.entry-text__title {
+.title {
     font-size: 35px;
     color: rgb(255, 223, 247);
     padding-bottom: 5px;
 }
 
-.entry-text__txt {
+.txt {
     font-size: 20px;
 }
 
-.entry-text__txt_search {
+.txt_search {
     color: rgb(255, 223, 247);
 }

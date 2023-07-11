@@ -1,30 +1,30 @@
-import './Card.css';
 import {AnimeData} from '../../types/state';
+import styles from './Card.module.css';
 
 function Card({title, image, ranking, episodes}: AnimeData) {
     return (
-        <article className="card border-primary">
-            <div className="card__img-wrp">
-                <img className="card__img" src={image} alt={title} />
+        <article className={`${styles.card} card border-primary`}>
+            <div className={`${styles.img_wrp}`}>
+                <img className={`${styles.img}`} src={image} alt={title} />
             </div>
-            <div className="card__body">
-                <div className="card__characteristics">
-                    <div className="ranking">
+            <div className={`${styles.card_body}`}>
+                <div className={`${styles.card_characteristics}`}>
+                    <div className={`${styles.ranking}`}>
                         <svg
-                            className="ranking__star-icon"
+                            className={`${styles.ranking_star}`}
                             viewBox="0 0 1024 1024"
                             height="1em"
                             width="1em"
                         >
                             <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
                         </svg>
-                        <div className="ranking__number">{ranking}</div>
+                        <div>{ranking}</div>
                     </div>
-                    <div className="episodes">{episodes} episodes</div>
+                    <div className={`${styles.episodes}`}>{episodes} episodes</div>
                 </div>
-                <h2 className="card__title">{title}</h2>
+                <h2 className={`${styles.title}`}>{title}</h2>
             </div>
-            <button type="button" className="card__btn btn btn-primary">
+            <button type="button" className={`${styles.btn} btn btn-primary`}>
                 View more
             </button>
         </article>

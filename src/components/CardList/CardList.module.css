@@ -1,6 +1,6 @@
-.anime-list-wrp {
+.wrapper {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     list-style-type: none;
     justify-content: space-between;
     gap: 10px;
