@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkanime_list=self.webpackChunkanime_list||[]).push([[45],{2045:function(n,e,i){i.r(e),i.d(e,{Favorites:function(){return r}});var t=i(184);function r(){return(0,t.jsx)("div",{children:"Favorites Component"})}}}]);
-//# sourceMappingURL=45.c2a991d4.chunk.js.map
