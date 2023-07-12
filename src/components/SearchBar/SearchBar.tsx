@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {SearchPanel} from '../SearchPanel/SearchPanel';
+import {SearchInput} from '../SearchInput/SearchInput';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 import {AnimeData} from '../../types/state';
 
@@ -7,14 +7,14 @@ type SearchProps = {
     data: AnimeData[] | null;
 };
 
-function Search({data}: SearchProps) {
+function SearchBar({data}: SearchProps) {
     const [results, setResults] = useState<AnimeData[] | null>(null);
     return (
         <div>
-            <SearchPanel searchResults={data} setResults={setResults} />
+            <SearchInput searchResults={data} setResults={setResults} />
             <SearchResultsList listedResults={results} />
         </div>
     );
 }
 
-export {Search};
+export {SearchBar};

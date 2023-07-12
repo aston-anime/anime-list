@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {debounce} from 'lodash';
 import {AnimeData} from '../../types/state';
-import styles from './SearchPanel.module.css';
+import styles from './SearchInput.module.css';
 
-type SearchPanelProps = {
+type SearchInputProps = {
     searchResults: AnimeData[] | null;
     setResults: React.Dispatch<React.SetStateAction<AnimeData[] | null>>;
 };
 
-function SearchPanel({searchResults, setResults}: SearchPanelProps) {
+function SearchInput({searchResults, setResults}: SearchInputProps) {
     const [input, setInput] = useState<string>('');
 
     const fetchData = (value: string) => {
@@ -47,4 +47,4 @@ function SearchPanel({searchResults, setResults}: SearchPanelProps) {
     );
 }
 
-export {SearchPanel};
+export {SearchInput};

@@ -1,6 +1,6 @@
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
-import {Search} from '../../components/Search/Search';
+import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {useDataFetching} from '../../hooks';
 import styles from './Main.module.css';
 
@@ -19,7 +19,7 @@ function Main() {
     return (
         <div className={`${styles.container}`}>
             <EntryText />
-            <Search data={animeDataBase} />
+            <SearchBar data={animeDataBase} />
             <div className={`${styles.card_container}`}>
                 {animeDataBase && <CardList cards={animeDataBase} />}
             </div>
