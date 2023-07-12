@@ -60,3 +60,13 @@
     margin-bottom: 10px;
     width: 165px;
 }
+
+.favorite {
+    color: #e55858;
+    stroke: #e55858;
+}
+
+.favoriteButton {
+    position: absolute;
+    right: 0px;
+}

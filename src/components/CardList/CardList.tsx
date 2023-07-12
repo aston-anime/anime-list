@@ -1,12 +1,15 @@
 import {Card} from '../Card/Card';
 import {AnimeData} from '../../types/state';
+
 import styles from './CardList.module.css';
 
 type CardListProps = {
     cards: AnimeData[];
+    // eslint-disable-next-line react/require-default-props, @typescript-eslint/no-explicit-any
+    setFavoritesAnime?: any;
 };
 
-function CardList({cards}: CardListProps) {
+function CardList({cards = [], setFavoritesAnime}: CardListProps) {
     const amendedCards = cards?.map((item) => {
         const {_id, ...rest} = item;
         return {id: _id, ...rest};
@@ -20,6 +23,7 @@ function CardList({cards}: CardListProps) {
                 image={item.image}
                 ranking={item.ranking}
                 episodes={item.episodes}
+                setFavoritesAnime={setFavoritesAnime}
             />
         </li>
     ));
