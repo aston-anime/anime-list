@@ -27,7 +27,7 @@ function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: Ani
     return (
         <article className={`${styles.card} card border-primary`}>
             <button
-                className={`favoriteButton ${isFavorite ? 'favorite' : ''}`}
+                className={`${styles.favoriteButton} ${isFavorite ? styles.favorite : ''}`}
                 type="button"
                 onClick={() => handleLikeClick(id)}
             >
