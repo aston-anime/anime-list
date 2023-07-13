@@ -54,7 +54,7 @@ function SearchBar({data}: SearchProps) {
                     Search
                 </button>
             </div>
-            <SearchResultsList results={suggests} maxResults={5} />
+            <SearchResultsList input={input} results={suggests} maxResults={5} />
         </div>
     );
 }
