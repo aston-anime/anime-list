@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
 import {useState} from 'react';
+import {useNavigate} from 'react-router';
 
 import {AnimeInfo} from '../../types/state';
 
 import styles from './Card.module.css';
 
-function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInfo) {
+function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: AnimeData) {
+    const navigate = useNavigate();
+
     const [isFavorite, setIsFavorite] = useState<boolean>(
         !!localStorage.getItem(JSON.stringify(id))
     );
@@ -22,6 +25,10 @@ function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInf
             JSON.stringify(id),
             JSON.stringify({id, title, image, ranking, episodes})
         );
+    };
+
+    const handleClickDetailedPage = (idAnime: number) => {
+        navigate(`/anime-list/detailed-item/${idAnime}`);
     };
 
     return (
@@ -66,7 +73,11 @@ function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInf
                 </div>
                 <h2 className={`${styles.title}`}>{title}</h2>
             </div>
-            <button type="button" className={`${styles.btn} btn btn-primary`}>
+            <button
+                type="button"
+                className="card__btn btn btn-primary"
+                onClick={() => handleClickDetailedPage(id)}
+            >
                 View more
             </button>
         </article>
