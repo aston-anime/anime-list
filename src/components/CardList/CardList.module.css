@@ -1,8 +1,10 @@
 .wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(227px, 0fr));
     flex-wrap: wrap;
     list-style-type: none;
     justify-content: space-between;
     gap: 10px;
     padding: 20px 0;
+    flex-direction: row;
 }

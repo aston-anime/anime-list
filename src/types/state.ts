@@ -13,3 +13,7 @@ export interface AnimeData {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setFavoritesAnime: any;
 }
+
+export interface AnimeInfo extends Omit<AnimeData, '_id'> {
+    id: number;
+}

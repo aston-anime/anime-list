@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import {useState} from 'react';
 
-import {AnimeData} from '../../types/state';
+import {AnimeInfo} from '../../types/state';
 
 import styles from './Card.module.css';
 
-function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: AnimeData) {
+function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInfo) {
     const [isFavorite, setIsFavorite] = useState<boolean>(
         !!localStorage.getItem(JSON.stringify(id))
     );
