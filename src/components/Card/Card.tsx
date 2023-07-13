@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useNavigate} from 'react-router';
 import PropTypes from 'prop-types';
 
 import {AnimeData} from '../../types/state';
@@ -6,6 +7,8 @@ import {AnimeData} from '../../types/state';
 import styles from './Card.module.css';
 
 function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {}}: AnimeData) {
+    const navigate = useNavigate();
+
     const [isFavorite, setIsFavorite] = useState<boolean>(
         !!localStorage.getItem(JSON.stringify(_id))
     );
@@ -22,6 +25,10 @@ function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {
             JSON.stringify(_id),
             JSON.stringify({_id, title, image, ranking, episodes})
         );
+    };
+
+    const handleClickDetailedPage = (idAnime: number) => {
+        navigate(`/anime-list/detailed-item/${idAnime}`);
     };
 
     return (
@@ -66,7 +73,11 @@ function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {
                 </div>
                 <h2 className={`${styles.title}`}>{title}</h2>
             </div>
-            <button type="button" className={`${styles.btn} btn btn-primary`}>
+            <button
+                type="button"
+                className="card__btn btn btn-primary"
+                onClick={() => handleClickDetailedPage(id)}
+            >
                 View more
             </button>
         </article>
