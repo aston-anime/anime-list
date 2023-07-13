@@ -1,13 +1,13 @@
-/* eslint-disable no-unused-vars */
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 
-import {AnimeInfo} from '../../types/state';
+import {AnimeData} from '../../types/state';
 
 import styles from './Card.module.css';
 
-function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInfo) {
+function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {}}: AnimeData) {
     const [isFavorite, setIsFavorite] = useState<boolean>(
-        !!localStorage.getItem(JSON.stringify(id))
+        !!localStorage.getItem(JSON.stringify(_id))
     );
 
     const handleLikeClick = (idAnime: number) => {
@@ -19,8 +19,8 @@ function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInf
         }
 
         localStorage.setItem(
-            JSON.stringify(id),
-            JSON.stringify({id, title, image, ranking, episodes})
+            JSON.stringify(_id),
+            JSON.stringify({_id, title, image, ranking, episodes})
         );
     };
 
@@ -29,7 +29,7 @@ function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInf
             <button
                 className={`${styles.favoriteButton} ${isFavorite ? styles.favorite : ''}`}
                 type="button"
-                onClick={() => handleLikeClick(id)}
+                onClick={() => handleLikeClick(_id)}
             >
                 <svg
                     width="23"
@@ -72,5 +72,13 @@ function Card({id, title, image, ranking, episodes, setFavoritesAnime}: AnimeInf
         </article>
     );
 }
+
+Card.propTypes = {
+    _id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    ranking: PropTypes.number.isRequired,
+    episodes: PropTypes.number.isRequired,
+};
 
 export {Card};

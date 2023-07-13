@@ -2,7 +2,6 @@ import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {useDataFetching} from '../../hooks';
-import {AnimeInfo} from '../../types/state';
 import styles from './Main.module.css';
 
 function Main() {
@@ -17,17 +16,12 @@ function Main() {
         }
     );
 
-    const animeDataBase: AnimeInfo[] = fetchedAnimes.map((item) => {
-        const {_id, ...rest} = item;
-        return {...rest, id: _id};
-    });
-
     return (
         <div className={`${styles.container}`}>
             <EntryText />
-            <SearchBar data={animeDataBase} />
+            <SearchBar data={fetchedAnimes} />
             <div className={`${styles.card_container}`}>
-                {animeDataBase && <CardList cards={animeDataBase} />}
+                {fetchedAnimes && <CardList cards={fetchedAnimes} />}
             </div>
         </div>
     );
