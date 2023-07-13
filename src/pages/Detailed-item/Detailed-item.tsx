@@ -4,7 +4,7 @@ import {useContext} from 'react';
 import cn from 'classnames';
 
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import {useFetchAnimeDetails} from '../../hooks/useFetchAnimeDetails';
+import {useDataFetching} from '../../hooks';
 
 import styles from './Detailed-item.module.css';
 
@@ -25,15 +25,9 @@ function DetailedItem() {
     const params = useParams();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const anime: any = useFetchAnimeDetails(
+    const anime: any = useDataFetching(
         `https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`,
-        {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY,
-                'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
-            },
-        }
+        'datailed-page'
     );
 
     const handleClick = () => {
@@ -50,40 +44,36 @@ function DetailedItem() {
                         <div className={styles.info}>
                             <p className={styles.info_item}>
                                 Alternative Titles:
-                                <span className={ThemeClass[theme] as string}>
-                                    {anime.alternativeTitles}
-                                </span>
+                                <span
+                                    className={ThemeClass[theme]}
+                                >{` ${anime.alternativeTitles}`}</span>
                             </p>
                             <p className={styles.info_item}>
                                 Type:
-                                <span
-                                    className={ThemeClass[theme] as string}
-                                >{` ${anime.type}`}</span>
+                                <span className={ThemeClass[theme]}>{` ${anime.type}`}</span>
                             </p>
                             <p className={styles.info_item}>
                                 Episodes:
-                                <span className={ThemeClass[theme] as string}>
-                                    {anime.episodes}
-                                </span>
+                                <span className={ThemeClass[theme]}>{` ${anime.episodes}`}</span>
                             </p>
                             <p className={styles.info_item}>
                                 Status:
-                                <span className={ThemeClass[theme] as string}>{anime.status}</span>
+                                <span className={ThemeClass[theme]}>{` ${anime.status}`}</span>
                             </p>
                             <p className={styles.info_item}>
                                 Genres:
-                                <span className={ThemeClass[theme] as string}>{anime.genres}</span>
+                                <span className={ThemeClass[theme]}>{` ${anime.genres}`}</span>
                             </p>
                             <p className={styles.info_item}>
                                 Ranking:
-                                <span className={ThemeClass[theme] as string}>{anime.ranking}</span>
+                                <span className={ThemeClass[theme]}>{` ${anime.ranking}`}</span>
                             </p>
                         </div>
                     </div>
                     <div className={styles.synopsis}>
                         <div>Synopsis </div>
                         <div>
-                            <span className={ThemeClass[theme] as string}>{anime.synopsis} </span>
+                            <span className={ThemeClass[theme]}>{` ${anime.synopsis}`}</span>
                         </div>
                     </div>
                 </>

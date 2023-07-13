@@ -7,15 +7,33 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
 
-export const useDataFetching = (url: string, options = {}) => {
-    const [data, setData] = useState<AnimeData[]>([]);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const options: any = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY,
+        'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
+    },
+};
+
+export const useDataFetching = (url: string, pageName: string) => {
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(url, options);
                 const json = await response.json();
-                setData(json.data);
+                switch (pageName) {
+                    case 'main':
+                        setData(json.data);
+                        break;
+                    case 'datailed-page':
+                        setData(json);
+                        break;
+                    default:
+                        break;
+                }
             } catch (error) {
                 // eslint-disable-next-line no-console
                 console.log('error', error);
