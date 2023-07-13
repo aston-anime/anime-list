@@ -2,11 +2,10 @@
 import {useState} from 'react';
 import {useNavigate} from 'react-router';
 
-import {AnimeInfo} from '../../types/state';
-
 import styles from './Card.module.css';
 
-function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: AnimeData) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: any) {
     const navigate = useNavigate();
 
     const [isFavorite, setIsFavorite] = useState<boolean>(

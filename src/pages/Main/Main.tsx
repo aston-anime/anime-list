@@ -6,12 +6,14 @@ import {AnimeInfo} from '../../types/state';
 import styles from './Main.module.css';
 
 function Main() {
-    const animeDataBase = useDataFetching(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const fetchedAnimes: any = useDataFetching(
         'https://anime-db.p.rapidapi.com/anime?page=1&size=5&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
         'main'
     );
 
-    const animeDataBase: AnimeInfo[] = fetchedAnimes.map((item) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const animeDataBase: AnimeInfo[] = fetchedAnimes?.map((item: any) => {
         const {_id, ...rest} = item;
         return {...rest, id: _id};
     });
