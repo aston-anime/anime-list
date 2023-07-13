@@ -29,7 +29,7 @@ function Favorites() {
                     </div>
                 </div>
             ) : (
-                <div>Favorites are empty</div>
+                <div className={styles.emptyFavorites}>Favorites are empty</div>
             )}
 
             <button

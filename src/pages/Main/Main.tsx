@@ -5,15 +5,10 @@ import {useDataFetching} from '../../hooks';
 import styles from './Main.module.css';
 
 function Main() {
-    const fetchedAnimes = useDataFetching(
-        'https://anime-db.p.rapidapi.com/anime?page=1&size=15&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
-        {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY,
-                'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
-            },
-        }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const fetchedAnimes: any = useDataFetching(
+        'https://anime-db.p.rapidapi.com/anime?page=1&size=5&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
+        'main'
     );
 
     return (
