@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 import {AnimeInfo} from '../../types/state';
+import {AppRoute} from '../../routing/AppRoute';
 
 import styles from './SearchBar.module.css';
 
@@ -32,7 +33,8 @@ function SearchBar({data}: SearchProps) {
     };
 
     const handleSearch = () => {
-        navigate(`/anime-list/search`);
+        const encodedURI = encodeURIComponent(JSON.stringify(suggests));
+        navigate(`${AppRoute.Search}/${encodedURI}`, {state: {results: suggests}});
     };
 
     return (
