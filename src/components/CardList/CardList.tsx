@@ -14,7 +14,7 @@ function CardList({cards = [], setFavoritesAnime}: CardListProps) {
     const cardList = cards?.map((item) => (
         <li key={item._id}>
             <Card
-                _id={item._id}
+                id={item._id}
                 title={item.title}
                 image={item.image}
                 ranking={item.ranking}

@@ -13,3 +13,7 @@ export interface AnimeData {
     episodes: number;
     setFavoritesAnime?: SetFavoritesAnime;
 }
+
+export interface AnimeWithId extends Omit<AnimeData, '_id'> {
+    id: number;
+}

@@ -2,15 +2,15 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router';
 import PropTypes from 'prop-types';
 
-import {AnimeData} from '../../types/state';
+import {AnimeWithId} from '../../types/state';
 
 import styles from './Card.module.css';
 
-function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {}}: AnimeData) {
+function Card({id, title, image, ranking, episodes, setFavoritesAnime = () => {}}: AnimeWithId) {
     const navigate = useNavigate();
 
     const [isFavorite, setIsFavorite] = useState<boolean>(
-        !!localStorage.getItem(JSON.stringify(_id))
+        !!localStorage.getItem(JSON.stringify(id))
     );
 
     const handleLikeClick = (idAnime: number) => {
@@ -22,8 +22,8 @@ function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {
         }
 
         localStorage.setItem(
-            JSON.stringify(_id),
-            JSON.stringify({_id, title, image, ranking, episodes})
+            JSON.stringify(id),
+            JSON.stringify({id, title, image, ranking, episodes})
         );
     };
 
@@ -36,7 +36,7 @@ function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {
             <button
                 className={`${styles.favoriteButton} ${isFavorite ? styles.favorite : ''}`}
                 type="button"
-                onClick={() => handleLikeClick(_id)}
+                onClick={() => handleLikeClick(id)}
             >
                 <svg
                     width="23"
@@ -76,7 +76,7 @@ function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {
             <button
                 type="button"
                 className="card__btn btn btn-primary"
-                onClick={() => handleClickDetailedPage(_id)}
+                onClick={() => handleClickDetailedPage(id)}
             >
                 View more
             </button>
@@ -85,7 +85,7 @@ function Card({_id, title, image, ranking, episodes, setFavoritesAnime = () => {
 }
 
 Card.propTypes = {
-    _id: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     ranking: PropTypes.number.isRequired,
