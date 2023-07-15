@@ -142,6 +142,14 @@
                     ".tsx"
                 ]
             }
+        ],
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": [
+                    "_id"
+                ]
+            }
         ]
     },
     "settings": {
