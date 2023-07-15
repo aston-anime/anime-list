@@ -1,4 +1,5 @@
 import {store} from '../store';
+import {SetFavoritesAnime} from './setFavorites';
 
 export type State = ReturnType<typeof store.getState>;
 
@@ -10,10 +11,9 @@ export interface AnimeData {
     image: string;
     ranking: number;
     episodes: number;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    setFavoritesAnime: any;
+    setFavoritesAnime?: SetFavoritesAnime;
 }
 
-export interface AnimeInfo extends Omit<AnimeData, '_id'> {
+export interface AnimeWithId extends Omit<AnimeData, '_id'> {
     id: number;
 }
