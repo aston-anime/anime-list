@@ -1,7 +1,8 @@
 import {useLocation} from 'react-router-dom';
 import {AnimeInfo} from '../../types/state';
 import {CardList} from '../../components/CardList/CardList';
-import {SearchBar, applyFilter} from '../../components/SearchBar/SearchBar';
+import {SearchBar} from '../../components/SearchBar/SearchBar';
+import {applyFilter} from '../../services/applyFilter';
 import {useDataFetching} from '../../hooks';
 
 import styles from './Search.module.css';

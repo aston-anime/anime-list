@@ -3,14 +3,9 @@ import {useNavigate} from 'react-router';
 import {debounce} from 'lodash';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 import {AnimeInfo} from '../../types/state';
+import {applyFilter} from '../../services/applyFilter';
 
 import styles from './SearchBar.module.css';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const applyFilter = (userInput: any, data: AnimeInfo[] | null) =>
-    data?.filter(
-        (anime: AnimeInfo) =>
-            userInput && anime && anime.title && anime.title.toLowerCase().includes(userInput)
-    ) || null;
 
 type SearchProps = {
     data: AnimeInfo[] | null;
