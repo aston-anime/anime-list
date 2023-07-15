@@ -4,7 +4,7 @@ import {AnimeInfo} from '../../types/state';
 import styles from './CardList.module.css';
 
 type CardListProps = {
-    cards: AnimeInfo[];
+    cards: AnimeInfo[] | null;
     // eslint-disable-next-line react/require-default-props, @typescript-eslint/no-explicit-any
     setFavoritesAnime?: any;
 };

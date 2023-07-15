@@ -1,13 +1,14 @@
 import {useLocation} from 'react-router-dom';
-import {QueryResults} from '../../components/QueryResults/QueryResults';
-import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {AnimeInfo} from '../../types/state';
+import {CardList} from '../../components/CardList/CardList';
+import {SearchBar, applyFilter} from '../../components/SearchBar/SearchBar';
 import {useDataFetching} from '../../hooks';
+
 import styles from './Search.module.css';
 
 function Search() {
     const location = useLocation();
-
+    const paramValue = new URLSearchParams(location.search).get('query');
     const fetchedAnimes = useDataFetching(
         'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
         {
@@ -24,10 +25,18 @@ function Search() {
         return {...rest, id: _id};
     });
 
+    const filteredResults = applyFilter(paramValue, animeDataBase);
+
     return (
         <div className={styles.container}>
             <SearchBar data={animeDataBase} />
-            <QueryResults location={location} />
+            <h4 className={styles.title}>
+                {paramValue === null || paramValue.length === 0 || filteredResults!.length === 0
+                    ? 'No matching Anime...'
+                    : 'Search Results:'}
+            </h4>
+
+            <CardList cards={filteredResults} />
         </div>
     );
 }

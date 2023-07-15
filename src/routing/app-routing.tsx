@@ -12,17 +12,11 @@ import {
     SignUpPage,
 } from './lazy-routes';
 
-const searchRoute = {
-    path: `${AppRoute.Search}/:results`,
-    element: <SearchPage />,
-};
-
 export const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path={AppRoute.Main} element={<Layout />}>
             <Route index element={<MainPage />} />
-            <Route path={searchRoute.path} element={searchRoute.element} />
-            {/* <Route path={AppRoute.Search} element={<SearchPage />} /> */}
+            <Route path={AppRoute.Search} element={<SearchPage />} />
             <Route path={AppRoute.DetailedItem} element={<DetailedItemPage />} />
             <Route path={AppRoute.LogIn} element={<LogInPage />} />
             <Route path={AppRoute.SignUp} element={<SignUpPage />} />

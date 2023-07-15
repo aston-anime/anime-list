@@ -1,11 +1,16 @@
 import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router';
 import {debounce} from 'lodash';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 import {AnimeInfo} from '../../types/state';
-import {AppRoute} from '../../routing/AppRoute';
 
 import styles from './SearchBar.module.css';
+
+const applyFilter = (userInput: any, data: AnimeInfo[] | null) =>
+    data?.filter(
+        (anime: AnimeInfo) =>
+            userInput && anime && anime.title && anime.title.toLowerCase().includes(userInput)
+    ) || null;
 
 type SearchProps = {
     data: AnimeInfo[] | null;
@@ -14,15 +19,22 @@ type SearchProps = {
 function SearchBar({data}: SearchProps) {
     const [input, setInput] = useState<string>('');
     const [suggests, setSuggests] = useState<AnimeInfo[] | null>(null);
+    const [showResults, setShowResults] = useState(false);
 
     const navigate = useNavigate();
 
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        const form = e.target;
+
+        const query = form.search.value;
+        setShowResults(false);
+        navigate(`/anime-list/search/?query=${query}`);
+    };
+
     const filterData = (userInput: string) => {
-        const filteredResults = data?.filter(
-            (anime: AnimeInfo) =>
-                userInput && anime && anime.title && anime.title.toLowerCase().includes(userInput)
-        );
-        setSuggests(filteredResults || null);
+        const filteredResults = applyFilter(userInput, data);
+        setSuggests(filteredResults);
     };
 
     const debouncedFilterFunc = debounce(filterData, 300);
@@ -30,35 +42,30 @@ function SearchBar({data}: SearchProps) {
     const handleChange = (value: string) => {
         setInput(value);
         debouncedFilterFunc(value);
-    };
-
-    const handleSearch = () => {
-        const encodedURI = encodeURIComponent(JSON.stringify(suggests));
-        navigate(`${AppRoute.Search}/${encodedURI}`, {state: {results: suggests}});
+        setShowResults(true);
     };
 
     return (
         <div>
-            <div className={`${styles.wrapper}`}>
+            <form onSubmit={handleSubmit} className={`${styles.wrapper}`}>
                 <input
-                    type="text"
+                    type="search"
                     value={input}
                     className={`${styles.input}`}
-                    onChange={(e) => handleChange(e.target.value)}
-                    list="suggestions"
+                    onChange={(e) => {
+                        handleChange(e.target.value);
+                    }}
                     placeholder="Search..."
+                    name="search"
+                    autoComplete="off"
                 />
-                <button
-                    type="submit"
-                    className="btn btn-secondary my-2 my-sm-0"
-                    onClick={handleSearch}
-                >
-                    Search
+                <button type="submit" className="btn btn-secondary my-2 my-sm-0">
+                    search
                 </button>
-            </div>
-            <SearchResultsList results={suggests} maxResults={5} />
+            </form>
+            {showResults && <SearchResultsList input={input} results={suggests} maxResults={5} />}
         </div>
     );
 }
 
-export {SearchBar};
+export {SearchBar, applyFilter};
