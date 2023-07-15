@@ -4,10 +4,14 @@
     padding-bottom: 5px;
 }
 
-.txt {
+.name {
+    color: rgb(255, 255, 255);
+}
+
+.text {
     font-size: 20px;
 }
 
-.txt_search {
+.text_search {
     color: rgb(255, 223, 247);
 }

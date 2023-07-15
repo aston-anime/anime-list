@@ -1,13 +1,16 @@
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEvent, FormEvent, useContext, useState} from 'react';
 import {useNavigate} from 'react-router';
+import cn from 'classnames';
 import {AppRoute} from '../../routing/AppRoute';
 import {useAppDispatch} from '../../hooks';
 import {logIn, setUser} from '../../store/auth/auth';
+import {ThemeContext} from '../../services/theme/ThemeProvider';
 import styles from './Sign-up.module.css';
 
 function SignUp() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const {theme} = useContext(ThemeContext);
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -37,7 +40,10 @@ function SignUp() {
         <form className={`${styles.form} border-primary`} action="#" onSubmit={handleSubmit}>
             <div className={`${styles.container} card border-primary `}>
                 <div className="form-group">
-                    <label htmlFor="userName" className="form-label mt-4">
+                    <label
+                        htmlFor="userName"
+                        className={cn('form-label mt-4', {'text-dark': theme === 'light'})}
+                    >
                         User name
                     </label>
                     <input
@@ -53,7 +59,10 @@ function SignUp() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password" className="form-label mt-4">
+                    <label
+                        htmlFor="password"
+                        className={cn('form-label mt-4', {'text-dark': theme === 'light'})}
+                    >
                         Password
                     </label>
                     <input
@@ -67,7 +76,19 @@ function SignUp() {
                         onChange={handlePasswordChange}
                     />
                 </div>
-                <button className={`${styles.btn} btn btn-success`} type="submit">
+                <button
+                    className={cn(
+                        'btn',
+                        styles.btn,
+                        {
+                            'btn-success': theme === 'dark',
+                        },
+                        {
+                            'btn-primary': theme === 'light',
+                        }
+                    )}
+                    type="submit"
+                >
                     Sign up
                 </button>
             </div>

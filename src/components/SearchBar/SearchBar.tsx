@@ -5,7 +5,7 @@ import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 import {AnimeInfo} from '../../types/state';
 
 import styles from './SearchBar.module.css';
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const applyFilter = (userInput: any, data: AnimeInfo[] | null) =>
     data?.filter(
         (anime: AnimeInfo) =>
@@ -22,7 +22,7 @@ function SearchBar({data}: SearchProps) {
     const [showResults, setShowResults] = useState(false);
 
     const navigate = useNavigate();
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const form = e.target;
