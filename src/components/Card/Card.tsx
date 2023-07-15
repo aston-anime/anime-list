@@ -52,14 +52,14 @@ function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: any
                     />
                 </svg>
             </button>
-            <div className={`${styles.img_wrp}`}>
-                <img className={`${styles.img}`} src={image} alt={title} />
+            <div className={styles.img_wrp}>
+                <img className={styles.img} src={image} alt={title} />
             </div>
-            <div className={`${styles.card_body}`}>
-                <div className={`${styles.card_characteristics}`}>
-                    <div className={`${styles.ranking}`}>
+            <div className={styles.card_body}>
+                <div className={styles.card_characteristics}>
+                    <div className={styles.ranking}>
                         <svg
-                            className={`${styles.ranking_star}`}
+                            className={styles.ranking_star}
                             viewBox="0 0 1024 1024"
                             height="1em"
                             width="1em"
@@ -68,13 +68,13 @@ function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: any
                         </svg>
                         <div>{ranking}</div>
                     </div>
-                    <div className={`${styles.episodes}`}>{episodes} episodes</div>
+                    <div className={styles.episodes}>{episodes} episodes</div>
                 </div>
-                <h2 className={`${styles.title}`}>{title}</h2>
+                <h2 className={styles.title}>{title}</h2>
             </div>
             <button
                 type="button"
-                className="card__btn btn btn-primary"
+                className={`card__btn ${styles.btn} btn-primary`}
                 onClick={() => handleClickDetailedPage(id)}
             >
                 View more

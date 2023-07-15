@@ -1,7 +1,7 @@
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 
-import type {State, AppDispatch} from '../types/state';
+import type {State, AppDispatch, AnimeInfo} from '../types/state';
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
@@ -17,7 +17,7 @@ const options: any = {
 };
 
 export const useDataFetching = (url: string, pageName: string) => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<AnimeInfo[] | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {

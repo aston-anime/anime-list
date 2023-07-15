@@ -1,8 +1,11 @@
 import {AnimeInfo} from '../types/state';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const applyFilter = (userInput: any, data: AnimeInfo[] | null) =>
-    data?.filter(
-        (anime: AnimeInfo) =>
-            userInput && anime && anime.title && anime.title.toLowerCase().includes(userInput)
-    ) || null;
+// Filters an array of objects of AnimeInfo type, returning an array of objects only with those titles that include user's query in input
+
+export const applyFilter = (userInput: string | null, data: AnimeInfo[] | null) => {
+    if (!userInput || !data) {
+        return null;
+    }
+
+    return data.filter((anime) => anime?.title?.toLowerCase().includes(userInput.toLowerCase()));
+};

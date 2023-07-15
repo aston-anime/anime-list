@@ -8,7 +8,7 @@ import styles from './Main.module.css';
 function Main() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fetchedAnimes: any = useDataFetching(
-        'https://anime-db.p.rapidapi.com/anime?page=1&size=15&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
+        'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
         'main'
     );
 
@@ -18,12 +18,18 @@ function Main() {
         return {...rest, id: _id};
     });
 
+    let topRatedAnimes = null;
+    if (animeDataBase) {
+        const sortedAnime = [...animeDataBase].sort((a, b) => b.ranking - a.ranking);
+        topRatedAnimes = sortedAnime.slice(0, 6);
+    }
+
     return (
         <div className={styles.container}>
             <EntryText />
             <SearchBar data={animeDataBase} />
             <div className={styles.card_container}>
-                {animeDataBase && <CardList cards={animeDataBase} />}
+                {animeDataBase && <CardList cards={topRatedAnimes} />}
             </div>
         </div>
     );

@@ -9,10 +9,10 @@ import styles from './Search.module.css';
 
 function Search() {
     const location = useLocation();
-    const paramValue = new URLSearchParams(location.search).get('query');
+    const userQuery = new URLSearchParams(location.search).get('query');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fetchedAnimes: any = useDataFetching(
-        'https://anime-db.p.rapidapi.com/anime?page=1&size=15&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
+        'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
         'main'
     );
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,13 +21,13 @@ function Search() {
         return {...rest, id: _id};
     });
 
-    const filteredResults = applyFilter(paramValue, animeDataBase);
+    const filteredAnimes = applyFilter(userQuery, animeDataBase);
     const isDataLoading = !animeDataBase;
 
     let message;
     if (isDataLoading) {
         message = 'Loading...';
-    } else if (paramValue === null || paramValue.length === 0 || filteredResults!.length === 0) {
+    } else if (userQuery === null || filteredAnimes?.length === 0) {
         message = 'No matching Anime...';
     } else {
         message = 'Search Results:';
@@ -37,7 +37,7 @@ function Search() {
         <div className={styles.container}>
             <SearchBar data={animeDataBase} />
             <h4 className={styles.title}>{message}</h4>
-            <CardList cards={filteredResults} />
+            <CardList cards={filteredAnimes} />
         </div>
     );
 }
