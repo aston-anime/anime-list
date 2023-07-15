@@ -14,7 +14,8 @@
         "plugin:react/jsx-runtime",
         "airbnb",
         "plugin:import/recommended",
-        "prettier"
+        "prettier",
+        "plugin:storybook/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -142,7 +143,8 @@
                     ".tsx"
                 ]
             }
-        ]
+        ],
+        "react/jsx-props-no-spreading": "off"
     },
     "settings": {
         "react": {
