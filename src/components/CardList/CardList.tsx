@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
 import {Card} from '../Card/Card';
 
-import {SetFavoritesAnime} from '../../types/setFavorites';
 import {AnimeWithId} from '../../types/animeData';
 import styles from './CardList.module.css';
 
 type CardListProps = {
     cards: AnimeWithId[] | null;
-    setFavoritesAnime?: SetFavoritesAnime;
 };
 
-function CardList({cards, setFavoritesAnime}: CardListProps) {
+function CardList({cards}: CardListProps) {
     const cardList = cards?.map((item) => (
         <li key={item.id}>
             <Card
@@ -19,7 +17,6 @@ function CardList({cards, setFavoritesAnime}: CardListProps) {
                 image={item.image}
                 ranking={item.ranking}
                 episodes={item.episodes}
-                setFavoritesAnime={setFavoritesAnime}
             />
         </li>
     ));
@@ -41,7 +38,6 @@ CardList.propTypes = {
             episodes: PropTypes.number.isRequired,
         })
     ),
-    setFavoritesAnime: PropTypes.func.isRequired,
 };
 
 export {CardList};
