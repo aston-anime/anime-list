@@ -9,7 +9,7 @@ type CardListProps = {
     setFavoritesAnime?: any;
 };
 
-function CardList({cards = [], setFavoritesAnime}: CardListProps) {
+function CardList({cards, setFavoritesAnime}: CardListProps) {
     const cardList = cards?.map((item) => (
         <li key={item.id}>
             <Card

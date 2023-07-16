@@ -74,7 +74,7 @@ function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: any
             </div>
             <button
                 type="button"
-                className={`card__btn ${styles.btn} btn-primary`}
+                className={`${styles.view_btn} btn btn-primary`}
                 onClick={() => handleClickDetailedPage(id)}
             >
                 View more

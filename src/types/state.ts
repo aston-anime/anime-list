@@ -12,6 +12,11 @@ export interface AnimeData {
     episodes: number;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setFavoritesAnime: any;
+    alternativeTitles: string;
+    type: string;
+    status: string;
+    genres: string;
+    synopsis: string;
 }
 
 export interface AnimeInfo extends Omit<AnimeData, '_id'> {

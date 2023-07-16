@@ -1,8 +1,8 @@
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
-import {useDataFetching} from '../../hooks';
-import {AnimeInfo} from '../../types/state';
+import {useDataFetching} from '../../hooks/useDataFetching';
+import {renameIdsInData} from '../../hooks/renameIdsInData';
 import styles from './Main.module.css';
 
 function Main() {
@@ -11,12 +11,7 @@ function Main() {
         'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
         'main'
     );
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const animeDataBase: AnimeInfo[] = fetchedAnimes?.map((item: any) => {
-        const {_id, ...rest} = item;
-        return {...rest, id: _id};
-    });
+    const animeDataBase = renameIdsInData(fetchedAnimes);
 
     let topRatedAnimes = null;
     if (animeDataBase) {

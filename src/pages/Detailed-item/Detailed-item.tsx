@@ -4,7 +4,7 @@ import {useContext} from 'react';
 import cn from 'classnames';
 
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import {useDataFetching} from '../../hooks';
+import {useDataFetching} from '../../hooks/useDataFetching';
 
 import styles from './Detailed-item.module.css';
 

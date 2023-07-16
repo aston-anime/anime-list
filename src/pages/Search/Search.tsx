@@ -1,25 +1,22 @@
 import {useLocation} from 'react-router-dom';
-import {AnimeInfo} from '../../types/state';
 import {CardList} from '../../components/CardList/CardList';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {applyFilter} from '../../services/applyFilter';
-import {useDataFetching} from '../../hooks';
+import {useDataFetching} from '../../hooks/useDataFetching';
+import {renameIdsInData} from '../../hooks/renameIdsInData';
 
 import styles from './Search.module.css';
 
 function Search() {
-    const location = useLocation();
-    const userQuery = new URLSearchParams(location.search).get('query');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fetchedAnimes: any = useDataFetching(
         'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
         'main'
     );
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const animeDataBase: AnimeInfo[] = fetchedAnimes?.map((item: any) => {
-        const {_id, ...rest} = item;
-        return {...rest, id: _id};
-    });
+    const animeDataBase = renameIdsInData(fetchedAnimes);
+
+    const location = useLocation();
+    const userQuery = new URLSearchParams(location.search).get('query');
 
     const filteredAnimes = applyFilter(userQuery, animeDataBase);
     const isDataLoading = !animeDataBase;
