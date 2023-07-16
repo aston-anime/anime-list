@@ -39,10 +39,8 @@ function LogIn() {
             setInvalidPassword(true);
         } else {
             dispatch(logIn());
-            dispatch(setUser(userInfo.userName));
+            dispatch(setUser(userInfo));
             navigate(AppRoute.Main);
-            LocalStorageUtil.setItem(userName, userInfo);
-            LocalStorageUtil.setAuth(userName);
         }
     };
 
