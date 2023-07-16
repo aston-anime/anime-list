@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/492.fc459a8a.chunk.js","mappings":"sKAAA,SAASA,IACL,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,oBAChB,C","sources":["pages/Search/Search.tsx"],"sourcesContent":["function Search() {\n    return <div>Search Component</div>;\n}\n\nexport {Search};\n"],"names":["Search","_jsx","children"],"sourceRoot":""}
