@@ -1,9 +1,15 @@
+import {User} from '../types/user';
+
 export const LocalStorageUtil = {
-    getItem: (key: string) => localStorage.getItem(key),
-    setItem: (key: string, value: string) => localStorage.setItem(key, value),
-    findAuthUser: () => {
-        const user = Object.values(localStorage).find((item) => JSON.parse(item).auth === true);
-        if (user) return JSON.parse(user).userName;
+    getUser: (key: string): User | null => {
+        const item = localStorage.getItem(key);
+        if (item) return JSON.parse(item);
         return null;
     },
+    setItem: (key: string, value: object): void => {
+        const item = JSON.stringify(value);
+        localStorage.setItem(key, item);
+    },
+    setAuth: (name: string): void => localStorage.setItem('auth', name),
+    getAuth: (): string | null => localStorage.getItem('auth'),
 };

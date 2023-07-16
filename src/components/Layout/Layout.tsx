@@ -1,5 +1,5 @@
 import {Outlet} from 'react-router';
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import cn from 'classnames';
 import {Header} from '../Header/Header';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
@@ -13,12 +13,14 @@ const lightClass = `${styles.layout} text-dark`;
 function Layout() {
     const {theme} = useContext(ThemeContext);
     const dispatch = useAppDispatch();
+    const userName = LocalStorageUtil.getAuth();
 
-    const userName = LocalStorageUtil.findAuthUser();
-    if (userName) {
-        dispatch(setUser(userName));
-        dispatch(logIn());
-    }
+    useEffect(() => {
+        if (userName) {
+            dispatch(setUser(userName));
+            dispatch(logIn());
+        }
+    }, [dispatch, userName]);
 
     return (
         <div className={cn({[lightClass]: theme === 'light'})}>

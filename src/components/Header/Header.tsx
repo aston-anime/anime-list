@@ -20,16 +20,8 @@ function Header() {
 
     const btnClasses = cn('btn', styles.btn, {[styles.light]: theme === 'light'});
 
-    const handleLogoutCllick = () => {
-        if (userName) {
-            const userInfo = LocalStorageUtil.getItem(userName);
-            if (userInfo) {
-                LocalStorageUtil.setItem(
-                    userName,
-                    JSON.stringify({...JSON.parse(userInfo), auth: false})
-                );
-            }
-        }
+    const handleLogoutClick = () => {
+        LocalStorageUtil.setAuth('');
         dispatch(logOut());
     };
 
@@ -70,7 +62,7 @@ function Header() {
                         <Link
                             className={`${styles.btn} btn text-warning`}
                             to={AppRoute.Main}
-                            onClick={handleLogoutCllick}
+                            onClick={handleLogoutClick}
                         >
                             Log out
                         </Link>

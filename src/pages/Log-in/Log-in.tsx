@@ -31,21 +31,18 @@ function LogIn() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        const userInfo = LocalStorageUtil.getItem(userName);
+        const userInfo = LocalStorageUtil.getUser(userName);
 
         if (!userInfo) {
             setInvalidLogin(true);
-        } else if (JSON.parse(userInfo).password !== password) {
+        } else if (userInfo.password !== password) {
             setInvalidPassword(true);
         } else {
             dispatch(logIn());
-            dispatch(setUser(JSON.parse(userInfo).userName));
+            dispatch(setUser(userInfo.userName));
             navigate(AppRoute.Main);
-            LocalStorageUtil.setItem(
-                userName,
-                JSON.stringify({...JSON.parse(userInfo), auth: true})
-            );
+            LocalStorageUtil.setItem(userName, userInfo);
+            LocalStorageUtil.setAuth(userName);
         }
     };
 

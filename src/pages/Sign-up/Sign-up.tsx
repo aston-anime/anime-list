@@ -33,9 +33,9 @@ function SignUp() {
         const userInfo = {
             userName,
             password,
-            auth: true,
         };
-        LocalStorageUtil.setItem(userName, JSON.stringify(userInfo));
+        LocalStorageUtil.setItem(userName, userInfo);
+        LocalStorageUtil.setAuth(userName);
     };
 
     return (
