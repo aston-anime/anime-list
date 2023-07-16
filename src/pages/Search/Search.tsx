@@ -11,7 +11,7 @@ function Search() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fetchedAnimes: any = useDataFetching(
         'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
-        'main'
+        'search'
     );
     const animeDataBase = renameIdsInData(fetchedAnimes);
 

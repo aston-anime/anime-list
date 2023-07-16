@@ -6,6 +6,8 @@ import {applyFilter} from '../../services/applyFilter';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 
 import {AnimeWithId} from '../../types/state';
+import {HistoryRecord} from '../../types/HistoryRecord';
+
 import styles from './SearchBar.module.css';
 
 type SearchProps = {
@@ -15,6 +17,7 @@ type SearchProps = {
 function SearchBar({data}: SearchProps) {
     const [input, setInput] = useState<string>('');
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
+    const [searchHistory, setSearchHistory] = useState<HistoryRecord[]>([]);
 
     const navigate = useNavigate();
 
@@ -34,6 +37,36 @@ function SearchBar({data}: SearchProps) {
         setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
+
+        // const updatedHistory = [query, ...searchHistory];
+        // setSearchHistory(updatedHistory);
+        // localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+
+        // navigate(`/anime-list/search/?query=${query}`);
+
+        // ------
+        const filteredItems = applyFilter(query, data);
+        const filteredItemCount = filteredItems?.length;
+        // const resultLink = `/anime-list/search/?query=${encodeURIComponent(query)}`;
+
+        // const searchHistory = JSON.parse(localStorage.getItem('searchHistory') || '[]');
+        // const updatedHistory = [
+        //     {query, timestamp: new Date().toLocaleString(), filteredItemCount, resultLink},
+        //     ...searchHistory,
+        // ];
+        // localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+
+        const historyItem: HistoryRecord = {
+            query,
+            timestamp: new Date().toLocaleString(),
+            filteredItemCount: filteredItemCount || 0,
+            resultLink: `/anime-list/search/?query=${encodeURIComponent(query)}`,
+        };
+
+        const updatedHistory = [historyItem, ...searchHistory];
+        setSearchHistory(updatedHistory);
+        localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+
         navigate(`/anime-list/search/?query=${query}`);
     };
 
@@ -65,7 +98,7 @@ SearchBar.defaultProps = {
 SearchBar.propTypes = {
     data: PropTypes.arrayOf(
         PropTypes.shape({
-            _id: PropTypes.number.isRequired,
+            id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             image: PropTypes.string.isRequired,
             ranking: PropTypes.number.isRequired,

@@ -8,6 +8,7 @@
         "@fortawesome/free-solid-svg-icons": "^6.4.0",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@reduxjs/toolkit": "^1.9.5",
+        "@storybook/react": "^7.0.27",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
@@ -29,8 +30,8 @@
         "react-router-dom": "^6.14.1",
         "react-scripts": "5.0.1",
         "typescript": "^4.9.5",
-        "web-vitals": "^2.1.4",
-        "@storybook/react": "^7.0.27"
+        "uuid": "^9.0.0",
+        "web-vitals": "^2.1.4"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -76,6 +77,7 @@
         "@storybook/react-webpack5": "^7.0.27",
         "@storybook/testing-library": "^0.0.14-next.2",
         "@types/lodash": "^4.14.195",
+        "@types/uuid": "^9.0.2",
         "@typescript-eslint/eslint-plugin": "^5.61.0",
         "@typescript-eslint/parser": "^5.61.0",
         "babel-plugin-named-exports-order": "^0.0.2",
