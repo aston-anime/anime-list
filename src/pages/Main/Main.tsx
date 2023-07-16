@@ -1,22 +1,30 @@
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
-import {useDataFetching} from '../../hooks';
+import {useDataFetching} from '../../hooks/useDataFetching';
+import {renameIdsInData} from '../../services/renameIdsInData';
 import styles from './Main.module.css';
 
 function Main() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fetchedAnimes: any = useDataFetching(
-        'https://anime-db.p.rapidapi.com/anime?page=1&size=5&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
+        'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
         'main'
     );
+    const animeDataBase = renameIdsInData(fetchedAnimes);
+
+    let topRatedAnimes = null;
+    if (animeDataBase) {
+        const sortedAnime = [...animeDataBase].sort((a, b) => b.ranking - a.ranking);
+        topRatedAnimes = sortedAnime.slice(0, 5);
+    }
 
     return (
-        <div className={`${styles.container}`}>
+        <div className={styles.container}>
             <EntryText />
-            <SearchBar data={fetchedAnimes} />
-            <div className={`${styles.card_container}`}>
-                {fetchedAnimes && <CardList cards={fetchedAnimes} />}
+            <SearchBar data={animeDataBase} />
+            <div className={styles.card_container}>
+                {animeDataBase && <CardList cards={topRatedAnimes} />}
             </div>
         </div>
     );

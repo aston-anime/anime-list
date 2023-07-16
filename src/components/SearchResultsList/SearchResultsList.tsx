@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import {AnimeData} from '../../types/state';
+import {AnimeWithId} from '../../types/state';
 
 type SearchResultsListProps = {
     input: string;
-    results: AnimeData[] | null;
+    results: AnimeWithId[] | null;
     maxResults: number;
 };
 
@@ -18,9 +18,9 @@ function SearchResultsList({input, results, maxResults}: SearchResultsListProps)
         >
             {filteredResults?.map((result) => (
                 <a
-                    href={`/anime-list/detailed-item/${result._id}`}
+                    href={`/anime-list/detailed-item/${result.id}`}
                     className="dropdown-item"
-                    key={result._id}
+                    key={result.id}
                 >
                     {result.title}
                 </a>

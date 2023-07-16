@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types';
 import {Card} from '../Card/Card';
-import {AnimeData} from '../../types/state';
+import {AnimeWithId} from '../../types/state';
 
 import {SetFavoritesAnime} from '../../types/setFavorites';
 import styles from './CardList.module.css';
 
 type CardListProps = {
-    cards: AnimeData[];
+    cards: AnimeWithId[] | null;
     setFavoritesAnime?: SetFavoritesAnime;
 };
 
-function CardList({cards = [], setFavoritesAnime}: CardListProps) {
+function CardList({cards, setFavoritesAnime}: CardListProps) {
     const cardList = cards?.map((item) => (
-        <li key={item._id}>
+        <li key={item.id}>
             <Card
-                id={item._id}
+                id={item.id}
                 title={item.title}
                 image={item.image}
                 ranking={item.ranking}
@@ -24,7 +24,7 @@ function CardList({cards = [], setFavoritesAnime}: CardListProps) {
         </li>
     ));
 
-    return <ul className={`${styles.wrapper}`}>{cardList}</ul>;
+    return <ul className={styles.wrapper}>{cardList}</ul>;
 }
 
 CardList.defaultProps = {
