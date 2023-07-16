@@ -2,7 +2,7 @@ import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {useDataFetching} from '../../hooks/useDataFetching';
-import {renameIdsInData} from '../../hooks/renameIdsInData';
+import {renameIdsInData} from '../../services/renameIdsInData';
 import styles from './Main.module.css';
 
 function Main() {
@@ -16,7 +16,7 @@ function Main() {
     let topRatedAnimes = null;
     if (animeDataBase) {
         const sortedAnime = [...animeDataBase].sort((a, b) => b.ranking - a.ranking);
-        topRatedAnimes = sortedAnime.slice(0, 6);
+        topRatedAnimes = sortedAnime.slice(0, 5);
     }
 
     return (

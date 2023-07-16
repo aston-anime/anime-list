@@ -3,7 +3,7 @@ import {CardList} from '../../components/CardList/CardList';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {applyFilter} from '../../services/applyFilter';
 import {useDataFetching} from '../../hooks/useDataFetching';
-import {renameIdsInData} from '../../hooks/renameIdsInData';
+import {renameIdsInData} from '../../services/renameIdsInData';
 
 import styles from './Search.module.css';
 
