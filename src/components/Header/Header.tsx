@@ -7,6 +7,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getAuthStatus, getUser} from '../../store/auth/selectors';
 import {logOut} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
+import {Button} from '../Button/Button';
 import styles from './Header.module.css';
 
 function Header() {
@@ -76,13 +77,9 @@ function Header() {
                         )}
                     </div>
                 )}
-                <button
-                    type="button"
-                    className={`${styles.btn} ${styles.btn_outline} btn btn-secondary`}
-                    onClick={toggleTheme}
-                >
+                <Button onClick={toggleTheme} variant="secondary">
                     Theme
-                </button>
+                </Button>
             </div>
         </header>
     );

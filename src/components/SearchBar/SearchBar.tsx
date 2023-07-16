@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
+import PropTypes from 'prop-types';
 import {applyFilter} from '../../services/applyFilter';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
-import {AnimeInfo} from '../../types/state';
 
+import {AnimeWithId} from '../../types/state';
 import styles from './SearchBar.module.css';
 
 type SearchProps = {
-    data: AnimeInfo[] | null;
+    data: AnimeWithId[] | null;
 };
 
 function SearchBar({data}: SearchProps) {
     const [input, setInput] = useState<string>('');
-    const [suggests, setSuggests] = useState<AnimeInfo[] | null>(null);
+    const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
 
     const navigate = useNavigate();
 
@@ -56,5 +57,22 @@ function SearchBar({data}: SearchProps) {
         </div>
     );
 }
+
+SearchBar.defaultProps = {
+    data: null,
+};
+
+SearchBar.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            _id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            image: PropTypes.string.isRequired,
+            ranking: PropTypes.number.isRequired,
+            episodes: PropTypes.number.isRequired,
+            setFavoritesAnime: PropTypes.func.isRequired,
+        })
+    ),
+};
 
 export {SearchBar};

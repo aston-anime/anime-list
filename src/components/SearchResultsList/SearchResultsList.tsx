@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import {AnimeInfo} from '../../types/state';
+import {AnimeWithId} from '../../types/state';
 
 type SearchResultsListProps = {
     input: string;
-    results: AnimeInfo[] | null;
+    results: AnimeWithId[] | null;
     maxResults: number;
 };
 

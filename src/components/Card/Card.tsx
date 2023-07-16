@@ -1,11 +1,12 @@
-/* eslint-disable no-unused-vars */
 import {useState} from 'react';
 import {useNavigate} from 'react-router';
+import PropTypes from 'prop-types';
+
+import {AnimeWithId} from '../../types/state';
 
 import styles from './Card.module.css';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: any) {
+function Card({id, title, image, ranking, episodes, setFavoritesAnime = () => {}}: AnimeWithId) {
     const navigate = useNavigate();
 
     const [isFavorite, setIsFavorite] = useState<boolean>(
@@ -82,5 +83,13 @@ function Card({_id: id, title, image, ranking, episodes, setFavoritesAnime}: any
         </article>
     );
 }
+
+Card.propTypes = {
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    ranking: PropTypes.number.isRequired,
+    episodes: PropTypes.number.isRequired,
+};
 
 export {Card};
