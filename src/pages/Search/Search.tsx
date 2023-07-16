@@ -27,7 +27,7 @@ function Search() {
     let message;
     if (isDataLoading) {
         message = 'Loading...';
-    } else if (userQuery === null || filteredAnimes?.length === 0) {
+    } else if (userQuery === null || userQuery.length === 0 || filteredAnimes?.length === 0) {
         message = 'No matching Anime...';
     } else {
         message = 'Search Results:';

@@ -17,11 +17,10 @@ function SearchBar({data}: SearchProps) {
 
     const navigate = useNavigate();
 
-    const generateSuggests = (userInput: string) => {
+    const debouncedGenerateSuggests = debounce((userInput: string) => {
         const filteredAnime = applyFilter(userInput, data);
         setSuggests(filteredAnime);
-    };
-    const debouncedGenerateSuggests = debounce(generateSuggests, 300);
+    }, 300);
 
     const handleChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>) => {
         setInput(value);
@@ -39,7 +38,7 @@ function SearchBar({data}: SearchProps) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className={`${styles.wrapper}`}>
+            <form onSubmit={handleSubmit} className={styles.wrapper}>
                 <input
                     type="search"
                     value={input}
