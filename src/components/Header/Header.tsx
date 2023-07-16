@@ -4,20 +4,26 @@ import cn from 'classnames';
 import {AppRoute} from '../../routing/AppRoute';
 import {Logo} from '../Logo/Logo';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {getAuthStatus, getUser} from '../../store/auth/selectors';
+import {getAuthStatus, getUserName} from '../../store/auth/selectors';
 import {logOut} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {Button} from '../Button/Button';
+import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
 import styles from './Header.module.css';
 
 function Header() {
     const dispatch = useAppDispatch();
     const {pathname} = useLocation();
     const authStatus = useAppSelector(getAuthStatus);
-    const userName = useAppSelector(getUser);
+    const userName = useAppSelector(getUserName);
     const {theme, toggleTheme} = useContext(ThemeContext);
 
     const btnClasses = cn('btn', styles.btn, {[styles.light]: theme === 'light'});
+
+    const handleLogoutClick = () => {
+        LocalStorageUtil.setAuth('');
+        dispatch(logOut());
+    };
 
     return (
         <header
@@ -56,9 +62,7 @@ function Header() {
                         <Link
                             className={`${styles.btn} btn text-warning`}
                             to={AppRoute.Main}
-                            onClick={() => {
-                                dispatch(logOut());
-                            }}
+                            onClick={handleLogoutClick}
                         >
                             Log out
                         </Link>

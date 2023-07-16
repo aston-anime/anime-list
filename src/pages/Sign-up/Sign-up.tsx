@@ -5,6 +5,7 @@ import {AppRoute} from '../../routing/AppRoute';
 import {useAppDispatch} from '../../hooks';
 import {logIn, setUser} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
+import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
 import styles from './Sign-up.module.css';
 
 function SignUp() {
@@ -33,7 +34,8 @@ function SignUp() {
             userName,
             password,
         };
-        localStorage.setItem(userName, JSON.stringify(userInfo));
+        LocalStorageUtil.setItem(userName, userInfo);
+        LocalStorageUtil.setAuth(userName);
     };
 
     return (
