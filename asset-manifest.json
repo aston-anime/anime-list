@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/anime-list/static/css/main.df728715.css",
-    "main.js": "/anime-list/static/js/main.bed3ecff.js",
+    "main.js": "/anime-list/static/js/main.3d332f1c.js",
     "static/css/299.a77f0e8e.chunk.css": "/anime-list/static/css/299.a77f0e8e.chunk.css",
     "static/js/299.f3da7d16.chunk.js": "/anime-list/static/js/299.f3da7d16.chunk.js",
     "static/css/848.a42ce292.chunk.css": "/anime-list/static/css/848.a42ce292.chunk.css",
@@ -9,16 +9,16 @@
     "static/css/440.aa5cf598.chunk.css": "/anime-list/static/css/440.aa5cf598.chunk.css",
     "static/js/440.065831a0.chunk.js": "/anime-list/static/js/440.065831a0.chunk.js",
     "static/css/869.709175b2.chunk.css": "/anime-list/static/css/869.709175b2.chunk.css",
-    "static/js/869.5c9723a9.chunk.js": "/anime-list/static/js/869.5c9723a9.chunk.js",
+    "static/js/869.eb6e71e7.chunk.js": "/anime-list/static/js/869.eb6e71e7.chunk.js",
     "static/css/800.3fc88d01.chunk.css": "/anime-list/static/css/800.3fc88d01.chunk.css",
-    "static/js/800.eda57c4e.chunk.js": "/anime-list/static/js/800.eda57c4e.chunk.js",
+    "static/js/800.667a682a.chunk.js": "/anime-list/static/js/800.667a682a.chunk.js",
     "static/css/453.70ee8669.chunk.css": "/anime-list/static/css/453.70ee8669.chunk.css",
     "static/js/453.88ba59da.chunk.js": "/anime-list/static/js/453.88ba59da.chunk.js",
     "static/js/495.34f81f56.chunk.js": "/anime-list/static/js/495.34f81f56.chunk.js",
     "static/js/444.66a4492f.chunk.js": "/anime-list/static/js/444.66a4492f.chunk.js",
     "index.html": "/anime-list/index.html",
     "main.df728715.css.map": "/anime-list/static/css/main.df728715.css.map",
-    "main.bed3ecff.js.map": "/anime-list/static/js/main.bed3ecff.js.map",
+    "main.3d332f1c.js.map": "/anime-list/static/js/main.3d332f1c.js.map",
     "299.a77f0e8e.chunk.css.map": "/anime-list/static/css/299.a77f0e8e.chunk.css.map",
     "299.f3da7d16.chunk.js.map": "/anime-list/static/js/299.f3da7d16.chunk.js.map",
     "848.a42ce292.chunk.css.map": "/anime-list/static/css/848.a42ce292.chunk.css.map",
@@ -26,9 +26,9 @@
     "440.aa5cf598.chunk.css.map": "/anime-list/static/css/440.aa5cf598.chunk.css.map",
     "440.065831a0.chunk.js.map": "/anime-list/static/js/440.065831a0.chunk.js.map",
     "869.709175b2.chunk.css.map": "/anime-list/static/css/869.709175b2.chunk.css.map",
-    "869.5c9723a9.chunk.js.map": "/anime-list/static/js/869.5c9723a9.chunk.js.map",
+    "869.eb6e71e7.chunk.js.map": "/anime-list/static/js/869.eb6e71e7.chunk.js.map",
     "800.3fc88d01.chunk.css.map": "/anime-list/static/css/800.3fc88d01.chunk.css.map",
-    "800.eda57c4e.chunk.js.map": "/anime-list/static/js/800.eda57c4e.chunk.js.map",
+    "800.667a682a.chunk.js.map": "/anime-list/static/js/800.667a682a.chunk.js.map",
     "453.70ee8669.chunk.css.map": "/anime-list/static/css/453.70ee8669.chunk.css.map",
     "453.88ba59da.chunk.js.map": "/anime-list/static/js/453.88ba59da.chunk.js.map",
     "495.34f81f56.chunk.js.map": "/anime-list/static/js/495.34f81f56.chunk.js.map",
@@ -36,6 +36,6 @@
   },
   "entrypoints": [
     "static/css/main.df728715.css",
-    "static/js/main.bed3ecff.js"
+    "static/js/main.3d332f1c.js"
   ]
 }
