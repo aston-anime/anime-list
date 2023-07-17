@@ -4,6 +4,7 @@ import {useAppSelector} from '../../hooks';
 import {CardList} from '../../components/CardList/CardList';
 import {getFavoriteSelector} from '../../store/favorite/selectors';
 import {AnimeWithId} from '../../types/animeData';
+import {Button} from '../../components/Button/Button';
 
 import styles from './Favorites.module.css';
 
@@ -27,14 +28,9 @@ function Favorites() {
             ) : (
                 <div className={styles.emptyFavorites}>Favorites are empty</div>
             )}
-
-            <button
-                type="button"
-                className={`${styles.btn} btn btn-primary`}
-                onClick={backButtonHendler}
-            >
-                Назад
-            </button>
+            <Button onClick={backButtonHendler} variant="primary" className={styles.customButton}>
+                ← Back
+            </Button>
         </div>
     );
 }

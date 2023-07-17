@@ -4,12 +4,17 @@ type ButtonProps = {
     onClick?: () => void;
     variant: string;
     size?: string;
+    className?: string;
     children: React.ReactNode;
 };
 
-function Button({onClick, variant, size, children}: ButtonProps) {
+function Button({onClick, variant, size, className, children}: ButtonProps) {
     return (
-        <button className={`btn btn-${variant} btn-${size}`} type="button" onClick={onClick}>
+        <button
+            className={`btn btn-${variant} btn-${size} ${className}`}
+            type="button"
+            onClick={onClick}
+        >
             {children}
         </button>
     );
@@ -18,6 +23,7 @@ function Button({onClick, variant, size, children}: ButtonProps) {
 Button.defaultProps = {
     size: '',
     onClick: () => {},
+    className: '',
 };
 
 export {Button};
