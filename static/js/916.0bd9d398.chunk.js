@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkanime_list=self.webpackChunkanime_list||[]).push([[916],{8916:function(t,n,i){i.r(n),i.d(n,{History:function(){return c}});var s=i(7689),o=i(3090),r={customButton:"History_customButton__JkexN"},u=i(184);function c(){var t=(0,s.s0)();return(0,u.jsxs)("div",{children:["History Component",(0,u.jsx)(o.z,{onClick:function(){t("/anime-list")},variant:"primary",className:r.customButton,children:"\u2190 Back"})]})}}}]);
+//# sourceMappingURL=916.0bd9d398.chunk.js.map
