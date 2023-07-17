@@ -30,6 +30,7 @@ function SignUp() {
         const userInfo = {
             userName,
             password,
+            favorite: [],
         };
         dispatch(logIn(userInfo));
     };
