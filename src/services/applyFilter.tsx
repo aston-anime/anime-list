@@ -1,6 +1,4 @@
-import {AnimeWithId} from '../types/state';
-
-// Filters an array of objects of AnimeInfo type, returning an array of objects only with those titles that include user's query in input
+import {AnimeWithId} from '../types/animeData';
 
 export const applyFilter = (userInput: string | null, data: AnimeWithId[] | null) => {
     if (!userInput || !data) {
