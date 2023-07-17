@@ -8,16 +8,15 @@ import styles from './Search.module.css';
 
 function Search() {
     const {data} = useGetCardsQuery('');
-    const animeDataBase = data;
     let filteredAnimes = null;
 
     const location = useLocation();
     const userQuery = new URLSearchParams(location.search).get('query');
 
-    if (animeDataBase) {
-        filteredAnimes = applyFilter(userQuery, animeDataBase);
+    if (data) {
+        filteredAnimes = applyFilter(userQuery, data);
     }
-    const isDataLoading = !animeDataBase;
+    const isDataLoading = !data;
 
     let message;
     if (isDataLoading) {
@@ -30,7 +29,7 @@ function Search() {
 
     return (
         <div className={styles.container}>
-            <SearchBar data={animeDataBase} />
+            <SearchBar data={data} />
             <h4 className={styles.title}>{message}</h4>
             <CardList cards={filteredAnimes} />
         </div>

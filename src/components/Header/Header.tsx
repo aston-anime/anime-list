@@ -8,7 +8,7 @@ import {getAuthStatus, getUserName} from '../../store/auth/selectors';
 import {logOut} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {Button} from '../Button/Button';
-import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
+import {localStorageUtil} from '../../utils/localStorageUtil';
 import styles from './Header.module.css';
 
 function Header() {
@@ -21,7 +21,7 @@ function Header() {
     const btnClasses = cn('btn', styles.btn, {[styles.light]: theme === 'light'});
 
     const handleLogoutClick = () => {
-        LocalStorageUtil.setAuth('');
+        localStorageUtil.setAuth('');
         dispatch(logOut());
     };
 

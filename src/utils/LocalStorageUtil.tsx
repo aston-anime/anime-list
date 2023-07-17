@@ -1,6 +1,6 @@
 import {User} from '../types/user';
 
-export const LocalStorageUtil = {
+export const localStorageUtil = {
     getUser: (key: string): User | null => {
         const item = localStorage.getItem(key);
         if (item) return JSON.parse(item);
