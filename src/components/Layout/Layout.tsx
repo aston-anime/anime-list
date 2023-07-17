@@ -17,8 +17,8 @@ function Layout() {
 
     useEffect(() => {
         if (userName) {
-            const userIfo = LocalStorageUtil.getUser(userName);
-            dispatch(logIn(userIfo));
+            const userInfo = LocalStorageUtil.getUser(userName);
+            dispatch(logIn(userInfo));
         }
     }, [dispatch, userName]);
 
