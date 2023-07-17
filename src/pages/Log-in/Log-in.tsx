@@ -2,7 +2,7 @@ import {useState, ChangeEvent, FormEvent, useContext} from 'react';
 import cn from 'classnames';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
-import {logIn, setUser} from '../../store/auth/auth';
+import {logIn} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
@@ -38,8 +38,7 @@ function LogIn() {
         } else if (userInfo.password !== password) {
             setInvalidPassword(true);
         } else {
-            dispatch(logIn());
-            dispatch(setUser(userInfo));
+            dispatch(logIn(userInfo));
             navigate(AppRoute.Main);
         }
     };

@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router';
 import cn from 'classnames';
 import {AppRoute} from '../../routing/AppRoute';
 import {useAppDispatch} from '../../hooks';
-import {logIn, setUser} from '../../store/auth/auth';
+import {logIn} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import styles from './Sign-up.module.css';
 
@@ -31,8 +31,7 @@ function SignUp() {
             userName,
             password,
         };
-        dispatch(setUser(userInfo));
-        dispatch(logIn());
+        dispatch(logIn(userInfo));
     };
 
     return (

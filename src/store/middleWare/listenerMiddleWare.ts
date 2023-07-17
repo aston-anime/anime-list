@@ -1,11 +1,11 @@
 import {createListenerMiddleware} from '@reduxjs/toolkit';
-import {setUser} from '../auth/auth';
 import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
+import {logIn} from '../auth/auth';
 
 const listenerMiddleware = createListenerMiddleware();
 
 listenerMiddleware.startListening({
-    actionCreator: setUser,
+    actionCreator: logIn,
     effect: (action) => {
         LocalStorageUtil.setItem(action.payload.userName, action.payload);
         LocalStorageUtil.setAuth(action.payload.userName);

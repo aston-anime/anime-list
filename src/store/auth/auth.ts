@@ -14,16 +14,14 @@ export const auth = createSlice({
     name: NameSpace.Auth,
     initialState,
     reducers: {
-        logIn: (state) => {
+        logIn: (state, action) => {
             state.authorizationStatus = true;
+            state.userName = action.payload.userName;
         },
         logOut: (state) => {
             state.authorizationStatus = false;
         },
-        setUser: (state, action) => {
-            state.userName = action.payload.userName;
-        },
     },
 });
 
-export const {logIn, logOut, setUser} = auth.actions;
+export const {logIn, logOut} = auth.actions;

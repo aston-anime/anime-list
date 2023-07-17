@@ -5,7 +5,7 @@ import {Header} from '../Header/Header';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
 import {useAppDispatch} from '../../hooks';
-import {setUser, logIn} from '../../store/auth/auth';
+import {logIn} from '../../store/auth/auth';
 import styles from './Layout.module.css';
 
 const lightClass = `${styles.layout} text-dark`;
@@ -18,8 +18,7 @@ function Layout() {
     useEffect(() => {
         if (userName) {
             const userIfo = LocalStorageUtil.getUser(userName);
-            dispatch(setUser(userIfo));
-            dispatch(logIn());
+            dispatch(logIn(userIfo));
         }
     }, [dispatch, userName]);
 
