@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router';
 import cn from 'classnames';
 import {AppRoute} from '../../routing/AppRoute';
 import {useAppDispatch} from '../../hooks';
-import {logIn, setUser} from '../../store/auth/auth';
+import {logIn} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import styles from './Sign-up.module.css';
 
@@ -26,14 +26,12 @@ function SignUp() {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         navigate(AppRoute.Main);
-        dispatch(setUser(userName));
-        dispatch(logIn());
 
         const userInfo = {
             userName,
             password,
         };
-        localStorage.setItem(userName, JSON.stringify(userInfo));
+        dispatch(logIn(userInfo));
     };
 
     return (

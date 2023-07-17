@@ -2,9 +2,10 @@ import {useState, ChangeEvent, FormEvent, useContext} from 'react';
 import cn from 'classnames';
 import {useNavigate} from 'react-router';
 import {AppRoute} from '../../routing/AppRoute';
-import {logIn, setUser} from '../../store/auth/auth';
+import {logIn} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
+import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
 import styles from './Log-in.module.css';
 
 function LogIn() {
@@ -30,15 +31,14 @@ function LogIn() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const userInfo = localStorage.getItem(userName);
+        const userInfo = LocalStorageUtil.getUser(userName);
 
         if (!userInfo) {
             setInvalidLogin(true);
-        } else if (JSON.parse(userInfo).password !== password) {
+        } else if (userInfo.password !== password) {
             setInvalidPassword(true);
         } else {
-            dispatch(logIn());
-            dispatch(setUser(JSON.parse(userInfo).userName));
+            dispatch(logIn(userInfo));
             navigate(AppRoute.Main);
         }
     };
