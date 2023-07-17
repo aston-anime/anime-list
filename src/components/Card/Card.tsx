@@ -2,8 +2,7 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router';
 import PropTypes from 'prop-types';
 
-import {AnimeWithId} from '../../types/state';
-
+import {AnimeWithId} from '../../types/animeData';
 import styles from './Card.module.css';
 
 function Card({id, title, image, ranking, episodes, setFavoritesAnime = () => {}}: AnimeWithId) {
