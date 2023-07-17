@@ -2,12 +2,12 @@ import {v4 as uuidv4} from 'uuid';
 import {Link} from 'react-router-dom';
 import {HistoryRecord} from '../../types/HistoryRecord';
 import {useAppSelector} from '../../hooks';
-import {getUser} from '../../store/auth/selectors';
+import {getUserName} from '../../store/auth/selectors';
 
 import styles from './History.module.css';
 
 function History() {
-    const user = useAppSelector(getUser);
+    const user = useAppSelector(getUserName);
     const searchHistory = JSON.parse(localStorage.getItem(`searchHistory_${user}`) || '[]');
 
     return (

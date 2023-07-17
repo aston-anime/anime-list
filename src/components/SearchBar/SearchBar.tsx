@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {applyFilter} from '../../services/applyFilter';
 import {updateHistory} from '../../services/updateHistory';
 import {useAppSelector} from '../../hooks';
-import {getUser} from '../../store/auth/selectors';
+import {getUserName} from '../../store/auth/selectors';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 
 import {AnimeWithId} from '../../types/state';
@@ -20,7 +20,7 @@ function SearchBar({data}: SearchProps) {
     const [input, setInput] = useState<string>('');
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
 
-    const user = useAppSelector(getUser);
+    const user = useAppSelector(getUserName);
 
     const navigate = useNavigate();
 
