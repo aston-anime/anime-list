@@ -39,7 +39,7 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
     };
 
     const handleDelailedPageClick = (idAnime: number) => {
-        navigate(`detailed-item/${idAnime}`);
+        navigate(`/anime-list/detailed-item/${idAnime}`, {replace: true});
     };
 
     useEffect(() => {
