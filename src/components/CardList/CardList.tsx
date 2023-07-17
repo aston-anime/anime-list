@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import {Card} from '../Card/Card';
-import {AnimeWithId} from '../../types/state';
 
 import {SetFavoritesAnime} from '../../types/setFavorites';
+import {AnimeWithId} from '../../types/animeData';
 import styles from './CardList.module.css';
 
 type CardListProps = {

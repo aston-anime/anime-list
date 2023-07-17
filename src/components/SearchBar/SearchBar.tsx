@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {applyFilter} from '../../services/applyFilter';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 
-import {AnimeWithId} from '../../types/state';
+import {AnimeWithId} from '../../types/animeData';
 import styles from './SearchBar.module.css';
 
 type SearchProps = {
