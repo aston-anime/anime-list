@@ -6,7 +6,6 @@ import cn from 'classnames';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {useDataFetching} from '../../hooks/useDataFetching';
 
-import {AnimeData} from '../../types/animeData';
 import styles from './Detailed-item.module.css';
 
 function DetailedItem() {
@@ -25,9 +24,7 @@ function DetailedItem() {
 
     const params = useParams();
 
-    const anime: AnimeData | null = useDataFetching(
-        `https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`
-    );
+    const anime = useDataFetching(`https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`);
 
     const handleClick = () => {
         navigate('/anime-list');

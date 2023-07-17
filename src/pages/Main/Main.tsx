@@ -1,22 +1,13 @@
-import {useEffect, useState} from 'react';
 import {useGetCardsQuery} from '../../api/cardsApi';
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
-import {renameIdsInData} from '../../services/renameIdsInData';
-import {AnimeWithId} from '../../types/animeData';
 import styles from './Main.module.css';
 
 function Main() {
     const {data} = useGetCardsQuery('');
-    const [animeDataBase, setAnimeDataBase] = useState<AnimeWithId[] | null>(null);
+    const animeDataBase = data;
     let topRatedAnimes;
-
-    useEffect(() => {
-        if (data) {
-            setAnimeDataBase(renameIdsInData(data));
-        }
-    }, [data]);
 
     if (animeDataBase) {
         const sortedAnime = [...animeDataBase].sort((a, b) => b.ranking - a.ranking);

@@ -1,28 +1,22 @@
 import {useLocation} from 'react-router-dom';
-import {useEffect, useState} from 'react';
 import {CardList} from '../../components/CardList/CardList';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {applyFilter} from '../../services/applyFilter';
-import {renameIdsInData} from '../../services/renameIdsInData';
 
 import {useGetCardsQuery} from '../../api/cardsApi';
-import {AnimeWithId} from '../../types/animeData';
 import styles from './Search.module.css';
 
 function Search() {
     const {data} = useGetCardsQuery('');
-    const [animeDataBase, setAnimeDataBase] = useState<AnimeWithId[] | null>(null);
-
-    useEffect(() => {
-        if (data) {
-            setAnimeDataBase(renameIdsInData(data));
-        }
-    }, [data]);
+    const animeDataBase = data;
+    let filteredAnimes = null;
 
     const location = useLocation();
     const userQuery = new URLSearchParams(location.search).get('query');
 
-    const filteredAnimes = applyFilter(userQuery, animeDataBase);
+    if (animeDataBase) {
+        filteredAnimes = applyFilter(userQuery, animeDataBase);
+    }
     const isDataLoading = !animeDataBase;
 
     let message;

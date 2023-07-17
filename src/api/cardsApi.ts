@@ -1,5 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {AnimeData} from '../types/animeData';
+import {AnimeData, AnimeWithId} from '../types/animeData';
+import {Meta} from '../types/meta';
+import {renameIdsInData} from '../services/renameIdsInData';
 
 const BASE_URL = 'https://anime-db.p.rapidapi.com/';
 const LIST_URL =
@@ -11,7 +13,7 @@ const HEADERS = {
 
 type ResponseType = {
     data: AnimeData[];
-    meta: object;
+    meta: Meta;
 };
 
 export const cardsApi = createApi({
@@ -22,9 +24,10 @@ export const cardsApi = createApi({
             query: () => ({
                 url: LIST_URL,
                 method: 'GET',
-                headers: {...HEADERS},
+                headers: HEADERS,
             }),
-            transformResponse: (response: ResponseType): AnimeData[] => response.data,
+            transformResponse: (response: ResponseType): AnimeWithId[] =>
+                renameIdsInData(response.data),
         }),
     }),
 });
