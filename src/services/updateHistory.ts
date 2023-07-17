@@ -1,7 +1,9 @@
 import {HistoryRecord} from '../types/HistoryRecord';
 import {AnimeWithId} from '../types/state';
 
-// Updates the history of queries made by a logged-in user, by adding a new history record
+/**
+ * Updates the history of queries made by a logged-in user, by adding a new history record
+ */
 
 export const updateHistory = (user: string, query: string, queryResult: AnimeWithId[] | null) => {
     if (query === '') {
