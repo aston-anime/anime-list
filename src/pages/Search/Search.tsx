@@ -6,7 +6,7 @@ import {applyFilter} from '../../services/applyFilter';
 import {renameIdsInData} from '../../services/renameIdsInData';
 
 import {useGetCardsQuery} from '../../api/cardsApi';
-import {AnimeWithId} from '../../types/state';
+import {AnimeWithId} from '../../types/animeData';
 import styles from './Search.module.css';
 
 function Search() {

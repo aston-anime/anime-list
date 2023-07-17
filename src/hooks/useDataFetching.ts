@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {AnimeData} from '../types/animeData';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const options: any = {
@@ -9,7 +10,7 @@ const options: any = {
     },
 };
 
-const useDataFetching = (url: string) => {
+const useDataFetching = (url: string): AnimeData | null => {
     const [data, setData] = useState(null);
 
     useEffect(() => {

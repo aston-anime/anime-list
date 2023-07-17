@@ -4,7 +4,7 @@ import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {renameIdsInData} from '../../services/renameIdsInData';
-import {AnimeWithId} from '../../types/state';
+import {AnimeWithId} from '../../types/animeData';
 import styles from './Main.module.css';
 
 function Main() {

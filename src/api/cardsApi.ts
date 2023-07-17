@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {AnimeData} from '../types/state';
+import {AnimeData} from '../types/animeData';
 
 const BASE_URL = 'https://anime-db.p.rapidapi.com/';
 const LIST_URL =

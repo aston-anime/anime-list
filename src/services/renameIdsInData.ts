@@ -1,4 +1,4 @@
-import {AnimeData, AnimeWithId} from '../types/state';
+import {AnimeData, AnimeWithId} from '../types/animeData';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renameIdsInData = (data: AnimeData[]): AnimeWithId[] =>
