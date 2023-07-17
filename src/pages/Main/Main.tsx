@@ -1,19 +1,23 @@
+import {useEffect, useState} from 'react';
+import {useGetCardsQuery} from '../../api/cardsApi';
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
-import {useDataFetching} from '../../hooks/useDataFetching';
 import {renameIdsInData} from '../../services/renameIdsInData';
+import {AnimeWithId} from '../../types/state';
 import styles from './Main.module.css';
 
 function Main() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const fetchedAnimes: any = useDataFetching(
-        'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
-        'main'
-    );
-    const animeDataBase = renameIdsInData(fetchedAnimes);
+    const {data} = useGetCardsQuery('');
+    const [animeDataBase, setAnimeDataBase] = useState<AnimeWithId[] | null>(null);
+    let topRatedAnimes;
 
-    let topRatedAnimes = null;
+    useEffect(() => {
+        if (data) {
+            setAnimeDataBase(renameIdsInData(data));
+        }
+    }, [data]);
+
     if (animeDataBase) {
         const sortedAnime = [...animeDataBase].sort((a, b) => b.ranking - a.ranking);
         topRatedAnimes = sortedAnime.slice(0, 5);

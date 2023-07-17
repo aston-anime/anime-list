@@ -30,7 +30,6 @@ function SearchBar({data}: SearchProps) {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
         setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
