@@ -1,6 +1,6 @@
 import {createListenerMiddleware} from '@reduxjs/toolkit';
-import {localStorageUtil} from '../../utils/localStorageUtil';
 import {logIn} from '../auth/auth';
+import {localStorageUtil} from '../../utils/localStorage';
 
 const listenerMiddleware = createListenerMiddleware();
 

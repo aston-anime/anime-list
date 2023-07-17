@@ -8,7 +8,7 @@ import {getAuthStatus, getUserName} from '../../store/auth/selectors';
 import {logOut} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {Button} from '../Button/Button';
-import {localStorageUtil} from '../../utils/localStorageUtil';
+import {localStorageUtil} from '../../utils/localStorage';
 import styles from './Header.module.css';
 
 function Header() {

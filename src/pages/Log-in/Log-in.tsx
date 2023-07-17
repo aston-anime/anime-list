@@ -5,7 +5,7 @@ import {AppRoute} from '../../routing/AppRoute';
 import {logIn} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import {localStorageUtil} from '../../utils/localStorageUtil';
+import {localStorageUtil} from '../../utils/localStorage';
 import styles from './Log-in.module.css';
 
 function LogIn() {

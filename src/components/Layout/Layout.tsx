@@ -3,7 +3,7 @@ import {useContext, useEffect} from 'react';
 import cn from 'classnames';
 import {Header} from '../Header/Header';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import {localStorageUtil} from '../../utils/localStorageUtil';
+import {localStorageUtil} from '../../utils/localStorage';
 import {useAppDispatch} from '../../hooks';
 import {logIn} from '../../store/auth/auth';
 import styles from './Layout.module.css';
