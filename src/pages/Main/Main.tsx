@@ -1,30 +1,24 @@
+import {useGetCardsQuery} from '../../api/cardsApi';
 import {CardList} from '../../components/CardList/CardList';
 import {EntryText} from '../../components/EntryText/EntryText';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
-import {useDataFetching} from '../../hooks/useDataFetching';
-import {renameIdsInData} from '../../services/renameIdsInData';
 import styles from './Main.module.css';
 
 function Main() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const fetchedAnimes: any = useDataFetching(
-        'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
-        'main'
-    );
-    const animeDataBase = renameIdsInData(fetchedAnimes);
+    const {data} = useGetCardsQuery('');
+    let topRatedAnimes;
 
-    let topRatedAnimes = null;
-    if (animeDataBase) {
-        const sortedAnime = [...animeDataBase].sort((a, b) => b.ranking - a.ranking);
+    if (data) {
+        const sortedAnime = [...data].sort((a, b) => b.ranking - a.ranking);
         topRatedAnimes = sortedAnime.slice(0, 5);
     }
 
     return (
         <div className={styles.container}>
             <EntryText />
-            <SearchBar data={animeDataBase} />
+            <SearchBar data={data} />
             <div className={styles.card_container}>
-                {animeDataBase && <CardList cards={topRatedAnimes} />}
+                {data && <CardList cards={topRatedAnimes} />}
             </div>
         </div>
     );

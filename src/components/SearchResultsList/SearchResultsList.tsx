@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import {AnimeWithId} from '../../types/state';
+import {AnimeWithId} from '../../types/animeData';
 
 type SearchResultsListProps = {
     input: string;
