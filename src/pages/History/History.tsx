@@ -1,11 +1,14 @@
 import {v4 as uuidv4} from 'uuid';
 import {Link} from 'react-router-dom';
 import {HistoryRecord} from '../../types/HistoryRecord';
+import {useAppSelector} from '../../hooks';
+import {getUser} from '../../store/auth/selectors';
 
 import styles from './History.module.css';
 
 function History() {
-    const searchHistory = JSON.parse(localStorage.getItem('searchHistory') || '[]');
+    const user = useAppSelector(getUser);
+    const searchHistory = JSON.parse(localStorage.getItem(`searchHistory_${user}`) || '[]');
 
     return (
         <div className={styles.container}>
@@ -20,16 +23,17 @@ function History() {
                     </tr>
                 </thead>
                 <tbody>
-                    {searchHistory.map((historyItem: HistoryRecord) => {
-                        const {query, timestamp, filteredItemCount, resultLink} = historyItem;
+                    {searchHistory.map((historyRecord: HistoryRecord) => {
+                        const {query, timestamp, queryResultNumber, queryResultLink} =
+                            historyRecord;
 
                         return (
                             <tr key={uuidv4()}>
                                 <td>{timestamp}</td>
                                 <td>{query}</td>
-                                <td>{filteredItemCount}</td>
+                                <td>{queryResultNumber}</td>
                                 <td>
-                                    <Link to={resultLink}>View</Link>
+                                    <Link to={queryResultLink}>View</Link>
                                 </td>
                             </tr>
                         );
