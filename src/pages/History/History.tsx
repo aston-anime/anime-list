@@ -3,12 +3,13 @@ import {Link} from 'react-router-dom';
 import {HistoryRecord} from '../../types/HistoryRecord';
 import {useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
+import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
 
 import styles from './History.module.css';
 
 function History() {
-    const user = useAppSelector(getUserName);
-    const searchHistory = JSON.parse(localStorage.getItem(`searchHistory_${user}`) || '[]');
+    const user: string = useAppSelector(getUserName) || '';
+    const searchHistory = LocalStorageUtil.getSearchHistory(user);
 
     return (
         <div className={styles.container}>
