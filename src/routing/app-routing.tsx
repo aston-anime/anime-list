@@ -4,7 +4,7 @@ import {ErrorBoundary} from 'react-error-boundary';
 import {Layout} from '../components/Layout/Layout';
 import {ErrorPage} from '../pages/Error-page/Error-page';
 import {AppRoute} from './AppRoute';
-import {PrivateOutlet} from './PrivateRoute';
+import {PrivateOutlet} from './PrivateOutlet';
 import {
     DetailedItemPage,
     FavoritesPage,
