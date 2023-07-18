@@ -1,7 +1,8 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {FetchBaseQueryError, createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {AnimeData, AnimeWithId} from '../types/animeData';
 import {Meta} from '../types/meta';
 import {renameIdsInData} from '../services/renameIdsInData';
+import {errorHandle} from '../services/error-handle';
 
 const BASE_URL = 'https://anime-db.p.rapidapi.com/';
 const LIST_URL =
@@ -28,6 +29,9 @@ export const cardsApi = createApi({
             }),
             transformResponse: (response: ResponseType): AnimeWithId[] =>
                 renameIdsInData(response.data),
+            transformErrorResponse: (error: FetchBaseQueryError) => {
+                errorHandle(error);
+            },
         }),
     }),
 });

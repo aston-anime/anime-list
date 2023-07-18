@@ -12,4 +12,13 @@ export const localStorageUtil = {
     },
     setAuth: (name: string): void => localStorage.setItem('auth', name),
     getAuth: (): string | null => localStorage.getItem('auth'),
+    clearLocalStorage: (): void => {
+        const isFirstRun = localStorage.getItem('firstRun');
+        console.log(isFirstRun);
+        if (!isFirstRun) {
+            localStorage.clear();
+            localStorage.setItem('firstRun', 'true');
+            console.log(localStorage);
+        }
+    },
 };

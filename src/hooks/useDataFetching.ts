@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
 import {AnimeData} from '../types/animeData';
+import {errorHandle} from '../services/error-handle';
+import {ErrorType} from '../types/error';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const options: any = {
@@ -20,8 +22,7 @@ const useDataFetching = (url: string): AnimeData | null => {
                 const json = await response.json();
                 setData(json);
             } catch (error) {
-                // eslint-disable-next-line no-console
-                console.log('error', error);
+                errorHandle(error);
             }
         };
         fetchData();
