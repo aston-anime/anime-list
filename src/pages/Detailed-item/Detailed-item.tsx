@@ -1,10 +1,10 @@
 import {useNavigate, useParams} from 'react-router-dom';
 import {useContext} from 'react';
-
 import cn from 'classnames';
 
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {useDataFetching} from '../../hooks/useDataFetching';
+import {Button} from '../../components/Button/Button';
 
 import styles from './Detailed-item.module.css';
 
@@ -26,7 +26,7 @@ function DetailedItem() {
 
     const anime = useDataFetching(`https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`);
 
-    const handleClick = () => {
+    const backButtonHendler = () => {
         navigate('/anime-list');
     };
 
@@ -76,10 +76,9 @@ function DetailedItem() {
             ) : (
                 <div>LOADING...</div>
             )}
-
-            <button type="button" className={`${styles.btn} btn btn-primary`} onClick={handleClick}>
-                Go back
-            </button>
+            <Button onClick={backButtonHendler} variant="primary" className={styles.customButton}>
+                ← Back
+            </Button>
         </div>
     );
 }

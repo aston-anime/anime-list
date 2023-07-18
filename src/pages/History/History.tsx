@@ -1,13 +1,19 @@
+import {useNavigate, Link} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
-import {Link} from 'react-router-dom';
 import {HistoryRecord} from '../../types/HistoryRecord';
 import {useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
 import {localStorageUtil} from '../../utils/localStorage';
 
+import {Button} from '../../components/Button/Button';
+
 import styles from './History.module.css';
 
 function History() {
+    const navigate = useNavigate();
+    const backButtonHendler = () => {
+        navigate('/anime-list');
+    };
     const user: string = useAppSelector(getUserName) || '';
     const searchHistory = localStorageUtil.getSearchHistory(user);
 
@@ -40,6 +46,9 @@ function History() {
                     })}
                 </tbody>
             </table>
+            <Button onClick={backButtonHendler} variant="primary" className={styles.customButton}>
+                ← Back
+            </Button>
         </div>
     );
 }
