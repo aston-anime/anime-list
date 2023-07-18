@@ -1,10 +1,14 @@
 ![Screnshot](https://www.zastavki.com/pictures/1680x1050/2015/Anime_Three_girls_anime_mitsudomoe_109109_16.png)
 
-# [**Anime list**](https://dumopolis.github.io)
+# [**Euphoric Serenity**](https://dumopolis.github.io)
 
-Сайт-каталог аниме
+### Веб-каталог популярных аниме, в котором можно найти подробную информацию о ваших любимых японских анимационных фильмах и сериалах
 
-### Общие требования
+На базе [**Anime DB API**](https://rapidapi.com/brian.rofiq/api/anime-db/details) от BrianRofiq
+
+    Реализовано Кердзевадзе Н., Кольцовой А., Шумской А.
+
+## Учтенные требования к проекту
 
 -   Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем LocalStorage ☑️ [**LocalStorage**](https://)
 
@@ -29,4 +33,4 @@
 -   Используется RTK Query ☑️ [**RTK Query**](https://)
 -   Используется Transforming Responses ☑️ [**Transforming Responses**](https://)
 
-## Дополнительно
+### Дополнительно
