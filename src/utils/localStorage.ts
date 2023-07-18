@@ -14,11 +14,9 @@ export const localStorageUtil = {
     getAuth: (): string | null => localStorage.getItem('auth'),
     clearLocalStorage: (): void => {
         const isFirstRun = localStorage.getItem('firstRun');
-        console.log(isFirstRun);
         if (!isFirstRun) {
             localStorage.clear();
             localStorage.setItem('firstRun', 'true');
-            console.log(localStorage);
         }
     },
 };
