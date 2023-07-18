@@ -6,6 +6,7 @@ import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {useDataFetching} from '../../hooks/useDataFetching';
 import {Button} from '../../components/Button/Button';
 
+import {Loader} from '../../components/Loader/Loader';
 import styles from './Detailed-item.module.css';
 
 function DetailedItem() {
@@ -26,7 +27,7 @@ function DetailedItem() {
 
     const anime = useDataFetching(`https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`);
 
-    const backButtonHendler = () => {
+    const backButtonHandler = () => {
         navigate('/anime-list');
     };
 
@@ -72,13 +73,17 @@ function DetailedItem() {
                             <span className={ThemeClass[theme]}>{` ${anime.synopsis}`}</span>
                         </div>
                     </div>
+                    <Button
+                        onClick={backButtonHandler}
+                        variant="primary"
+                        className={styles.customButton}
+                    >
+                        ← Back
+                    </Button>
                 </>
             ) : (
-                <div>LOADING...</div>
+                <Loader />
             )}
-            <Button onClick={backButtonHendler} variant="primary" className={styles.customButton}>
-                ← Back
-            </Button>
         </div>
     );
 }

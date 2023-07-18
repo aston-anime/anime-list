@@ -6,11 +6,11 @@ import {AnimeWithId} from '../../types/animeData';
 import {addFavorite, deleteFavorite} from '../../store/favorite/favorite';
 import {getFavoriteSelector} from '../../store/favorite/selectors';
 import {getAuthStatus, getUserName} from '../../store/auth/selectors';
-import {getUserInfoFromLS, setFavoriteToLS} from '../../utils/getSetlocalStorage';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {FavoriteSvg} from '../FavoriteSvg/FavoriteSvg';
 import {StarSvg} from '../StartSvg/StarSvg';
 
+import {localStorageUtil} from '../../utils/localStorage';
 import styles from './Card.module.css';
 
 function Card({id, title, image, ranking, episodes}: AnimeWithId) {
@@ -25,7 +25,7 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
         !!favorite.find((item) => item.id === id)
     );
 
-    const userInfo: string | null = getUserInfoFromLS(userName);
+    const userInfo = localStorageUtil.getUser(userName);
 
     const handleLikeClick = (idAnime: number) => {
         if (isFavorite) {
@@ -38,15 +38,15 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
         setIsFavorite(true);
     };
 
-    const handleDelailedPageClick = (idAnime: number) => {
+    const handleDetailedPageClick = (idAnime: number) => {
         navigate(`/anime-list/detailed-item/${idAnime}`, {replace: true});
     };
 
     useEffect(() => {
         if (authStatus) {
-            setFavoriteToLS(userName, userInfo, favorite);
+            localStorageUtil.setItem(userName, {...userInfo, favorite});
         }
-    }, [favorite, userInfo, userName, isFavorite, authStatus]);
+    }, [authStatus, favorite, userInfo, userName]);
 
     return (
         <article className={`${styles.card} card border-primary`}>
@@ -75,7 +75,7 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
             <button
                 type="button"
                 className={`${styles.view_btn} btn btn-primary`}
-                onClick={() => handleDelailedPageClick(id)}
+                onClick={() => handleDetailedPageClick(id)}
             >
                 View more
             </button>
