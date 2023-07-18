@@ -32,8 +32,7 @@ const useDataFetching = (url: string): AnimeData | null => {
             }
         };
         fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [url]);
     return data;
 };
 
