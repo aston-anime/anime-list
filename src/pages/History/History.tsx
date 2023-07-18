@@ -27,7 +27,6 @@ function History() {
                     {searchHistory.map((historyRecord: HistoryRecord) => {
                         const {query, timestamp, queryResultNumber, queryResultLink} =
                             historyRecord;
-
                         return (
                             <tr key={uuidv4()}>
                                 <td>{timestamp}</td>

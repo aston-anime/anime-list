@@ -17,7 +17,9 @@ export const updateHistory = (user: string, query: string, queryResult: AnimeWit
         query,
         timestamp: new Date().toLocaleString(),
         queryResultNumber: queryResult?.length || 0,
-        queryResultLink: `/anime-list/search/?query=${encodeURIComponent(query)}`,
+        queryResultLink: `/anime-list/search/?query=${query}&results=${encodeURIComponent(
+            JSON.stringify(queryResult)
+        )}`,
     };
 
     const updatedHistory = [historyRecord, ...currentHistory];
