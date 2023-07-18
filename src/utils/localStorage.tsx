@@ -1,7 +1,7 @@
 import {User} from '../types/user';
 import {HistoryRecord} from '../types/HistoryRecord';
 
-export const LocalStorageUtil = {
+export const localStorageUtil = {
     getUser: (key: string): User | null => {
         const item = localStorage.getItem(key);
         if (item) return JSON.parse(item);
@@ -15,7 +15,7 @@ export const LocalStorageUtil = {
     getAuth: (): string | null => localStorage.getItem('auth'),
 
     setSearchHistory: (user: string, history: HistoryRecord[]): void => {
-        LocalStorageUtil.setItem(`searchHistory_${user}`, history);
+        localStorageUtil.setItem(`searchHistory_${user}`, history);
     },
     getSearchHistory: (user: string): HistoryRecord[] => {
         const historyString = localStorage.getItem(`searchHistory_${user}`);

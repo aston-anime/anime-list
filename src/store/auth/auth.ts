@@ -3,11 +3,12 @@ import {NameSpace} from '../NameSpace';
 
 type InitialState = {
     authorizationStatus: boolean;
-    userName?: string;
+    userName: string;
 };
 
 const initialState: InitialState = {
     authorizationStatus: false,
+    userName: '',
 };
 
 export const auth = createSlice({

@@ -1,6 +1,6 @@
 import {HistoryRecord} from '../types/HistoryRecord';
-import {AnimeWithId} from '../types/state';
-import {LocalStorageUtil} from '../utils/LocalStorageUtil';
+import {AnimeWithId} from '../types/animeData';
+import {localStorageUtil} from '../utils/localStorage';
 
 /**
  * Updates the history of queries made by a logged-in user, by adding a new history record
@@ -11,7 +11,7 @@ export const updateHistory = (user: string, query: string, queryResult: AnimeWit
         return;
     }
 
-    const currentHistory = LocalStorageUtil.getSearchHistory(user);
+    const currentHistory = localStorageUtil.getSearchHistory(user);
 
     const historyRecord: HistoryRecord = {
         query,
@@ -21,5 +21,5 @@ export const updateHistory = (user: string, query: string, queryResult: AnimeWit
     };
 
     const updatedHistory = [historyRecord, ...currentHistory];
-    LocalStorageUtil.setSearchHistory(user, updatedHistory);
+    localStorageUtil.setSearchHistory(user, updatedHistory);
 };

@@ -1,18 +1,12 @@
 import {useLocation} from 'react-router-dom';
 import {CardList} from '../../components/CardList/CardList';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
-import {useDataFetching} from '../../hooks/useDataFetching';
-import {renameIdsInData} from '../../services/renameIdsInData';
-
+import {useGetCardsQuery} from '../../api/cardsApi';
 import styles from './Search.module.css';
 
 function Search() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const fetchedAnimes: any = useDataFetching(
-        'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc',
-        'search'
-    );
-    const animeDataBase = renameIdsInData(fetchedAnimes);
+    const {data} = useGetCardsQuery('');
+    // let filteredAnimes = null;
 
     const location = useLocation();
 
@@ -20,7 +14,11 @@ function Search() {
     const queryResult = new URLSearchParams(location.search).get('results');
     const matchingAnimes = queryResult ? JSON.parse(decodeURIComponent(queryResult)) : [];
 
-    const isDataLoading = !animeDataBase;
+    // if (data) {
+    //     filteredAnimes = applyFilter(userQuery, data);
+    // }
+
+    const isDataLoading = !data;
 
     let message;
     if (isDataLoading) {
@@ -33,7 +31,7 @@ function Search() {
 
     return (
         <div className={styles.container}>
-            <SearchBar data={animeDataBase} />
+            <SearchBar data={data} />
             <h4 className={styles.title}>{message}</h4>
             <CardList cards={matchingAnimes} />
         </div>

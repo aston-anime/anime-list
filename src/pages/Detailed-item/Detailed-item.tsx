@@ -24,11 +24,7 @@ function DetailedItem() {
 
     const params = useParams();
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const anime: any = useDataFetching(
-        `https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`,
-        'datailed-page'
-    );
+    const anime = useDataFetching(`https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`);
 
     const handleClick = () => {
         navigate('/anime-list');
@@ -82,7 +78,7 @@ function DetailedItem() {
             )}
 
             <button type="button" className={`${styles.btn} btn btn-primary`} onClick={handleClick}>
-                Назад
+                Go back
             </button>
         </div>
     );

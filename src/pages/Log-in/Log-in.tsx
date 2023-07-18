@@ -5,7 +5,7 @@ import {AppRoute} from '../../routing/AppRoute';
 import {logIn} from '../../store/auth/auth';
 import {useAppDispatch} from '../../hooks';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
-import {LocalStorageUtil} from '../../utils/LocalStorageUtil';
+import {localStorageUtil} from '../../utils/localStorage';
 import styles from './Log-in.module.css';
 
 function LogIn() {
@@ -31,7 +31,7 @@ function LogIn() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const userInfo = LocalStorageUtil.getUser(userName);
+        const userInfo = localStorageUtil.getUser(userName);
 
         if (!userInfo) {
             setInvalidLogin(true);

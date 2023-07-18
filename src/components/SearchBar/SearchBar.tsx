@@ -8,7 +8,7 @@ import {useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 
-import {AnimeWithId} from '../../types/state';
+import {AnimeWithId} from '../../types/animeData';
 
 import styles from './SearchBar.module.css';
 
@@ -36,7 +36,6 @@ function SearchBar({data}: SearchProps) {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
         setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;

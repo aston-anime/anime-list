@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {AnimeData} from '../types/animeData';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const options: any = {
@@ -9,7 +10,7 @@ const options: any = {
     },
 };
 
-const useDataFetching = (url: string, pageName: string) => {
+const useDataFetching = (url: string): AnimeData | null => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -17,17 +18,7 @@ const useDataFetching = (url: string, pageName: string) => {
             try {
                 const response = await fetch(url, options);
                 const json = await response.json();
-                switch (pageName) {
-                    case 'main':
-                    case 'search':
-                        setData(json.data);
-                        break;
-                    case 'datailed-page':
-                        setData(json);
-                        break;
-                    default:
-                        break;
-                }
+                setData(json);
             } catch (error) {
                 // eslint-disable-next-line no-console
                 console.log('error', error);

@@ -1,31 +1,27 @@
-import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
+import {useAppSelector} from '../../hooks';
 import {CardList} from '../../components/CardList/CardList';
+import {getFavoriteSelector} from '../../store/favorite/selectors';
+import {AnimeWithId} from '../../types/animeData';
 
 import styles from './Favorites.module.css';
 
 function Favorites() {
     const navigate = useNavigate();
+
+    const favorite: AnimeWithId[] = useAppSelector(getFavoriteSelector);
+
     const backButtonHendler = () => {
         navigate('/anime-list');
     };
 
-    const [favoritesAnime, setFavoritesAnime] = useState(
-        Object.values(localStorage).map((item) => JSON.parse(item))
-    );
-
     return (
         <div className={styles.container}>
-            {favoritesAnime.length ? (
+            {favorite.length ? (
                 <div className="main-container">
                     <div className="card-container">
-                        {favoritesAnime && (
-                            <CardList
-                                cards={favoritesAnime}
-                                setFavoritesAnime={setFavoritesAnime}
-                            />
-                        )}
+                        {favorite && <CardList cards={favorite} />}
                     </div>
                 </div>
             ) : (
