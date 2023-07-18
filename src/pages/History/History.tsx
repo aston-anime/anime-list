@@ -15,7 +15,7 @@ function History() {
     const user = useAppSelector(getUserName) || '';
     const searchHistory = localStorageUtil.getSearchHistory(user);
 
-    const backButtonHendler = () => {
+    const backButtonHandler = () => {
         navigate('/anime-list');
     };
 
@@ -48,7 +48,7 @@ function History() {
                     })}
                 </tbody>
             </table>
-            <Button onClick={backButtonHendler} variant="primary" className={styles.customButton}>
+            <Button onClick={backButtonHandler} variant="primary" className={styles.customButton}>
                 ← Back
             </Button>
         </div>
