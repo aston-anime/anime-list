@@ -29,6 +29,7 @@ const useDataFetching = (url: string): AnimeData | null => {
                 const json = await response.json();
                 setData(json);
             } catch (error) {
+                // as был согласован
                 errorHandle(error as ErrorType);
             }
         };
