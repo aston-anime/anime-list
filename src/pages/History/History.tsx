@@ -1,6 +1,5 @@
 import {useNavigate, Link} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
-import {useAuth} from '../../hooks/useAuth';
 import {useAppSelector} from '../../hooks';
 import {localStorageUtil} from '../../utils/localStorage';
 import {getUserName} from '../../store/auth/selectors';
@@ -11,7 +10,6 @@ import {Button} from '../../components/Button/Button';
 import styles from './History.module.css';
 
 function History() {
-    const isAuthenticated = useAuth();
     const navigate = useNavigate();
 
     const user = useAppSelector(getUserName) || '';
@@ -20,10 +18,6 @@ function History() {
     const backButtonHendler = () => {
         navigate('/anime-list');
     };
-
-    if (!isAuthenticated) {
-        return null;
-    }
 
     return (
         <div className={styles.container}>

@@ -1,6 +1,4 @@
 import {useNavigate} from 'react-router-dom';
-import {useAuth} from '../../hooks/useAuth';
-
 import {useAppSelector} from '../../hooks';
 import {CardList} from '../../components/CardList/CardList';
 import {getFavoriteSelector} from '../../store/favorite/selectors';
@@ -10,7 +8,6 @@ import {Button} from '../../components/Button/Button';
 import styles from './Favorites.module.css';
 
 function Favorites() {
-    const isAuthenticated = useAuth();
     const navigate = useNavigate();
 
     const favorite: AnimeWithId[] = useAppSelector(getFavoriteSelector);
@@ -18,10 +15,6 @@ function Favorites() {
     const backButtonHendler = () => {
         navigate('/anime-list');
     };
-
-    if (!isAuthenticated) {
-        return null;
-    }
 
     return (
         <div className={styles.container}>
