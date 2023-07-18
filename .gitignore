@@ -27,4 +27,5 @@ node_modules
 # Ignore artifacts:
 build
 coverage
+
 .vscode/settings.json
