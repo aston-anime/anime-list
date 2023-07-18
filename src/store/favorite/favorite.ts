@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../NameSpace';
 import {AnimeWithId} from '../../types/animeData';

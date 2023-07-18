@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Link, useLocation} from 'react-router-dom';
 import {useContext, useEffect} from 'react';
 import cn from 'classnames';
@@ -21,7 +20,7 @@ function Header() {
     const dispatch = useAppDispatch();
     const {pathname} = useLocation();
     const authStatus = useAppSelector(getAuthStatus);
-    const userName: any = useAppSelector(getUserName);
+    const userName = useAppSelector(getUserName);
     const favorite = useAppSelector(getFavoriteSelector);
     const {theme, toggleTheme} = useContext(ThemeContext);
 
@@ -39,9 +38,7 @@ function Header() {
             );
             dispatch(getFavorite(favoriteLS));
         }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [authStatus, userName]);
+    }, [authStatus, dispatch, favorite.length, userName]);
 
     return (
         <header

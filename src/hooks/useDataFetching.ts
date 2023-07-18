@@ -2,11 +2,18 @@ import {useEffect, useState} from 'react';
 import {AnimeData} from '../types/animeData';
 import {errorHandle} from '../services/error-handle';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const options: any = {
+type OptionsType = {
+    method: string;
+    headers: {
+        'X-RapidAPI-Key': string;
+        'X-RapidAPI-Host': string;
+    };
+};
+
+const options: OptionsType = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY,
+        'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY || '',
         'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
     },
 };
