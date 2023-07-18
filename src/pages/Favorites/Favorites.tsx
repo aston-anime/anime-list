@@ -1,5 +1,4 @@
 import {useNavigate} from 'react-router-dom';
-
 import {useAppSelector} from '../../hooks';
 import {CardList} from '../../components/CardList/CardList';
 import {getFavoriteSelector} from '../../store/favorite/selectors';
