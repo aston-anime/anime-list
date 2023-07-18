@@ -1,4 +1,5 @@
 import {User} from '../types/user';
+import {HistoryRecord} from '../types/HistoryRecord';
 
 export const localStorageUtil = {
     getUser: (key: string): User | null => {
@@ -12,4 +13,12 @@ export const localStorageUtil = {
     },
     setAuth: (name: string): void => localStorage.setItem('auth', name),
     getAuth: (): string | null => localStorage.getItem('auth'),
+
+    setSearchHistory: (user: string, history: HistoryRecord[]): void => {
+        localStorageUtil.setItem(`searchHistory_${user}`, history);
+    },
+    getSearchHistory: (user: string): HistoryRecord[] => {
+        const historyString = localStorage.getItem(`searchHistory_${user}`);
+        return historyString ? JSON.parse(historyString) : [];
+    },
 };
