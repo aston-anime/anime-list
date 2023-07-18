@@ -1,14 +1,7 @@
 import {toast} from 'react-toastify';
+import {ErrorType, HttpCode} from '../types/error';
 
-const HttpCode = {
-    BadRequest: 400,
-    TooMAnyRequests: 429,
-    NotFound: 404,
-};
-
-// без any мы не можем работать с ошибкой
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const errorHandle = (error: any): void => {
+export const errorHandle = (error: ErrorType): void => {
     switch (error.status) {
         case HttpCode.BadRequest:
             toast.info(error.data.message);

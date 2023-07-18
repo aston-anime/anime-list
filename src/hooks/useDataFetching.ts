@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {AnimeData} from '../types/animeData';
 import {errorHandle} from '../services/error-handle';
+import {ErrorType} from '../types/error';
 
 type OptionsType = {
     method: string;
@@ -28,7 +29,7 @@ const useDataFetching = (url: string): AnimeData | null => {
                 const json = await response.json();
                 setData(json);
             } catch (error) {
-                errorHandle(error);
+                errorHandle(error as ErrorType);
             }
         };
         fetchData();

@@ -1,4 +1,4 @@
-import {FetchBaseQueryError, createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {AnimeData, AnimeWithId} from '../types/animeData';
 import {Meta} from '../types/meta';
 import {renameIdsInData} from '../services/renameIdsInData';
@@ -29,9 +29,7 @@ export const cardsApi = createApi({
             }),
             transformResponse: (response: ResponseType): AnimeWithId[] =>
                 renameIdsInData(response.data),
-            transformErrorResponse: (error: FetchBaseQueryError) => {
-                errorHandle(error);
-            },
+            transformErrorResponse: errorHandle,
         }),
     }),
 });
