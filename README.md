@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+![Screnshot](https://www.zastavki.com/pictures/1680x1050/2015/Anime_Three_girls_anime_mitsudomoe_109109_16.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [**Euphoric Serenity**](https://dumopolis.github.io)
 
-## Available Scripts
+### Веб-каталог популярных аниме, в котором можно найти подробную информацию о ваших любимых японских анимационных фильмах и сериалах
 
-In the project directory, you can run:
+На базе [**Anime DB API**](https://rapidapi.com/brian.rofiq/api/anime-db/details) от BrianRofiq
 
-### `npm start`
+    Реализовано Кердзевадзе Н., Кольцовой А., Шумской А.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Учтенные требования к проекту
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем LocalStorage ☑️ [**LocalStorage**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/utils/localStorage.tsx#L4)
 
-### `npm test`
+### React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   Проект написан с использованием функциональных компонентов в приоритете над классовыми ☑️
+-   Есть разделение на умные и глупые компоненты ☑️ Пример [**глупого**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/components/SearchResultsList/SearchResultsList.tsx#L10) и [**умного**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/components/SearchBar/SearchBar.tsx#L19) компонента
+-   Есть рендеринг списков ☑️ [**Пример**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/components/CardList/CardList.tsx#L13), [**Пример с UUID**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/pages/History/History.tsx#L37C30-L37C30)
+-   Реализована хотя бы одна форма ☑️ [**Форма авторизации**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/pages/Log-in/Log-in.tsx#L47)
+-   Есть применение Контекст API ☑️ [**Контекст**](https://)
+-   Есть применение предохранителя ☑️ [**Предохранитель**](https://) [**его использование**](https://)
+-   Есть хотя бы один кастомный хук ☑️ [**Хук**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/hooks/useDataFetching.ts#L13)
+-   Хотя бы несколько компонентов используют PropTypes ☑️ [**Пример использования**](https://)
+-   Поиск не должен триггерить много запросов к серверу ☑️ [**Пример использования debounce**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/components/SearchBar/SearchBar.tsx#L27)
+-   Есть применение lazy + Suspense ☑️ [**Пример**](https://)
 
-### `npm run build`
+### Redux
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   Используется Modern Redux with Redux Toolkit ☑️
+-   Используются слайсы ☑️ [**Слайсы**](https://)
+-   Есть кастомная мидлвара ☑️ [**Мидлвара**](https://)
+-   Используется RTK Query ☑️ [**RTK Query**](https://)
+-   Используется Transforming Responses ☑️ [**Transforming Responses**](https://)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Дополнительно
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   Используется TypeScript
+-   Storybook
+-   Для стилизации использована библиотека [**Bootswatch**](https://bootswatch.com/)
+-   Для генерации ключей использован генератор UUID

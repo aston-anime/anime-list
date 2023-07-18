@@ -3,9 +3,13 @@ import {useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
 import PropTypes from 'prop-types';
 import {applyFilter} from '../../services/applyFilter';
+import {updateHistory} from '../../services/updateHistory';
+import {useAppSelector} from '../../hooks';
+import {getUserName} from '../../store/auth/selectors';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 
 import {AnimeWithId} from '../../types/animeData';
+
 import styles from './SearchBar.module.css';
 
 type SearchProps = {
@@ -15,6 +19,8 @@ type SearchProps = {
 function SearchBar({data}: SearchProps) {
     const [input, setInput] = useState<string>('');
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
+
+    const user = useAppSelector(getUserName);
 
     const navigate = useNavigate();
 
@@ -33,7 +39,17 @@ function SearchBar({data}: SearchProps) {
         setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
-        navigate(`/anime-list/search/?query=${query}`);
+        const queryResult = applyFilter(query, data);
+
+        if (user) {
+            updateHistory(user, query, queryResult);
+        }
+
+        navigate(
+            `/anime-list/search/?query=${query}&results=${encodeURIComponent(
+                JSON.stringify(queryResult)
+            )}`
+        );
     };
 
     return (
@@ -64,7 +80,7 @@ SearchBar.defaultProps = {
 SearchBar.propTypes = {
     data: PropTypes.arrayOf(
         PropTypes.shape({
-            _id: PropTypes.number.isRequired,
+            id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             image: PropTypes.string.isRequired,
             ranking: PropTypes.number.isRequired,
