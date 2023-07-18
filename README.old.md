@@ -15,8 +15,8 @@
 ### React
 
 -   Проект написан с использованием функциональных компонентов в приоритете над классовыми ☑️
--   Есть разделение на умные и глупые компоненты ☑️ Пример [**глупого**](https://) и [**умного**](https://) компонента
--   Есть рендеринг списков ☑️ [**Пример**](https://)
+-   Есть разделение на умные и глупые компоненты ☑️ Пример [**глупого**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/components/SearchResultsList/SearchResultsList.tsx#L10) и [**умного**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/components/SearchBar/SearchBar.tsx#L19) компонента
+-   Есть рендеринг списков ☑️ [**Пример**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/components/CardList/CardList.tsx#L13), [**Пример с UUID**](https://github.com/aston-anime/anime-list/blob/768dea26defbdf05a3b58767e2f7ced2723fd166/src/pages/History/History.tsx#L37C30-L37C30)
 -   Реализована хотя бы одна форма ☑️ [**Форма авторизации**](https://)
 -   Есть применение Контекст API ☑️ [**Контекст**](https://)
 -   Есть применение предохранителя ☑️ [**Предохранитель**](https://) [**его использование**](https://)
@@ -34,3 +34,8 @@
 -   Используется Transforming Responses ☑️ [**Transforming Responses**](https://)
 
 ### Дополнительно
+
+-   Используется TypeScript
+-   Storybook
+-   Для стилизации использована библиотека [**Bootswatch**](https://bootswatch.com/)
+-   Для генерации ключей использован генератор UUID
