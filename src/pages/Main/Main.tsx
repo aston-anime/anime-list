@@ -7,11 +7,11 @@ import styles from './Main.module.css';
 
 function Main() {
     const {data} = useGetCardsQuery('');
-    let topRatedAnimes;
+    let topRatedAnime;
 
     if (data) {
         const sortedAnime = [...data].sort((a, b) => b.ranking - a.ranking);
-        topRatedAnimes = sortedAnime.slice(0, 5);
+        topRatedAnime = sortedAnime.slice(0, 5);
     }
 
     return (
@@ -20,7 +20,7 @@ function Main() {
             <SearchBar data={data} />
             {data ? (
                 <div className={styles.card_container}>
-                    {data && <CardList cards={topRatedAnimes} />}
+                    {data && <CardList cards={topRatedAnime} />}
                 </div>
             ) : (
                 <Loader />

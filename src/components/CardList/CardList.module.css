@@ -3,8 +3,7 @@
     grid-template-columns: repeat(auto-fit, minmax(227px, 0fr));
     flex-wrap: wrap;
     list-style-type: none;
-    justify-content: space-around;
-    gap: 10px;
+    gap: 25px;
     padding: 20px 0;
     flex-direction: row;
 }

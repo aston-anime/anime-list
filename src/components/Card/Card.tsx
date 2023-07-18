@@ -27,7 +27,7 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
 
     const userInfo = localStorageUtil.getUser(userName);
 
-    const handleLikeClick = (idAnime: number) => {
+    const handleLikeClick = (idAnime: string) => {
         if (isFavorite) {
             dispatch(deleteFavorite(idAnime));
             setIsFavorite(false);
@@ -38,7 +38,7 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
         setIsFavorite(true);
     };
 
-    const handleDetailedPageClick = (idAnime: number) => {
+    const handleDetailedPageClick = (idAnime: string) => {
         navigate(`/anime-list/detailed-item/${idAnime}`, {replace: true});
     };
 
@@ -84,7 +84,7 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
 }
 
 Card.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     ranking: PropTypes.number.isRequired,

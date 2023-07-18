@@ -31,7 +31,7 @@ CardList.defaultProps = {
 CardList.propTypes = {
     cards: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             image: PropTypes.string.isRequired,
             ranking: PropTypes.number.isRequired,

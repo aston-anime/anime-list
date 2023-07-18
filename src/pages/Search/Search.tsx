@@ -6,25 +6,19 @@ import styles from './Search.module.css';
 
 function Search() {
     const {data} = useGetCardsQuery('');
-    // let filteredAnimes = null;
-
     const location = useLocation();
 
     const userQuery = new URLSearchParams(location.search).get('query');
     const queryResult = new URLSearchParams(location.search).get('results');
-    const matchingAnimes = queryResult ? JSON.parse(decodeURIComponent(queryResult)) : [];
-
-    // if (data) {
-    //     filteredAnimes = applyFilter(userQuery, data);
-    // }
+    const matchingAnime = queryResult ? JSON.parse(decodeURIComponent(queryResult)) : [];
 
     const isDataLoading = !data;
 
     let message;
     if (isDataLoading) {
         message = 'Loading...';
-    } else if (userQuery === null || userQuery.length === 0 || matchingAnimes.length === 0) {
-        message = 'No matching Anime...';
+    } else if (userQuery === null || userQuery.length === 0 || matchingAnime.length === 0) {
+        message = 'No matching Anime';
     } else {
         message = 'Search Results:';
     }
@@ -33,7 +27,7 @@ function Search() {
         <div className={styles.container}>
             <SearchBar data={data} />
             <h4 className={styles.title}>{message}</h4>
-            <CardList cards={matchingAnimes} />
+            <CardList cards={matchingAnime} />
         </div>
     );
 }

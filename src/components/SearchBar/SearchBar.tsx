@@ -80,12 +80,11 @@ SearchBar.defaultProps = {
 SearchBar.propTypes = {
     data: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             image: PropTypes.string.isRequired,
             ranking: PropTypes.number.isRequired,
             episodes: PropTypes.number.isRequired,
-            setFavoritesAnime: PropTypes.func.isRequired,
         })
     ),
 };

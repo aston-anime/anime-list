@@ -1,11 +1,10 @@
 import {Navigate, Outlet} from 'react-router-dom';
-import {useAppSelector} from '../hooks';
-import {getAuthStatus} from '../store/auth/selectors';
+import {localStorageUtil} from '../utils/localStorage';
 
 function PrivateOutlet() {
-    const isAuthenticated = useAppSelector(getAuthStatus);
+    const isAuth = localStorageUtil.getAuth();
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/anime-list/login" />;
+    return isAuth ? <Outlet /> : <Navigate to="/anime-list/login" />;
 }
 
 export {PrivateOutlet};
