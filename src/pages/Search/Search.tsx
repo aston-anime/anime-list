@@ -5,7 +5,7 @@ import {useGetCardsQuery} from '../../api/cardsApi';
 import styles from './Search.module.css';
 
 function Search() {
-    const {data} = useGetCardsQuery('');
+    const {data} = useGetCardsQuery();
     const location = useLocation();
 
     const userQuery = new URLSearchParams(location.search).get('query');

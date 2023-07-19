@@ -21,7 +21,7 @@ export const cardsApi = createApi({
     reducerPath: 'cardsApi',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (builder) => ({
-        getCards: builder.query({
+        getCards: builder.query<AnimeWithId[], void>({
             query: () => ({
                 url: LIST_URL,
                 method: 'GET',
