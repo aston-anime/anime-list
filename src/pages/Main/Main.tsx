@@ -6,7 +6,7 @@ import {SearchBar} from '../../components/SearchBar/SearchBar';
 import styles from './Main.module.css';
 
 function Main() {
-    const {data} = useGetCardsQuery('');
+    const {data} = useGetCardsQuery();
     let topRatedAnime;
 
     if (data) {
