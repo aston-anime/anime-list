@@ -45,11 +45,7 @@ function SearchBar({data}: SearchProps) {
             updateHistory(user, query, queryResult);
         }
 
-        navigate(
-            `/anime-list/search/?query=${query}&results=${encodeURIComponent(
-                JSON.stringify(queryResult)
-            )}`
-        );
+        navigate(`/anime-list/search/?query=${query}`);
     };
 
     return (
