@@ -80,9 +80,7 @@ function SearchBar({data}: SearchProps) {
                     Search
                 </button>
             </form>
-            {input && dropdown && (
-                <SearchResultsList input={input} results={suggests} maxResults={5} />
-            )}
+            {input && dropdown && <SearchResultsList results={suggests} maxResults={5} />}
         </div>
     );
 }

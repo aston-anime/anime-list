@@ -57,10 +57,26 @@ function Header() {
                         >
                             {userName}
                         </p>
-                        <Link className={btnClasses} to={AppRoute.Favorites}>
+                        <Link
+                            className={cn(
+                                'btn',
+                                styles.btn,
+                                {[styles.light]: theme === 'light'},
+                                {[styles.current]: pathname === '/anime-list/favorites'}
+                            )}
+                            to={AppRoute.Favorites}
+                        >
                             Liked
                         </Link>
-                        <Link className={btnClasses} to={AppRoute.History}>
+                        <Link
+                            className={cn(
+                                'btn',
+                                styles.btn,
+                                {[styles.light]: theme === 'light'},
+                                {[styles.current]: pathname === '/anime-list/history'}
+                            )}
+                            to={AppRoute.History}
+                        >
                             History
                         </Link>
                         <Link
