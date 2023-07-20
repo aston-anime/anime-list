@@ -11,13 +11,7 @@ type CardListProps = {
 function CardList({cards}: CardListProps) {
     const cardList = cards?.map((item) => (
         <li key={item.id}>
-            <Card
-                id={item.id}
-                title={item.title}
-                image={item.image}
-                ranking={item.ranking}
-                episodes={item.episodes}
-            />
+            <Card data={item} />
         </li>
     ));
 

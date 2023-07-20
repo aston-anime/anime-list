@@ -6,6 +6,7 @@ import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {localStorageUtil} from '../../utils/localStorage';
 import {useAppDispatch} from '../../hooks';
 import {logIn} from '../../store/auth/auth';
+import {setFavorites} from '../../store/favorite/favorite';
 import styles from './Layout.module.css';
 
 const lightClass = `${styles.layout} text-dark`;
@@ -19,6 +20,7 @@ function Layout() {
         if (userName) {
             const userInfo = localStorageUtil.getUser(userName);
             dispatch(logIn(userInfo));
+            dispatch(setFavorites(userInfo?.favorites));
         }
     }, [dispatch, userName]);
 

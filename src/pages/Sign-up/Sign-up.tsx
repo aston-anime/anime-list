@@ -5,6 +5,7 @@ import {AppRoute} from '../../routing/AppRoute';
 import {useAppDispatch} from '../../hooks';
 import {logIn} from '../../store/auth/auth';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
+import {setFavorites} from '../../store/favorite/favorite';
 import styles from './Sign-up.module.css';
 
 function SignUp() {
@@ -30,9 +31,10 @@ function SignUp() {
         const userInfo = {
             userName,
             password,
-            favorite: [],
+            favorites: [],
         };
         dispatch(logIn(userInfo));
+        dispatch(setFavorites(userInfo?.favorites));
     };
 
     return (

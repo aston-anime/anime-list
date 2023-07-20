@@ -3,27 +3,30 @@ import {NameSpace} from '../NameSpace';
 import {AnimeWithId} from '../../types/animeData';
 
 type InitialState = {
-    favorite: AnimeWithId[];
+    favorites: AnimeWithId[];
 };
 
 const initialState: InitialState = {
-    favorite: [],
+    favorites: [],
 };
 
 export const favorite = createSlice({
     name: NameSpace.Favorite,
     initialState,
     reducers: {
-        getFavorite: (state, action) => {
-            state.favorite = [...action.payload];
+        setFavorites: (state, action) => {
+            state.favorites = [...action.payload];
         },
         addFavorite: (state, action) => {
-            state.favorite = [...state.favorite, action.payload];
+            state.favorites = [...state.favorites, action.payload];
         },
         deleteFavorite: (state, action) => {
-            state.favorite = [...state.favorite.filter((item) => item.id !== action.payload)];
+            state.favorites = [...state.favorites.filter((item) => item.id !== action.payload)];
+        },
+        clearFavorites: (state) => {
+            state.favorites = [];
         },
     },
 });
 
-export const {getFavorite, addFavorite, deleteFavorite} = favorite.actions;
+export const {setFavorites, addFavorite, deleteFavorite, clearFavorites} = favorite.actions;

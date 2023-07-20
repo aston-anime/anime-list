@@ -1,31 +1,33 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {AnimeWithId} from '../../types/animeData';
 import {addFavorite, deleteFavorite} from '../../store/favorite/favorite';
-import {getFavoriteSelector} from '../../store/favorite/selectors';
-import {getAuthStatus, getUserName} from '../../store/auth/selectors';
+import {getFavorites} from '../../store/favorite/selectors';
+import {getAuthStatus} from '../../store/auth/selectors';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {FavoriteSvg} from '../FavoriteSvg/FavoriteSvg';
 import {StarSvg} from '../StartSvg/StarSvg';
 
-import {localStorageUtil} from '../../utils/localStorage';
 import styles from './Card.module.css';
 
-function Card({id, title, image, ranking, episodes}: AnimeWithId) {
+type CardProps = {
+    data: AnimeWithId;
+};
+
+function Card({data}: CardProps) {
+    const {id, title, image, ranking, episodes} = data;
+
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const favorite = useAppSelector(getFavoriteSelector);
+    const favorites = useAppSelector(getFavorites);
     const authStatus = useAppSelector(getAuthStatus);
-    const userName: string = useAppSelector(getUserName);
 
     const [isFavorite, setIsFavorite] = useState<boolean>(
-        !!favorite.find((item) => item.id === id)
+        !!favorites.find((item) => item.id === id)
     );
-
-    const userInfo = localStorageUtil.getUser(userName);
 
     const handleLikeClick = (idAnime: string) => {
         if (isFavorite) {
@@ -33,20 +35,13 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
             setIsFavorite(false);
             return;
         }
-
-        dispatch(addFavorite({id, title, image, ranking, episodes}));
+        dispatch(addFavorite(data));
         setIsFavorite(true);
     };
 
     const handleDetailedPageClick = (idAnime: string) => {
         navigate(`/anime-list/detailed-item/${idAnime}`, {replace: true});
     };
-
-    useEffect(() => {
-        if (authStatus) {
-            localStorageUtil.setItem(userName, {...userInfo, favorite});
-        }
-    }, [authStatus, favorite, userInfo, userName]);
 
     return (
         <article className={`${styles.card} card border-primary`}>
@@ -83,12 +78,18 @@ function Card({id, title, image, ranking, episodes}: AnimeWithId) {
     );
 }
 
+Card.defaultProps = {
+    data: null,
+};
+
 Card.propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    ranking: PropTypes.number.isRequired,
-    episodes: PropTypes.number.isRequired,
+    data: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        ranking: PropTypes.number.isRequired,
+        episodes: PropTypes.number.isRequired,
+    }),
 };
 
 export {Card};

@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import {useAppSelector} from '../../hooks';
 import {CardList} from '../../components/CardList/CardList';
-import {getFavoriteSelector} from '../../store/favorite/selectors';
+import {getFavorites} from '../../store/favorite/selectors';
 import {AnimeWithId} from '../../types/animeData';
 import {Button} from '../../components/Button/Button';
 
@@ -10,7 +10,7 @@ import styles from './Favorites.module.css';
 function Favorites() {
     const navigate = useNavigate();
 
-    const favorite: AnimeWithId[] = useAppSelector(getFavoriteSelector);
+    const favorites: AnimeWithId[] = useAppSelector(getFavorites);
 
     const backButtonHandler = () => {
         navigate('/anime-list');
@@ -18,10 +18,10 @@ function Favorites() {
 
     return (
         <div className={styles.container}>
-            {favorite.length ? (
+            {favorites.length ? (
                 <div className="main-container">
                     <div className="card-container">
-                        {favorite && <CardList cards={favorite} />}
+                        {favorites && <CardList cards={favorites} />}
                     </div>
                 </div>
             ) : (

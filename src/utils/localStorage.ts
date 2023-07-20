@@ -1,5 +1,6 @@
 import {User} from '../types/user';
 import {HistoryRecord} from '../types/HistoryRecord';
+import {AnimeWithId} from '../types/animeData';
 
 export const localStorageUtil = {
     getUser: (key: string): User | null => {
@@ -7,7 +8,7 @@ export const localStorageUtil = {
         if (user) return JSON.parse(user);
         return null;
     },
-    setItem: (key: string, value: object): void => {
+    setItem: (key: string, value: User): void => {
         const item = JSON.stringify(value);
         localStorage.setItem(key, item);
     },
@@ -21,10 +22,33 @@ export const localStorageUtil = {
         }
     },
     setSearchHistory: (user: string, history: HistoryRecord[]): void => {
-        localStorageUtil.setItem(`searchHistory_${user}`, history);
+        localStorage.setItem(`searchHistory_${user}`, JSON.stringify(history));
     },
     getSearchHistory: (user: string): HistoryRecord[] => {
         const historyString = localStorage.getItem(`searchHistory_${user}`);
         return historyString ? JSON.parse(historyString) : [];
+    },
+    addFavorite: (key: string, card: AnimeWithId) => {
+        const userData = localStorage.getItem(key);
+        if (userData) {
+            const parsedUserData = JSON.parse(userData);
+            localStorage.setItem(
+                key,
+                JSON.stringify({...parsedUserData, favorites: [...parsedUserData.favorites, card]})
+            );
+        }
+    },
+    deleteFavorite: (key: string, id: string) => {
+        const userData = localStorage.getItem(key);
+        if (userData) {
+            const parsedUserData = JSON.parse(userData);
+            const updatedFavorites = parsedUserData.favorites.filter(
+                (item: AnimeWithId) => item.id !== id
+            );
+            localStorage.setItem(
+                key,
+                JSON.stringify({...parsedUserData, favorites: updatedFavorites})
+            );
+        }
     },
 };
