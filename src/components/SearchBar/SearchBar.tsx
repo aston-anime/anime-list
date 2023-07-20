@@ -19,6 +19,7 @@ type SearchProps = {
 function SearchBar({data}: SearchProps) {
     const [input, setInput] = useState<string>('');
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
+    const [dropdown, setDropdown] = useState(false);
 
     const user = useAppSelector(getUserName);
 
@@ -30,12 +31,15 @@ function SearchBar({data}: SearchProps) {
     }, 300);
 
     const handleChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>) => {
+        setDropdown(false);
         setInput(value);
+
         debouncedGenerateSuggests(value);
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setDropdown(true);
         setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
@@ -64,7 +68,9 @@ function SearchBar({data}: SearchProps) {
                     Search
                 </button>
             </form>
-            {input && <SearchResultsList input={input} results={suggests} maxResults={5} />}
+            {input && !dropdown && (
+                <SearchResultsList input={input} results={suggests} maxResults={5} />
+            )}
         </div>
     );
 }
