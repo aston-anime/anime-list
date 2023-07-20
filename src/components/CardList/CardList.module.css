@@ -1,7 +1,9 @@
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(227px, 1fr));
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 40px 30px;
+    margin: 0;
+    padding: 20px 55px;
     list-style-type: none;
-    gap: 60px;
-    padding: 10px 0;
 }

@@ -5,11 +5,17 @@ import {renameIdsInData} from '../services/renameIdsInData';
 import {errorHandle} from '../services/error-handle';
 
 const BASE_URL = 'https://anime-db.p.rapidapi.com/';
-const LIST_URL =
-    'anime?page=1&size=20&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc';
+const LIST_URL = 'anime';
 const HEADERS = {
     'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY,
     'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
+};
+
+const params = {
+    page: '1',
+    size: '50',
+    sortBy: 'ranking',
+    sortOrder: 'asc',
 };
 
 type ResponseType = {
@@ -26,6 +32,7 @@ export const cardsApi = createApi({
                 url: LIST_URL,
                 method: 'GET',
                 headers: HEADERS,
+                params,
             }),
             transformResponse: (response: ResponseType): AnimeWithId[] =>
                 renameIdsInData(response.data),

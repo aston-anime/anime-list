@@ -6,6 +6,6 @@ import {NameSpace} from './NameSpace';
 
 export const rootReducer = combineReducers({
     [NameSpace.Auth]: auth.reducer,
-    [cardsApi.reducerPath]: cardsApi.reducer,
     [NameSpace.Favorite]: favorite.reducer,
+    [cardsApi.reducerPath]: cardsApi.reducer,
 });

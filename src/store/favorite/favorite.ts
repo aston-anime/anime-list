@@ -11,7 +11,7 @@ const initialState: InitialState = {
 };
 
 export const favorite = createSlice({
-    name: NameSpace.Auth,
+    name: NameSpace.Favorite,
     initialState,
     reducers: {
         getFavorite: (state, action) => {

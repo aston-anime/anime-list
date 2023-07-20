@@ -12,7 +12,7 @@ function Favorites() {
 
     const favorite: AnimeWithId[] = useAppSelector(getFavoriteSelector);
 
-    const backButtonHendler = () => {
+    const backButtonHandler = () => {
         navigate('/anime-list');
     };
 
@@ -27,7 +27,7 @@ function Favorites() {
             ) : (
                 <div className={styles.emptyFavorites}>Favorites are empty</div>
             )}
-            <Button onClick={backButtonHendler} variant="primary" className={styles.customButton}>
+            <Button onClick={backButtonHandler} variant="primary" className={styles.customButton}>
                 ← Back
             </Button>
         </div>

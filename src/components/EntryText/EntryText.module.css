@@ -6,7 +6,6 @@
 
 .subtitle {
     font-size: 20px;
-    color: white;
 }
 
 .name {
@@ -16,10 +15,4 @@
 .text {
     font-size: 19px;
     margin-bottom: 10px;
-}
-
-.text_search {
-    color: rgb(255, 223, 247);
-    font-size: 15px;
-    margin-bottom: 0px;
 }
