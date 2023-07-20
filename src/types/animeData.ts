@@ -1,5 +1,3 @@
-import {SetFavoritesAnime} from './setFavorites';
-
 export interface AnimeData {
     _id: string;
     title: string;
@@ -11,7 +9,6 @@ export interface AnimeData {
     status?: string;
     genres?: string;
     synopsis?: string;
-    setFavoritesAnime?: SetFavoritesAnime;
 }
 
 export interface AnimeWithId extends Omit<AnimeData, '_id'> {

@@ -10,6 +10,7 @@ const HEADERS = {
     'X-RapidAPI-Key': process.env.REACT_APP_EHB_ACCESS_KEY,
     'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
 };
+
 const params = {
     page: '1',
     size: '50',
