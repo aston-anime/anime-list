@@ -24,8 +24,8 @@ function SearchBar({data}: SearchProps) {
     const user = useAppSelector(getUserName);
 
     const navigate = useNavigate();
-
     const location = useLocation();
+
     const userQuery = new URLSearchParams(location.search);
     const currentQuery = userQuery.get('query') || '';
 
