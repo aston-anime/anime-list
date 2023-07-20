@@ -1,6 +1,6 @@
 ![Screnshot](https://www.zastavki.com/pictures/1680x1050/2015/Anime_Three_girls_anime_mitsudomoe_109109_16.png)
 
-# [**Euphoric Serenity**](https://dumopolis.github.io)
+# [**Euphoric Serenity**](https://aston-anime.github.io/anime-list/)
 
 ### Веб-каталог популярных аниме, в котором можно найти подробную информацию о ваших любимых японских анимационных фильмах и сериалах
 
