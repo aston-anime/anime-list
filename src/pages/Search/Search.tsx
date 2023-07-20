@@ -1,5 +1,7 @@
 import {useLocation} from 'react-router-dom';
+import {applyFilter} from '../../services/applyFilter';
 import {CardList} from '../../components/CardList/CardList';
+import {Loader} from '../../components/Loader/Loader';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import {useGetCardsQuery} from '../../api/cardsApi';
 import styles from './Search.module.css';
@@ -9,25 +11,35 @@ function Search() {
     const location = useLocation();
 
     const userQuery = new URLSearchParams(location.search).get('query');
-    const queryResult = new URLSearchParams(location.search).get('results');
-    const matchingAnime = queryResult ? JSON.parse(decodeURIComponent(queryResult)) : [];
 
-    const isDataLoading = !data;
+    const matchingAnime = applyFilter(userQuery, data!);
 
-    let message;
-    if (isDataLoading) {
-        message = 'Loading...';
-    } else if (userQuery === null || userQuery.length === 0 || matchingAnime.length === 0) {
-        message = 'No matching Anime';
-    } else {
-        message = 'Search Results:';
-    }
+    const renderContent = () => {
+        if (!userQuery || !userQuery.length) {
+            return (
+                <>
+                    <h4 className={styles.title}>Explore the collection:</h4>
+                    {data ? <CardList cards={data} /> : <Loader />}
+                </>
+            );
+        }
+
+        if (!matchingAnime || !matchingAnime.length) {
+            return <h4 className={styles.title}>No matching anime...</h4>;
+        }
+
+        return (
+            <>
+                <h4 className={styles.title}>Search Results:</h4>
+                {matchingAnime ? <CardList cards={matchingAnime} /> : <Loader />}
+            </>
+        );
+    };
 
     return (
         <div className={styles.container}>
             <SearchBar data={data} />
-            <h4 className={styles.title}>{message}</h4>
-            <CardList cards={matchingAnime} />
+            {renderContent()}
         </div>
     );
 }

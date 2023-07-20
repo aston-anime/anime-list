@@ -4,14 +4,15 @@
     padding-bottom: 5px;
 }
 
+.subtitle {
+    font-size: 20px;
+}
+
 .name {
     color: rgb(255, 255, 255);
 }
 
 .text {
-    font-size: 20px;
-}
-
-.text_search {
-    color: rgb(255, 223, 247);
+    font-size: 19px;
+    margin-bottom: 10px;
 }
