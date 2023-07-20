@@ -10,7 +10,7 @@
 
 ## Учтенные требования к проекту
 
--   Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем LocalStorage ☑️ [**LocalStorage**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/utils/localStorage.tsx#L4)
+-   Для хранения учетных записей пользователей, их избранного и истории поиска, используем LocalStorage ☑️ [**LocalStorage**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/utils/localStorage.tsx#L4)
 
 ### React
 
