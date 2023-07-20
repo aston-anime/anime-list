@@ -44,6 +44,10 @@ function SearchBar({data}: SearchProps) {
         debouncedGenerateSuggests(value);
     };
 
+    const handleBlur = () => {
+        setDropdown(false);
+    };
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setDropdown(false);
@@ -70,6 +74,7 @@ function SearchBar({data}: SearchProps) {
                     name="search"
                     autoComplete="off"
                     onChange={handleChange}
+                    onBlur={handleBlur}
                 />
                 <button type="submit" className="btn btn-secondary my-2 my-sm-0">
                     Search

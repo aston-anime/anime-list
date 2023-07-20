@@ -1,6 +1,7 @@
 .card {
     width: 227px;
     align-items: center;
+    background-color: rgb(26, 9, 51);
 }
 
 .img_wrp {

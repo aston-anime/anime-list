@@ -14,7 +14,6 @@ function SearchResultsList({input, results, maxResults}: SearchResultsListProps)
             className={cn('search-results-list__wrp', 'dropdown-menu', {
                 show: !!input,
             })}
-            style={{marginTop: '10px'}}
         >
             {filteredResults?.map((result) => (
                 <a

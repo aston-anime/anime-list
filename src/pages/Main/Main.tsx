@@ -22,7 +22,7 @@ function Main() {
                 <div className={styles.card_container}>
                     {data && (
                         <>
-                            <h4 style={{margin: '0px'}}>Top 5 rated:</h4>
+                            <h4 className={styles.title}>Top 5 rated:</h4>
                             <CardList cards={topRatedAnime} />
                         </>
                     )}

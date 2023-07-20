@@ -13,7 +13,7 @@ const HEADERS = {
 
 const params = {
     page: '1',
-    size: '50',
+    size: '500',
     sortBy: 'ranking',
     sortOrder: 'asc',
 };

@@ -24,7 +24,7 @@ function Search() {
             );
         }
 
-        if (!matchingAnime || !matchingAnime.length) {
+        if (matchingAnime && !matchingAnime?.length) {
             return <h4 className={styles.title}>No matching anime...</h4>;
         }
 

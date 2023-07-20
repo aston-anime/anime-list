@@ -9,5 +9,5 @@ export const applyFilter = (userInput: string | null, data: AnimeWithId[] | null
         return null;
     }
 
-    return data.filter((anime) => anime.title.toLowerCase().includes(userInput.toLowerCase()));
+    return data.filter((anime) => anime.title.toLowerCase().startsWith(userInput.toLowerCase()));
 };
