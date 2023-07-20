@@ -14,15 +14,10 @@ function EntryText() {
                     Euphoric Serenety!
                 </span>
             </h1>
-            <h4>Database of top Anime</h4>
+            <h4 className={styles.subtitle}>Database of top Anime</h4>
             <p className={styles.text}>
-                Are you a fan of Anime? Look no further! Our Anime Catalogue is your go-to
-                destination for exploring a wide range of captivating and popular anime titles.
-                Immerse yourself in a world of vibrant characters, stunning visuals, and captivating
-                storylines that will leave you spellbound.
-            </p>
-            <p className={cn(styles.text_search, {'text-primary': theme === 'light'})}>
-                Start searching your favourite anime by keywords or genres
+                Are you a fan of Anime? Look no further! Discover top anime titles and vibrant
+                characters in our Catalogue! Start searching your favourite anime by keywords
             </p>
         </div>
     );
