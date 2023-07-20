@@ -36,8 +36,8 @@
 ### Дополнительно
 
 -   Используется TypeScript
--   Storybook для компоонента кнопки [StoryBook](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/components/Button/Button.stories.tsx#L6C6-L6C6)
+-   Для компоонента кнопки добавлен [StoryBook](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/components/Button/Button.stories.tsx#L6C6-L6C6)
 -   Для стилизации использована библиотека [**Bootswatch**](https://bootswatch.com/)
--   Для генерации ключей использован генератор UUID [**UUID**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/pages/History/History.tsx#L2)
--   Для обработки ошибок используется React Toastify [**React Toastify**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/services/error-handle.ts#L2)
--   Для работы с классами используется библиотека classnames [**classnames**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/components/Header/Header.tsx#L24)
+-   Для генерации ключей использован генератор [**UUID**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/pages/History/History.tsx#L2)
+-   Для обработки ошибок используется [**React Toastify**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/services/error-handle.ts#L2)
+-   Для работы с классами используется библиотека [**classnames**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/components/Header/Header.tsx#L24)
