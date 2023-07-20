@@ -21,17 +21,17 @@
 -   Есть применение Контекст API ☑️ [**Контекст**]([https://](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/services/theme/ThemeProvider.tsx#L7))
 -   Есть применение предохранителя ☑️ [**Использование предохранителя**]([https://](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/routing/app-routing.tsx#L23))
 -   Есть хотя бы один кастомный хук ☑️ [**Хук**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/hooks/useDataFetching.ts#L13)
--   Хотя бы несколько компонентов используют PropTypes ☑️ [**Пример использования**]([https://](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/components/Card/Card.tsx#L85))
+-   Хотя бы несколько компонентов используют PropTypes ☑️ [**Пример использования**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/components/Card/Card.tsx#L85)
 -   Поиск не должен триггерить много запросов к серверу ☑️ [**Пример использования debounce**](https://github.com/aston-anime/anime-list/blob/a7a8c9afb3b574e65d4576bab2c9287f212194ef/src/components/SearchBar/SearchBar.tsx#L27)
--   Есть применение lazy + Suspense ☑️ [**Lazy**]([https://](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/routing/lazy-routes.tsx#L1)) [**Suspense**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/index.tsx#L18)
+-   Есть применение lazy + Suspense ☑️ [**Lazy**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/routing/lazy-routes.tsx#L1) [**Suspense**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/index.tsx#L18)
 
 ### Redux
 
 -   Используется Modern Redux with Redux Toolkit ☑️
 -   Используются слайсы ☑️ [**Слайсы**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/store/auth/auth.ts#L14)
 -   Есть кастомная мидлвара ☑️ [**Мидлвара**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/store/middleWare/listenerMiddleWare.ts#L6)
--   Используется RTK Query ☑️ [**RTK Query**]([https://](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/api/cardsApi.ts#L26))
--   Используется Transforming Responses ☑️ [**Transforming Responses**]([https://](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/api/cardsApi.ts#L37))
+-   Используется RTK Query ☑️ [**RTK Query**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/api/cardsApi.ts#L26)
+-   Используется Transforming Responses ☑️ [**Transforming Responses**](https://github.com/aston-anime/anime-list/blob/8427d171d4cad96529992ce51b5ccf5994a40699/src/api/cardsApi.ts#L37)
 
 ### Дополнительно
 
