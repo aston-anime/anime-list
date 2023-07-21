@@ -6,6 +6,8 @@ const AppRoute = {
     SignUp: 'signup',
     Favorites: 'favorites',
     History: 'history',
+    Empty: '/',
+    Error: '*',
 };
 
 export {AppRoute};

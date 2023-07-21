@@ -1,9 +1,12 @@
 import {RouterProvider} from 'react-router-dom';
 import {router} from '../../routing/app-routing';
-import {localStorageUtil} from '../../utils/localStorage';
+import {init} from '../../store/actions/init';
+import {useAppDispatch} from '../../hooks';
 
 function App() {
-    localStorageUtil.clearLocalStorage();
+    const dispatch = useAppDispatch();
+    dispatch(init());
+
     return <RouterProvider router={router} />;
 }
 

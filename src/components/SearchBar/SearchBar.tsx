@@ -3,13 +3,13 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
 import PropTypes from 'prop-types';
 import {applyFilter} from '../../services/applyFilter';
-import {updateHistory} from '../../services/updateHistory';
-import {useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 
 import {AnimeWithId} from '../../types/animeData';
 
+import {search} from '../../store/actions/search';
 import styles from './SearchBar.module.css';
 
 type SearchProps = {
@@ -21,6 +21,7 @@ function SearchBar({data}: SearchProps) {
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
     const [dropdown, setDropdown] = useState(true);
 
+    const dispatch = useAppDispatch();
     const user = useAppSelector(getUserName);
 
     const navigate = useNavigate();
@@ -44,10 +45,6 @@ function SearchBar({data}: SearchProps) {
         debouncedGenerateSuggests(value);
     };
 
-    const handleBlur = () => {
-        setDropdown(false);
-    };
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setDropdown(false);
@@ -56,10 +53,7 @@ function SearchBar({data}: SearchProps) {
         const query = (event.target as HTMLFormElement).search.value;
         const queryResult = applyFilter(query, data);
 
-        if (user) {
-            updateHistory(user, query, queryResult);
-        }
-
+        dispatch(search({user, query, queryResult}));
         navigate(`/anime-list/search/?query=${query}`);
     };
 
@@ -74,7 +68,6 @@ function SearchBar({data}: SearchProps) {
                     name="search"
                     autoComplete="off"
                     onChange={handleChange}
-                    onBlur={handleBlur}
                 />
                 <button type="submit" className="btn btn-secondary my-2 my-sm-0">
                     Search

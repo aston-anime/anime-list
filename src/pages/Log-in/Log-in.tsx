@@ -32,7 +32,7 @@ function LogIn() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const userInfo = localStorageUtil.getUser(userName);
+        const userInfo = localStorageUtil.getItem(userName);
 
         if (!userInfo) {
             setInvalidLogin(true);

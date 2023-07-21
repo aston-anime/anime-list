@@ -1,4 +1,4 @@
-import {createRoutesFromElements, Route} from 'react-router';
+import {createRoutesFromElements, Navigate, Route} from 'react-router';
 import {createBrowserRouter} from 'react-router-dom';
 import {ErrorBoundary} from 'react-error-boundary';
 import {Layout} from '../components/Layout/Layout';
@@ -17,25 +17,29 @@ import {
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route
-            path={AppRoute.Main}
-            element={
-                <ErrorBoundary FallbackComponent={ErrorPage}>
-                    <Layout />
-                </ErrorBoundary>
-            }
-        >
-            <Route index element={<MainPage />} />
-            <Route path={AppRoute.Search} element={<SearchPage />} />
-            <Route path={AppRoute.DetailedItem} element={<DetailedItemPage />} />
-            <Route path={AppRoute.LogIn} element={<LogInPage />} />
-            <Route path={AppRoute.SignUp} element={<SignUpPage />} />
-            <Route path={AppRoute.Favorites} element={<PrivateOutlet />}>
-                <Route index element={<FavoritesPage />} />
+        <>
+            <Route path={AppRoute.Empty} element={<Navigate to={AppRoute.Main} />} />
+            <Route path={AppRoute.Error} element={<ErrorPage />} />
+            <Route
+                path={AppRoute.Main}
+                element={
+                    <ErrorBoundary FallbackComponent={ErrorPage}>
+                        <Layout />
+                    </ErrorBoundary>
+                }
+            >
+                <Route index element={<MainPage />} />
+                <Route path={AppRoute.Search} element={<SearchPage />} />
+                <Route path={AppRoute.DetailedItem} element={<DetailedItemPage />} />
+                <Route path={AppRoute.LogIn} element={<LogInPage />} />
+                <Route path={AppRoute.SignUp} element={<SignUpPage />} />
+                <Route path={AppRoute.Favorites} element={<PrivateOutlet />}>
+                    <Route index element={<FavoritesPage />} />
+                </Route>
+                <Route path={AppRoute.History} element={<PrivateOutlet />}>
+                    <Route index element={<HistoryPage />} />
+                </Route>
             </Route>
-            <Route path={AppRoute.History} element={<PrivateOutlet />}>
-                <Route index element={<HistoryPage />} />
-            </Route>
-        </Route>
+        </>
     )
 );

@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import {Link} from 'react-router-dom';
 import {AnimeWithId} from '../../types/animeData';
 
 type SearchResultsListProps = {
@@ -16,13 +17,13 @@ function SearchResultsList({results, maxResults}: SearchResultsListProps) {
             })}
         >
             {filteredResults?.map((result) => (
-                <a
-                    href={`/anime-list/detailed-item/${result.id}`}
+                <Link
+                    to={`/anime-list/detailed-item/${result.id}`}
                     className="dropdown-item"
                     key={result.id}
                 >
                     {result.title}
-                </a>
+                </Link>
             ))}
         </div>
     );

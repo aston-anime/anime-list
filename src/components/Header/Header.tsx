@@ -12,6 +12,7 @@ import {Button} from '../Button/Button';
 import {localStorageUtil} from '../../utils/localStorage';
 
 import {clearFavorites} from '../../store/favorite/favorite';
+import {clearHistory} from '../../store/history/history';
 import styles from './Header.module.css';
 
 function Header() {
@@ -27,6 +28,7 @@ function Header() {
         localStorageUtil.setAuth('');
         dispatch(logOut());
         dispatch(clearFavorites());
+        dispatch(clearHistory());
     };
 
     return (
