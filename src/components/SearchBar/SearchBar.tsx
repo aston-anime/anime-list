@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
 import PropTypes from 'prop-types';
@@ -17,7 +17,6 @@ type SearchProps = {
 };
 
 function SearchBar({data}: SearchProps) {
-    const [input, setInput] = useState<string>('');
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
     const [dropdown, setDropdown] = useState(true);
 
@@ -30,9 +29,7 @@ function SearchBar({data}: SearchProps) {
     const userQuery = new URLSearchParams(location.search);
     const currentQuery = userQuery.get('query') || '';
 
-    useEffect(() => {
-        setInput(currentQuery);
-    }, [currentQuery]);
+    const [input, setInput] = useState<string>(currentQuery);
 
     const debouncedGenerateSuggests = debounce((userInput: string) => {
         const filteredAnime = applyFilter(userInput, data);
