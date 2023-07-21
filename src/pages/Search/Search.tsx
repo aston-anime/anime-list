@@ -8,6 +8,7 @@ import styles from './Search.module.css';
 
 function Search() {
     const {data} = useGetCardsQuery();
+
     const location = useLocation();
 
     const userQuery = new URLSearchParams(location.search).get('query');
@@ -38,7 +39,7 @@ function Search() {
 
     return (
         <div className={styles.container}>
-            <SearchBar data={data} />
+            <SearchBar />
             {renderContent()}
         </div>
     );

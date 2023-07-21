@@ -17,7 +17,7 @@ function Main() {
     return (
         <div className={styles.container}>
             <EntryText />
-            <SearchBar data={data} />
+            <SearchBar />
             {data ? (
                 <div className={styles.card_container}>
                     {data && (
