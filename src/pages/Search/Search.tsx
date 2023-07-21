@@ -38,7 +38,7 @@ function Search() {
 
     return (
         <div className={styles.container}>
-            <SearchBar data={data} />
+            <SearchBar />
             {renderContent()}
         </div>
     );

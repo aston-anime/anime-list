@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
-import PropTypes from 'prop-types';
+import {useGetCardsQuery} from '../../api/cardsApi';
 import {applyFilter} from '../../services/applyFilter';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
@@ -12,35 +12,29 @@ import {AnimeWithId} from '../../types/animeData';
 import {search} from '../../store/actions/search';
 import styles from './SearchBar.module.css';
 
-type SearchProps = {
-    data: AnimeWithId[] | null;
-};
-
-function SearchBar({data}: SearchProps) {
+function SearchBar() {
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
     const [dropdown, setDropdown] = useState(true);
-
-    const dispatch = useAppDispatch();
-    const user = useAppSelector(getUserName);
 
     const navigate = useNavigate();
     const location = useLocation();
 
+    const inputRef = useRef<HTMLInputElement>(null);
+    const inputValue = inputRef.current?.value;
+    const {data} = useGetCardsQuery(inputValue);
+
+    const dispatch = useAppDispatch();
+    const user = useAppSelector(getUserName);
+
     const userQuery = new URLSearchParams(location.search);
     const currentQuery = userQuery.get('query') || '';
 
-    const [input, setInput] = useState<string>(currentQuery);
-
-    const debouncedGenerateSuggests = debounce((userInput: string) => {
-        const filteredAnime = applyFilter(userInput, data);
-        setSuggests(filteredAnime);
-    }, 300);
-
-    const handleChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = () => {
         setDropdown(true);
-        setInput(value);
-        debouncedGenerateSuggests(value);
+        setSuggests(data!);
     };
+
+    const debouncedHandleChange = debounce(handleChange, 300);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -48,7 +42,7 @@ function SearchBar({data}: SearchProps) {
         setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
-        const queryResult = applyFilter(query, data);
+        const queryResult = applyFilter(query, data!);
 
         dispatch(search({user, query, queryResult}));
         navigate(`/anime-list/search/?query=${query}`);
@@ -59,36 +53,21 @@ function SearchBar({data}: SearchProps) {
             <form onSubmit={handleSubmit} className={styles.wrapper}>
                 <input
                     type="search"
-                    value={input}
+                    ref={inputRef}
                     className={styles.input}
+                    defaultValue={currentQuery}
                     placeholder="Search..."
                     name="search"
                     autoComplete="off"
-                    onChange={handleChange}
+                    onChange={debouncedHandleChange}
                 />
                 <button type="submit" className="btn btn-secondary my-2 my-sm-0">
                     Search
                 </button>
             </form>
-            {input && dropdown && <SearchResultsList results={suggests} maxResults={5} />}
+            {inputValue && dropdown && <SearchResultsList results={suggests} maxResults={5} />}
         </div>
     );
 }
-
-SearchBar.defaultProps = {
-    data: null,
-};
-
-SearchBar.propTypes = {
-    data: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            image: PropTypes.string.isRequired,
-            ranking: PropTypes.number.isRequired,
-            episodes: PropTypes.number.isRequired,
-        })
-    ),
-};
 
 export {SearchBar};
