@@ -3,7 +3,6 @@ import {logIn} from '../auth/auth';
 import {localStorageUtil} from '../../utils/localStorage';
 import {addFavorite, deleteFavorite, setFavorites} from '../favorite/favorite';
 import {init} from '../actions/init';
-import {store} from '..';
 import {HistoryRecord} from '../../types/HistoryRecord';
 import {setHistory, updateHistory} from '../history/history';
 import {search} from '../actions/search';
@@ -12,13 +11,13 @@ const listenerMiddleware = createListenerMiddleware();
 
 listenerMiddleware.startListening({
     actionCreator: init,
-    effect: () => {
+    effect: (action, listenerApi) => {
         const userName = localStorageUtil.getAuth();
         if (userName) {
             const userInfo = localStorageUtil.getItem(userName);
-            store.dispatch(logIn(userInfo));
-            store.dispatch(setFavorites(userInfo?.favorites));
-            store.dispatch(setHistory(userInfo?.history));
+            listenerApi.dispatch(logIn(userInfo));
+            listenerApi.dispatch(setFavorites(userInfo?.favorites));
+            listenerApi.dispatch(setHistory(userInfo?.history));
         }
     },
 });
@@ -53,7 +52,7 @@ listenerMiddleware.startListening({
 
 listenerMiddleware.startListening({
     actionCreator: search,
-    effect: (action) => {
+    effect: (action, listenerApi) => {
         const {user, query, queryResult} = action.payload;
         if (user) {
             if (query === '') {
@@ -72,7 +71,7 @@ listenerMiddleware.startListening({
                 ? [historyRecord, ...currentHistory]
                 : [historyRecord];
             localStorageUtil.setSearchHistory(user, updatedHistory);
-            store.dispatch(updateHistory(historyRecord));
+            listenerApi.dispatch(updateHistory(historyRecord));
         }
     },
 });
