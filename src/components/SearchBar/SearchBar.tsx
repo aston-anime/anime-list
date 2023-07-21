@@ -70,8 +70,4 @@ function SearchBar() {
     );
 }
 
-SearchBar.defaultProps = {
-    data: null,
-};
-
 export {SearchBar};
