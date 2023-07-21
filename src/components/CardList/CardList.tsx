@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
-import {Card} from '../Card/Card';
 
+import {Card} from '../Card/Card';
 import {AnimeWithId} from '../../types/animeData';
+import {useAppSelector} from '../../hooks';
+import {getFavorites} from '../../store/favorite/selectors';
+
 import styles from './CardList.module.css';
 
 type CardListProps = {
@@ -9,9 +12,13 @@ type CardListProps = {
 };
 
 function CardList({cards}: CardListProps) {
+    const favorites = useAppSelector(getFavorites);
+
+    const isFavoriteCheck = (id: string) => !!favorites.find((item) => item.id === id);
+
     const cardList = cards?.map((item) => (
         <li key={item.id}>
-            <Card data={item} />
+            <Card data={item} isFavorite={isFavoriteCheck(item.id)} />
         </li>
     ));
 
