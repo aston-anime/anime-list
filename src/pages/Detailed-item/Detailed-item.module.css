@@ -33,3 +33,19 @@
 .light {
     color: white;
 }
+
+.favorite {
+    color: #e55858;
+    stroke: #e55858;
+}
+
+.favoriteButton {
+    position: absolute;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.imgBlock {
+    position: relative;
+}

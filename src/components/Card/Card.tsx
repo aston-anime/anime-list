@@ -1,10 +1,8 @@
-import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {AnimeWithId} from '../../types/animeData';
 import {addFavorite, deleteFavorite} from '../../store/favorite/favorite';
-import {getFavorites} from '../../store/favorite/selectors';
 import {getAuthStatus} from '../../store/auth/selectors';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {FavoriteSvg} from '../FavoriteSvg/FavoriteSvg';
@@ -14,29 +12,23 @@ import styles from './Card.module.css';
 
 type CardProps = {
     data: AnimeWithId;
+    isFavorite: boolean;
 };
 
-function Card({data}: CardProps) {
+function Card({data, isFavorite}: CardProps) {
     const {id, title, image, ranking, episodes} = data;
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const favorites = useAppSelector(getFavorites);
     const authStatus = useAppSelector(getAuthStatus);
-
-    const [isFavorite, setIsFavorite] = useState<boolean>(
-        !!favorites.find((item) => item.id === id)
-    );
 
     const handleLikeClick = (idAnime: string) => {
         if (isFavorite) {
             dispatch(deleteFavorite(idAnime));
-            setIsFavorite(false);
             return;
         }
         dispatch(addFavorite(data));
-        setIsFavorite(true);
     };
 
     const handleDetailedPageClick = (idAnime: string) => {

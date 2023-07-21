@@ -1,17 +1,35 @@
+import {useContext, useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {useContext} from 'react';
 import cn from 'classnames';
 
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {useDataFetching} from '../../hooks/useDataFetching';
 import {Button} from '../../components/Button/Button';
-
+import {FavoriteSvg} from '../../components/FavoriteSvg/FavoriteSvg';
 import {Loader} from '../../components/Loader/Loader';
+import {addFavorite, deleteFavorite} from '../../store/favorite/favorite';
+import {useAppDispatch, useAppSelector} from '../../hooks/index';
+import {getFavorites} from '../../store/favorite/selectors';
+import {getAuthStatus} from '../../store/auth/selectors';
+import {AnimeData} from '../../types/animeData';
+
 import styles from './Detailed-item.module.css';
 
 function DetailedItem() {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {theme} = useContext(ThemeContext);
+
+    const params = useParams();
+
+    const favorites = useAppSelector(getFavorites);
+    const authStatus = useAppSelector(getAuthStatus);
+
+    const [animeDetailed, setAnimeDetailed] = useState<AnimeData | null>(null);
+
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+    const anime = useDataFetching(`https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`);
 
     type ThemeClassType = {
         dark: string;
@@ -23,13 +41,34 @@ function DetailedItem() {
         light: 'text-dark',
     };
 
-    const params = useParams();
-
-    const anime = useDataFetching(`https://anime-db.p.rapidapi.com/anime/by-id/${params.id}`);
-
     const backButtonHandler = () => {
         navigate('/anime-list');
     };
+
+    const handleLikeClick = (idAnime: string | undefined) => {
+        if (isFavorite) {
+            dispatch(deleteFavorite(idAnime));
+            setIsFavorite(false);
+            return;
+        }
+        dispatch(
+            addFavorite({
+                id: animeDetailed?._id,
+                title: animeDetailed?.title,
+                image: animeDetailed?.image,
+                ranking: animeDetailed?.ranking,
+                episodes: animeDetailed?.episodes,
+            })
+        );
+        setIsFavorite(true);
+    };
+
+    useEffect(() => {
+        if (anime) {
+            setAnimeDetailed(anime);
+            setIsFavorite(!!favorites.find((item) => item.id === animeDetailed?._id));
+        }
+    }, [anime, animeDetailed?._id, favorites]);
 
     return (
         <div className={cn(styles.container, {'text-primary': theme === 'light'})}>
@@ -37,7 +76,20 @@ function DetailedItem() {
                 <>
                     <h2 className={styles.title}>{anime.title}</h2>
                     <div className={styles.description}>
-                        <img src={anime.image} alt="" />
+                        <div className={styles.imgBlock}>
+                            <img src={anime.image} alt="" />
+                            {authStatus ? (
+                                <button
+                                    className={`${styles.favoriteButton} ${
+                                        isFavorite ? styles.favorite : ''
+                                    }`}
+                                    type="button"
+                                    onClick={() => handleLikeClick(animeDetailed?._id)}
+                                >
+                                    <FavoriteSvg />
+                                </button>
+                            ) : null}
+                        </div>
                         <div className={styles.info}>
                             <p className={styles.info_item}>
                                 Alternative Titles:
