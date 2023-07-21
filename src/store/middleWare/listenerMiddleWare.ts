@@ -18,8 +18,7 @@ listenerMiddleware.startListening({
             const userInfo = localStorageUtil.getItem(userName);
             store.dispatch(logIn(userInfo));
             store.dispatch(setFavorites(userInfo?.favorites));
-            const history = localStorageUtil.getSearchHistory(userName);
-            store.dispatch(setHistory(history));
+            store.dispatch(setHistory(userInfo?.history));
         }
     },
 });
