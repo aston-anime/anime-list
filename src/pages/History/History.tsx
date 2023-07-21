@@ -38,7 +38,7 @@ function History() {
                                 <td>{query}</td>
                                 <td>{queryResultNumber}</td>
                                 <td>
-                                    <Link to={queryResultLink.split('&')[0]}>View</Link>
+                                    <Link to={queryResultLink}>View</Link>
                                 </td>
                             </tr>
                         );

@@ -66,11 +66,8 @@ listenerMiddleware.startListening({
                 query,
                 timestamp: new Date().toLocaleString(),
                 queryResultNumber: queryResult?.length || 0,
-                queryResultLink: `/anime-list/search/?query=${query}&results=${encodeURIComponent(
-                    JSON.stringify(queryResult)
-                )}`,
+                queryResultLink: `/anime-list/search/?query=${query}`,
             };
-
             const updatedHistory = currentHistory
                 ? [historyRecord, ...currentHistory]
                 : [historyRecord];
