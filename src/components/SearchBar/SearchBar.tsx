@@ -41,7 +41,7 @@ function SearchBar() {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         isSubmitInvoked = true;
-        // setSuggests(null);
+        setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
         const response = await fetchData({search: inputRef.current?.value});
