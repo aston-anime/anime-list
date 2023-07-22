@@ -2,7 +2,6 @@ import React, {useState, useRef} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
 import {useLazyGetCardsQuery} from '../../api/cardsApi';
-import {applyFilter} from '../../services/applyFilter';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
@@ -17,7 +16,7 @@ const SUGGESTS_COUNT = '5';
 function SearchBar() {
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
     const [dropdown, setDropdown] = useState(true);
-    const [fetchData, data] = useLazyGetCardsQuery();
+    const [fetchData] = useLazyGetCardsQuery();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -37,13 +36,14 @@ function SearchBar() {
     const userQuery = new URLSearchParams(location.search);
     const currentQuery = userQuery.get('query') || '';
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setDropdown(false);
         setSuggests(null);
+        setDropdown(false);
 
         const query = (event.target as HTMLFormElement).search.value;
-        const queryResult = applyFilter(query, data.data!);
+        const response = await fetchData({search: inputRef.current?.value});
+        const queryResult = response.data;
 
         dispatch(search({user, query, queryResult}));
         navigate(`/anime-list/search/?query=${query}`);
