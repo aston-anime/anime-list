@@ -58,7 +58,6 @@ listenerMiddleware.startListening({
             if (query === '') {
                 return;
             }
-
             const currentHistory = localStorageUtil.getSearchHistory(user);
 
             const historyRecord: HistoryRecord = {

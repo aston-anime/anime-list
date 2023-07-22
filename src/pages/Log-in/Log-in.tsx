@@ -7,6 +7,7 @@ import {useAppDispatch} from '../../hooks';
 import {ThemeContext} from '../../services/theme/ThemeProvider';
 import {localStorageUtil} from '../../utils/localStorage';
 import {setFavorites} from '../../store/favorite/favorite';
+import {setHistory} from '../../store/history/history';
 import styles from './Log-in.module.css';
 
 function LogIn() {
@@ -41,6 +42,7 @@ function LogIn() {
         } else {
             dispatch(logIn(userInfo));
             dispatch(setFavorites(userInfo?.favorites));
+            dispatch(setHistory(userInfo?.history));
             navigate(AppRoute.Main);
         }
     };
