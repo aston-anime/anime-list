@@ -15,20 +15,10 @@ const SUGGESTS_COUNT = '5';
 
 function SearchBar() {
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
-    const [dropdown, setDropdown] = useState(true);
     const [fetchData] = useLazyGetCardsQuery();
 
     const navigate = useNavigate();
     const location = useLocation();
-
-    const inputRef = useRef<HTMLInputElement>(null);
-    const inputValue = inputRef.current?.value;
-
-    const debouncedDataFetch = debounce(async () => {
-        const response = await fetchData({search: inputRef.current?.value, size: SUGGESTS_COUNT});
-        setSuggests(response.data!);
-        setDropdown(true);
-    }, 1000);
 
     const dispatch = useAppDispatch();
     const user = useAppSelector(getUserName);
@@ -36,10 +26,22 @@ function SearchBar() {
     const userQuery = new URLSearchParams(location.search);
     const currentQuery = userQuery.get('query') || '';
 
+    const inputRef = useRef<HTMLInputElement>(null);
+    const inputValue = inputRef.current?.value;
+    let isSubmitInvoked = false;
+
+    const debouncedDataFetch = debounce(async () => {
+        if (isSubmitInvoked) {
+            return;
+        }
+        const response = await fetchData({search: inputRef.current?.value, size: SUGGESTS_COUNT});
+        setSuggests(response.data!);
+    }, 700);
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setSuggests(null);
-        setDropdown(false);
+        isSubmitInvoked = true;
+        // setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
         const response = await fetchData({search: inputRef.current?.value});
@@ -66,7 +68,7 @@ function SearchBar() {
                     Search
                 </button>
             </form>
-            {inputValue && dropdown && <SearchResultsList results={suggests} />}
+            {inputValue && <SearchResultsList results={suggests} />}
         </div>
     );
 }
