@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {debounce} from 'lodash';
-import {useGetCardsQuery} from '../../api/cardsApi';
+import {useLazyGetCardsQuery} from '../../api/cardsApi';
 import {applyFilter} from '../../services/applyFilter';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
@@ -12,16 +12,24 @@ import {AnimeWithId} from '../../types/animeData';
 import {search} from '../../store/actions/search';
 import styles from './SearchBar.module.css';
 
+const SUGGESTS_COUNT = '5';
+
 function SearchBar() {
     const [suggests, setSuggests] = useState<AnimeWithId[] | null>(null);
     const [dropdown, setDropdown] = useState(true);
+    const [fetchData, data] = useLazyGetCardsQuery();
 
     const navigate = useNavigate();
     const location = useLocation();
 
     const inputRef = useRef<HTMLInputElement>(null);
     const inputValue = inputRef.current?.value;
-    const {data} = useGetCardsQuery(inputValue);
+
+    const debouncedDataFetch = debounce(async () => {
+        const response = await fetchData({search: inputRef.current?.value, size: SUGGESTS_COUNT});
+        setSuggests(response.data!);
+        setDropdown(true);
+    }, 1000);
 
     const dispatch = useAppDispatch();
     const user = useAppSelector(getUserName);
@@ -29,20 +37,13 @@ function SearchBar() {
     const userQuery = new URLSearchParams(location.search);
     const currentQuery = userQuery.get('query') || '';
 
-    const handleChange = () => {
-        setDropdown(true);
-        setSuggests(data!);
-    };
-
-    const debouncedHandleChange = debounce(handleChange, 300);
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setDropdown(false);
         setSuggests(null);
 
         const query = (event.target as HTMLFormElement).search.value;
-        const queryResult = applyFilter(query, data!);
+        const queryResult = applyFilter(query, data.data!);
 
         dispatch(search({user, query, queryResult}));
         navigate(`/anime-list/search/?query=${query}`);
@@ -59,13 +60,13 @@ function SearchBar() {
                     placeholder="Search..."
                     name="search"
                     autoComplete="off"
-                    onChange={debouncedHandleChange}
+                    onChange={debouncedDataFetch}
                 />
                 <button type="submit" className="btn btn-secondary my-2 my-sm-0">
                     Search
                 </button>
             </form>
-            {inputValue && dropdown && <SearchResultsList results={suggests} maxResults={5} />}
+            {inputValue && dropdown && <SearchResultsList results={suggests} />}
         </div>
     );
 }

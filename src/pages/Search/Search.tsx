@@ -8,7 +8,7 @@ import styles from './Search.module.css';
 function Search() {
     const location = useLocation();
     const userQuery = new URLSearchParams(location.search).get('query');
-    const {data} = useGetCardsQuery(userQuery!);
+    const {data} = useGetCardsQuery({search: userQuery!});
 
     const renderContent = () => {
         if (!userQuery || !userQuery.length) {

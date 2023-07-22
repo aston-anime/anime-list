@@ -5,14 +5,10 @@ import {Loader} from '../../components/Loader/Loader';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
 import styles from './Main.module.css';
 
-function Main() {
-    const {data} = useGetCardsQuery();
-    let topRatedAnime;
+const TOP_COUNT = '5';
 
-    if (data) {
-        const sortedAnime = [...data].sort((a, b) => b.ranking - a.ranking);
-        topRatedAnime = sortedAnime.slice(0, 5);
-    }
+function Main() {
+    const {data} = useGetCardsQuery({size: TOP_COUNT});
 
     return (
         <div className={styles.container}>
@@ -23,7 +19,7 @@ function Main() {
                     {data && (
                         <>
                             <h4 className={styles.title}>Top 5 rated:</h4>
-                            <CardList cards={topRatedAnime} />
+                            <CardList cards={data} />
                         </>
                     )}
                 </div>

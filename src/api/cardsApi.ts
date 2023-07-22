@@ -13,7 +13,7 @@ const HEADERS = {
 
 const params = {
     page: '1',
-    size: '500',
+    size: '50',
     sortBy: 'ranking',
     sortOrder: 'asc',
 };
@@ -23,16 +23,21 @@ type ResponseType = {
     meta: Meta;
 };
 
+type ExtraParams = {
+    search?: string;
+    size?: string;
+};
+
 export const cardsApi = createApi({
     reducerPath: 'cardsApi',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (builder) => ({
-        getCards: builder.query<AnimeWithId[], string | void>({
-            query: (filter) => ({
+        getCards: builder.query<AnimeWithId[], ExtraParams | void>({
+            query: (extraParams: ExtraParams) => ({
                 url: LIST_URL,
                 method: 'GET',
                 headers: HEADERS,
-                params: {...params, search: filter},
+                params: {...params, ...extraParams},
             }),
             transformResponse: (response: ResponseType): AnimeWithId[] =>
                 renameIdsInData(response.data),
@@ -41,4 +46,4 @@ export const cardsApi = createApi({
     }),
 });
 
-export const {useGetCardsQuery} = cardsApi;
+export const {useGetCardsQuery, useLazyGetCardsQuery} = cardsApi;
