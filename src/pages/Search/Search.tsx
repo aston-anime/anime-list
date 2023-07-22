@@ -1,5 +1,5 @@
 import {useLocation} from 'react-router-dom';
-import {applyFilter} from '../../services/applyFilter';
+// import {applyFilter} from '../../services/applyFilter';
 import {CardList} from '../../components/CardList/CardList';
 import {Loader} from '../../components/Loader/Loader';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
@@ -7,12 +7,9 @@ import {useGetCardsQuery} from '../../api/cardsApi';
 import styles from './Search.module.css';
 
 function Search() {
-    const {data} = useGetCardsQuery();
     const location = useLocation();
-
     const userQuery = new URLSearchParams(location.search).get('query');
-
-    const matchingAnime = applyFilter(userQuery, data!);
+    const {data} = useGetCardsQuery(userQuery!);
 
     const renderContent = () => {
         if (!userQuery || !userQuery.length) {
@@ -24,14 +21,14 @@ function Search() {
             );
         }
 
-        if (matchingAnime && !matchingAnime?.length) {
+        if (data && !data.length) {
             return <h4 className={styles.title}>No matching anime...</h4>;
         }
 
         return (
             <>
                 <h4 className={styles.title}>Search Results:</h4>
-                {matchingAnime ? <CardList cards={matchingAnime} /> : <Loader />}
+                {data ? <CardList cards={data} /> : <Loader />}
             </>
         );
     };
