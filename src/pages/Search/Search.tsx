@@ -1,5 +1,4 @@
 import {useLocation} from 'react-router-dom';
-// import {applyFilter} from '../../services/applyFilter';
 import {CardList} from '../../components/CardList/CardList';
 import {Loader} from '../../components/Loader/Loader';
 import {SearchBar} from '../../components/SearchBar/SearchBar';
