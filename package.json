@@ -38,7 +38,9 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
+        "build-stats": "npm run build -- --stats",
         "eject": "react-scripts eject",
+        "run-webpack-bundle-analyzer": "webpack-bundle-analyzer ./build/bundle-stats.json",
         "prepare": "husky install",
         "build:storybook": "node ./scripts/storybook.js",
         "test:unit": "react-scripts test",
@@ -95,7 +97,8 @@
         "lint-staged": "^13.2.3",
         "prettier": "2.8.8",
         "storybook": "^7.0.27",
-        "webpack": "^5.88.1"
+        "webpack": "^5.88.1",
+        "webpack-bundle-analyzer": "^4.9.1"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"

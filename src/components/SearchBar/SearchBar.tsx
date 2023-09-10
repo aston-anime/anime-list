@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {debounce} from 'lodash';
+import debounce from 'lodash/debounce';
 import {useLazyGetCardsQuery} from '../../api/cardsApi';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getUserName} from '../../store/auth/selectors';
